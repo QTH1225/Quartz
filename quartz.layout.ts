@@ -39,6 +39,11 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
+    Component.RecentNotes({
+      title: "近期笔记",
+      limit: 5,
+      showTags: true
+    }),
   ],
   right: [
     Component.Graph(),
