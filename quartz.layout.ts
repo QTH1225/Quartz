@@ -39,11 +39,7 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
-    Component.RecentNotes({
-      title: "近期笔记",
-      limit: 5,
-      showTags: true
-    }),
+    // 已移除近期笔记模块
   ],
   right: [
     Component.Graph(),
