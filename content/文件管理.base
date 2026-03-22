@@ -3,6 +3,7 @@ filters:
     - file.basename != "index"
     - file.ext != "base"
     - file.ext != "pdf"
+    - file.basename != "Template"
 views:
   - type: table
     name: 表格
