@@ -16,6 +16,10 @@ export default ((opts?: Options) => {
         <p>
           {i18n(cfg.locale).components.footer.createdWith}{" "}
           <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a> © {year}
+          {" | "}
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">
+            CC BY-NC-SA 4.0
+          </a>
         </p>
         <ul>
           {Object.entries(links).map(([text, link]) => (
@@ -30,4 +34,4 @@ export default ((opts?: Options) => {
 
   Footer.css = style
   return Footer
-}) satisfies QuartzComponentConstructor
+}) satisfies QuartzComponentConstructor

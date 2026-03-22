@@ -12,11 +12,13 @@ interface ContentMetaOptions {
    */
   showReadingTime: boolean
   showComma: boolean
+  showAuthor: boolean
 }
 
 const defaultOptions: ContentMetaOptions = {
   showReadingTime: true,
   showComma: true,
+  showAuthor: true,
 }
 
 export default ((opts?: Partial<ContentMetaOptions>) => {
@@ -40,6 +42,53 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           minutes: Math.ceil(minutes),
         })
         segments.push(<span>{displayedTime}</span>)
+      }
+
+      // Display author(s) if enabled and author field exists
+      if (options.showAuthor && fileData.frontmatter?.author) {
+        const authors = fileData.frontmatter.author
+        const authorLinks = fileData.frontmatter.authorLink
+        
+        // Handle both single author and multiple authors
+        if (Array.isArray(authors)) {
+          // Multiple authors
+          const authorElements: JSX.Element[] = []
+          authors.forEach((authorName, index) => {
+            const authorLink = Array.isArray(authorLinks) ? authorLinks[index] : authorLinks
+            if (authorLink) {
+              authorElements.push(
+                <a href={authorLink} target="_blank" rel="noopener noreferrer">{authorName}</a>
+              )
+            } else {
+              authorElements.push(<span>{authorName}</span>)
+            }
+            
+            // Add separator except for the last author
+            if (index < authors.length - 1) {
+              authorElements.push(<span>, </span>)
+            }
+          })
+          
+          segments.push(
+            <span>
+              by {authorElements}
+            </span>
+          )
+        } else {
+          // Single author (backward compatibility)
+          const authorName = authors
+          const authorLink = authorLinks
+          
+          if (authorLink) {
+            segments.push(
+              <span>
+                by <a href={authorLink} target="_blank" rel="noopener noreferrer">{authorName}</a>
+              </span>
+            )
+          } else {
+            segments.push(<span>by {authorName}</span>)
+          }
+        }
       }
 
       return (

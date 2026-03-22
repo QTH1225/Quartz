@@ -1,17 +1,33 @@
-# Quartz v4
+## 关于项目
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+这个数字花园基于 [Quartz v4](https://quartz.jzhao.xyz/) 构建，这是一个强大的开源工具，帮助我将笔记和想法转化为可访问的网站。
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+## 主题和样式
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+- **主题**: 基于 Quartz v4 的现代简约风格
+- **颜色方案**: 精心调制的浅色/深色模式
+- **排版**: 优化的中文排版和阅读体验
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+## 贡献者
 
-## Sponsors
+感谢以下开源项目为这个数字花园提供支持：
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+- [Jacky Zhao](https://github.com/jackyzha0) - Quartz 框架的创建者
+- Quartz 社区的所有贡献者
+
+## 本地开发
+
+```bash
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npx quartz build --serve
+
+# 构建生产版本
+npx quartz build
+```
+
+## 许可证
+
+内容部分采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可，代码部分遵循 Quartz 的 MIT 许可证。

@@ -1,0 +1,21 @@
+filters:
+  and:
+    - file.basename != "index"
+    - file.ext != "base"
+    - file.ext != "pdf"
+views:
+  - type: table
+    name: 表格
+    order:
+      - file.name
+      - file.folder
+      - author
+      - tags
+      - draft
+    sort:
+      - property: tags
+        direction: DESC
+    columnSize:
+      file.name: 228
+      file.folder: 239
+      note.tags: 309

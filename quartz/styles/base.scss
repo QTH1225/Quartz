@@ -81,6 +81,11 @@ strong {
   font-weight: $semiBoldWeight;
 }
 
+p > strong,
+p > em {
+  color: #FF82B2;
+}
+
 a {
   font-weight: $semiBoldWeight;
   text-decoration: none;
@@ -183,9 +188,7 @@ a {
       margin-bottom: 0;
     }
 
-    p > strong {
-      color: var(--dark);
-    }
+    // 已移除重复的 p > strong 规则
   }
 
   & > #quartz-body {
@@ -639,3 +642,6 @@ iframe.pdf {
   transition: width 0.2s ease;
   z-index: 9999;
 }
+
+
+
