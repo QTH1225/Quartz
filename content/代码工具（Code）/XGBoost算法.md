@@ -1,14 +1,10 @@
 ---
-title: 超级电容器概念
+title: XGBoost算法
 draft: true
 author: Tianhao Qin
 authorLink: https://github.com/QTH1225
 tags:
-  - 储能器件
-  - 超级电容器
+  - 机器学习
 ---
 
-
-
 ## Reference
-
