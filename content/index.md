@@ -1,4 +1,4 @@
 ---
-title: Welcome to CCC Lab
+title: Welcome to Tianhao's Lab
 ---
-欢迎来到CCC Lab！
+欢迎来到Tianhao's Lab！

@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "CCC Lab",
+    pageTitle: "Tianhao's Lab",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -17,7 +17,14 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian", "**/*.base"],
+    ignorePatterns: [
+      "private",
+      "templates",
+      "Template",
+      ".obsidian",
+      "**/*.base",
+      "科研笔记（Notes）/文献精读",
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
