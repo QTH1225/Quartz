@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">Right comparison image</title>
+  <desc id="desc">The right image in a side by side Quartz image rendering test.</desc>
+  <rect width="900" height="600" fill="#ddf4ff"/>
+  <rect x="42" y="42" width="816" height="516" rx="8" fill="#ffffff" stroke="#54aeef" stroke-width="3"/>
+  <rect x="138" y="168" width="120" height="300" rx="8" fill="#0969da" opacity="0.82"/>
+  <rect x="330" y="104" width="120" height="364" rx="8" fill="#218bff" opacity="0.82"/>
+  <rect x="522" y="236" width="120" height="232" rx="8" fill="#54aeef" opacity="0.92"/>
+  <rect x="714" y="142" width="120" height="326" rx="8" fill="#0969da" opacity="0.62"/>
+  <line x1="105" y1="468" x2="842" y2="468" stroke="#57606a" stroke-width="4"/>
+</svg>

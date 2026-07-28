@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Single image render test</title>
+  <desc id="desc">A simple single image for Quartz rendering tests.</desc>
+  <rect width="1200" height="675" fill="#f6f8fa"/>
+  <rect x="48" y="48" width="1104" height="579" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+  <circle cx="260" cy="240" r="96" fill="#2da44e" opacity="0.92"/>
+  <rect x="410" y="160" width="510" height="58" rx="6" fill="#0969da"/>
+  <rect x="410" y="256" width="640" height="34" rx="6" fill="#6e7781" opacity="0.45"/>
+  <rect x="410" y="320" width="520" height="34" rx="6" fill="#6e7781" opacity="0.35"/>
+  <path d="M132 520 L290 382 L430 488 L550 420 L730 540 Z" fill="#bf8700" opacity="0.82"/>
+  <path d="M620 524 C720 448 815 438 930 510 C980 542 1040 546 1095 520 L1095 585 L620 585 Z" fill="#0969da" opacity="0.18"/>
+</svg>
