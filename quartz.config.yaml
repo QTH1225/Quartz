@@ -16,12 +16,12 @@ configuration:
     - "**/*.base"
     - 科研笔记（Notes）/文献精读
   theme:
-    fontOrigin: local
+    fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: system-ui
-      body: system-ui
-      code: ui-monospace
+      header: Schibsted Grotesk
+      body: Source Sans Pro
+      code: IBM Plex Mono
     colors:
       lightMode:
         light: "#faf8f8"
@@ -104,14 +104,6 @@ plugins:
     order: 92
   - source: "@quartz-community/quartz-fonts"
     enabled: true
-    options:
-      useThemeFonts: false
-      fontOrigin: local
-      title: 'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
-      header: 'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
-      body: 'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
-      interface: 'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
-      code: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, Menlo, monospace'
   - source: "@quartz-themes/core"
     enabled: false
     options:
@@ -146,7 +138,7 @@ plugins:
     enabled: true
     options:
       folderDefaultState: collapsed
-      folderClickBehavior: collapse
+      folderClickBehavior: link
       useSavedState: true
       sortFn: |
         (a, b) => {
