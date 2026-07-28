@@ -7,6 +7,8 @@ tags:
   - 测试
   - Quartz
   - Markdown
+translations:
+  en: "/en/code/quartz-feature-test-article"
 ---
 
 这是一篇用于检查 Quartz 渲染效果的测试文章，覆盖数学公式、PDF 嵌入、普通代码块、折叠超长代码块、表格、任务列表和引用等常见内容形态。

@@ -5,6 +5,8 @@ author: Tianhao Qin
 authorLink: https://github.com/QTH1225
 tags:
   - docs
+translations:
+  en: "/en/notes/document-reading/harness-engineering"
 ---
 
 ## 相关文档

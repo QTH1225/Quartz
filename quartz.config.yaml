@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
+  locale: zh-CN
   baseUrl: quartz.jzhao.xyz
   ignorePatterns:
     - private
@@ -184,6 +184,19 @@ plugins:
       group: toolbar
       groupOptions:
         grow: true
+  - source: "./quartz/plugins/language-switch"
+    enabled: true
+    options:
+      roots:
+        zh: /
+        en: /en/
+      labels:
+        zh: 中
+        en: EN
+    layout:
+      position: left
+      priority: 37
+      group: toolbar
   - source: "@quartz-community/backlinks"
     enabled: true
     layout:

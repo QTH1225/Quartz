@@ -5,4 +5,6 @@ author: Tianhao Qin
 authorLink: https://github.com/QTH1225
 tags:
   - Markdown
+translations:
+  en: "/en/code/text-formatting/markdown-basics"
 ---

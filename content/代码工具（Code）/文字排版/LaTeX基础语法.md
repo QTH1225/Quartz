@@ -5,9 +5,10 @@ author: Tianhao Qin
 authorLink: https://github.com/QTH1225
 tags:
   - LaTeX
+translations:
+  en: "/en/code/text-formatting/latex-basics"
 ---
 
 
 
 ## Reference
-

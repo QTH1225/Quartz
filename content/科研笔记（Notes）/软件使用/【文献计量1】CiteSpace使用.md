@@ -4,6 +4,8 @@ draft: true
 tags:
   - 文献计量
   - CiteSpace
+translations:
+  en: "/en/notes/software/citespace-bibliometrics-1"
 ---
 
 

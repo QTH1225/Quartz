@@ -594,7 +594,9 @@ export async function handleBuild(argv) {
       "**/*.scss",
       "package.json",
       "quartz.config.yaml",
+      "quartz.config.*.yaml",
       "quartz.config.default.yaml",
+      "quartz/plugins/language-switch/**/*",
     ])
     chokidar
       .watch(paths, { ignoreInitial: true })

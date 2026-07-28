@@ -32,12 +32,20 @@ import MobileOnly from "../../components/MobileOnly"
 import DesktopOnly from "../../components/DesktopOnly"
 import ConditionalRender from "../../components/ConditionalRender"
 
-const CONFIG_YAML_PATH = path.join(process.cwd(), "quartz.config.yaml")
+const CONFIG_ENV_PATH = process.env.QUARTZ_CONFIG
+const CONFIG_YAML_PATH = CONFIG_ENV_PATH
+  ? path.resolve(process.cwd(), CONFIG_ENV_PATH)
+  : path.join(process.cwd(), "quartz.config.yaml")
 const DEFAULT_CONFIG_YAML_PATH = path.join(process.cwd(), "quartz.config.default.yaml")
 const LEGACY_PLUGINS_JSON_PATH = path.join(process.cwd(), "quartz.plugins.json")
 const LEGACY_DEFAULT_PLUGINS_JSON_PATH = path.join(process.cwd(), "quartz.plugins.default.json")
 
 function resolveConfigPath(): string {
+  if (CONFIG_ENV_PATH) {
+    if (fs.existsSync(CONFIG_YAML_PATH)) return CONFIG_YAML_PATH
+    throw new Error(`Config file set by QUARTZ_CONFIG was not found: ${CONFIG_YAML_PATH}`)
+  }
+
   if (fs.existsSync(CONFIG_YAML_PATH)) return CONFIG_YAML_PATH
   if (fs.existsSync(LEGACY_PLUGINS_JSON_PATH)) return LEGACY_PLUGINS_JSON_PATH
   if (fs.existsSync(DEFAULT_CONFIG_YAML_PATH)) return DEFAULT_CONFIG_YAML_PATH
@@ -259,6 +267,13 @@ export async function loadQuartzConfig(
   const configuration = {
     ...(json.configuration as unknown as GlobalConfiguration),
     ...configOverrides,
+  }
+
+  if (process.env.QUARTZ_LOCALE) {
+    configuration.locale = process.env.QUARTZ_LOCALE as GlobalConfiguration["locale"]
+  }
+  if (process.env.QUARTZ_BASE_URL) {
+    configuration.baseUrl = process.env.QUARTZ_BASE_URL
   }
 
   const enabledEntries = json.plugins.filter((e) => e.enabled)
