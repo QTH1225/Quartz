@@ -1,0 +1,14 @@
+---
+title: 水泥水化过程及产物
+draft: true
+author: Tianhao Qin
+authorLink: https://github.com/QTH1225
+tags:
+  - Template
+translations:
+  en: "/en/02composite/cement-hydration-process-and-products"
+---
+在波特兰水泥水化过程中，熟料主相为**硅酸三钙（C3S）、硅酸二钙（C2S）、铝酸三钙（C3A）以及铁铝酸四钙（C4AF）与水反应形成的C-S-H凝胶**
+
+
+## Reference

@@ -7,8 +7,12 @@ filters:
 views:
   - type: table
     name: 表格
+    filters:
+      and:
+        - '!file.inFolder("Attachments")'
     order:
       - file.name
+      - title
       - file.folder
       - author
       - tags
@@ -17,6 +21,7 @@ views:
       - property: tags
         direction: DESC
     columnSize:
-      file.name: 228
+      file.name: 338
+      note.title: 213
       file.folder: 239
       note.tags: 309

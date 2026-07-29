@@ -14,7 +14,7 @@ configuration:
     - Template
     - .obsidian
     - "**/*.base"
-    - 科研笔记（Notes）/文献精读
+    - 04Notes/文献精读
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
@@ -147,11 +147,22 @@ plugins:
             return label.includes("个人随笔") || label.includes("random")
           }
 
+          const numericPrefix = (node) => {
+            const match = `${node.slugSegment ?? ""}`.match(/^(\d+)/)
+            return match ? Number(match[1]) : undefined
+          }
+
           if (isRandom(a) && !isRandom(b)) return 1
           if (!isRandom(a) && isRandom(b)) return -1
 
           const sameKind = (!a.isFolder && !b.isFolder) || (a.isFolder && b.isFolder)
           if (sameKind) {
+            const aPrefix = numericPrefix(a)
+            const bPrefix = numericPrefix(b)
+            if (aPrefix !== undefined && bPrefix !== undefined && aPrefix !== bPrefix) {
+              return aPrefix - bPrefix
+            }
+
             return (a.displayName || "").localeCompare(b.displayName || "", undefined, {
               numeric: true,
               sensitivity: "base",

@@ -1,6 +1,0 @@
----
-title: 科研笔记(Notes)
-translations:
-  en: "/en/notes/"
----
-该文件夹主要存放计算机基础知识与代码

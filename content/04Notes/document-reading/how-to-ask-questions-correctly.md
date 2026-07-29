@@ -1,0 +1,18 @@
+---
+title: 如何正确提问
+draft: false
+author: Tianhao Qin
+authorLink: https://github.com/QTH1225
+tags:
+  - docs
+translations:
+  en: "/en/04notes/document-reading/how-to-ask-questions-correctly"
+---
+
+# 如何正确提问
+
+## 相关资源
+
+- [提问的艺术 (How To Ask Questions The Smart Way)](/Attachments/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf) - 经典的技术提问指南
+
+## Reference
