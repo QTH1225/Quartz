@@ -1,9 +1,11 @@
 ---
-title: Welcome to Tianhao's Lab
+title: 👋Welcome！
 author: Tianhao Qin
 authorLink: https://github.com/QTH1225
 lang: zh-CN
 translations:
-  en: "/en/"
+  en: /en/
 ---
-## Hello1111
+# 关于我
+
+你好

@@ -13,11 +13,12 @@ views:
     order:
       - file.name
       - title
-      - file.folder
       - author
       - tags
       - draft
     sort:
+      - property: file.folder
+        direction: ASC
       - property: tags
         direction: DESC
     columnSize:
