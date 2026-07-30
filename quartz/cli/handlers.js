@@ -59,6 +59,101 @@ function resolveContentPath(contentPath) {
   return path.join(cwd, contentPath)
 }
 
+function hasCliOption(longName, shortName) {
+  return process.argv.some((arg) => {
+    return (
+      arg === longName ||
+      arg.startsWith(`${longName}=`) ||
+      arg === shortName ||
+      arg.startsWith(`${shortName}=`) ||
+      (!arg.startsWith("--") && arg.startsWith(shortName) && arg.length > shortName.length)
+    )
+  })
+}
+
+function shouldUseI18nBuild() {
+  return !hasCliOption("--directory", "-d") && fs.existsSync(path.join(cwd, "content-en"))
+}
+
+function appendEnBaseUrl(baseUrl) {
+  if (!baseUrl) return undefined
+  const normalized = String(baseUrl).replace(/\/+$/, "")
+  return normalized.endsWith("/en") ? normalized : `${normalized}/en`
+}
+
+function configuredBaseUrl() {
+  return process.env.QUARTZ_BASE_URL ?? readPluginsJson()?.configuration?.baseUrl
+}
+
+function createBuildTargets(argv) {
+  if (!shouldUseI18nBuild()) {
+    return [{ label: undefined, argv, env: {} }]
+  }
+
+  return [
+    {
+      label: "zh",
+      argv: {
+        ...argv,
+        directory: "content",
+        output: argv.output,
+      },
+      env: {
+        QUARTZ_LOCALE: "zh-CN",
+      },
+    },
+    {
+      label: "en",
+      argv: {
+        ...argv,
+        directory: "content-en",
+        output: path.join(argv.output, "en"),
+      },
+      env: {
+        QUARTZ_LOCALE: "en-US",
+        QUARTZ_BASE_URL: appendEnBaseUrl(configuredBaseUrl()),
+      },
+    },
+  ]
+}
+
+async function withEnv(env, fn) {
+  const previous = new Map()
+  for (const [key, value] of Object.entries(env)) {
+    previous.set(key, process.env[key])
+    if (value === undefined) {
+      delete process.env[key]
+    } else {
+      process.env[key] = value
+    }
+  }
+
+  try {
+    return await fn()
+  } finally {
+    for (const [key, value] of previous) {
+      if (value === undefined) {
+        delete process.env[key]
+      } else {
+        process.env[key] = value
+      }
+    }
+  }
+}
+
+function copySharedAttachments(output, quiet = false) {
+  const sharedAttachments = path.join(output, "attachments")
+  const localizedAttachments = path.join(output, "en", "attachments")
+
+  if (!fs.existsSync(sharedAttachments)) return
+
+  fs.rmSync(localizedAttachments, { recursive: true, force: true })
+  fs.cpSync(sharedAttachments, localizedAttachments, { recursive: true })
+  if (!quiet) {
+    console.log(styleText("gray", `[i18n] copied shared attachments to ${localizedAttachments}`))
+  }
+}
+
 /**
  * Handles `npx quartz create`
  * @param {*} argv arguments for `create`
@@ -330,6 +425,13 @@ export async function handleBuild(argv) {
     argv.watch = true
   }
 
+  if (argv.serve && argv.baseDir !== "" && !argv.baseDir.startsWith("/")) {
+    argv.baseDir = "/" + argv.baseDir
+  }
+
+  const buildTargets = createBuildTargets(argv)
+  const isI18nBuild = buildTargets.length > 1
+
   console.log(`\n${styleText(["bgGreen", "black"], ` Quartz v${version} `)} \n`)
   const ctx = await esbuild.context({
     entryPoints: [fp],
@@ -399,7 +501,7 @@ export async function handleBuild(argv) {
 
   const buildMutex = new Mutex()
   let lastBuildMs = 0
-  let cleanupBuild = null
+  const cleanupBuilds = Array(buildTargets.length).fill(null)
   const build = async (clientRefresh) => {
     const buildStart = new Date().getTime()
     lastBuildMs = buildStart
@@ -409,9 +511,14 @@ export async function handleBuild(argv) {
       return
     }
 
-    if (cleanupBuild) {
+    if (cleanupBuilds.some((cleanupBuild) => cleanupBuild !== null)) {
       console.log(styleText("yellow", "Detected a source code change, doing a hard rebuild..."))
-      await cleanupBuild()
+      for (const cleanupBuild of cleanupBuilds) {
+        if (cleanupBuild) {
+          await cleanupBuild()
+        }
+      }
+      cleanupBuilds.fill(null)
     }
 
     const result = await ctx.rebuild().catch((err) => {
@@ -436,10 +543,33 @@ export async function handleBuild(argv) {
 
     // bypass module cache
     // https://github.com/nodejs/modules/issues/307
-    const { default: buildQuartz } = await import(`../../${cacheFile}?update=${randomUUID()}`)
-    // ^ this import is relative, so base "cacheFile" path can't be used
+    const refresh = () => {
+      if (isI18nBuild) {
+        copySharedAttachments(argv.output, true)
+      }
+      clientRefresh()
+    }
 
-    cleanupBuild = await buildQuartz(argv, buildMutex, clientRefresh)
+    for (const [idx, target] of buildTargets.entries()) {
+      if (target.label) {
+        console.log(
+          `\n[${target.label}] quartz build -d ${target.argv.directory} -o ${target.argv.output}\n`,
+        )
+      }
+
+      const { default: buildQuartz } = await withEnv(target.env, () =>
+        import(`../../${cacheFile}?update=${randomUUID()}-${target.label ?? "default"}`),
+      )
+      // ^ this import is relative, so base "cacheFile" path can't be used
+
+      cleanupBuilds[idx] = await withEnv(target.env, () =>
+        buildQuartz(target.argv, buildMutex, refresh),
+      )
+    }
+
+    if (isI18nBuild) {
+      copySharedAttachments(argv.output)
+    }
     clientRefresh()
   }
 
@@ -447,10 +577,6 @@ export async function handleBuild(argv) {
   if (argv.serve) {
     const connections = []
     clientRefresh = () => connections.forEach((conn) => conn.send("rebuild"))
-
-    if (argv.baseDir !== "" && !argv.baseDir.startsWith("/")) {
-      argv.baseDir = "/" + argv.baseDir
-    }
 
     await build(clientRefresh)
     const server = http.createServer(async (req, res) => {
