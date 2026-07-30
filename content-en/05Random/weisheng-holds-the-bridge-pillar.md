@@ -1,13 +1,13 @@
 ---
 title: "Flash Fiction: Weisheng Holds the Bridge Pillar"
 draft: false
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-lang: en-US
 tags:
   - fiction
 translations:
-  zh: "/05random/weisheng-holds-the-bridge-pillar"
+  zh: /05random/weisheng-holds-the-bridge-pillar
+lang: en-US
 ---
 
 Under the old bridge, I met a young man while taking a walk. He wore coarse cloth and looked across the river.

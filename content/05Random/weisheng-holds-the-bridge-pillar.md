@@ -1,12 +1,12 @@
 ---
 title: 【微小说】尾生抱树
 draft: false
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
   - 随笔故事
 translations:
-  en: "/en/05random/weisheng-holds-the-bridge-pillar"
+  en: /en/05random/weisheng-holds-the-bridge-pillar
 ---
 
 老桥下，散步的我碰到了一个男生，穿着粗布衣服，眺望着河的对岸。

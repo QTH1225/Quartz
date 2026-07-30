@@ -1,10 +1,10 @@
 ---
 title: Welcome to Tianhao's Lab
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-lang: en-US
 translations:
-  zh: "/"
+  zh: /
+lang: en-US
 ---
 
 ## Hello

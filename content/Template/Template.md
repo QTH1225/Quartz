@@ -1,7 +1,7 @@
 ---
 title: Example Title
 draft: true
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
   - Template

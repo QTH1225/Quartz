@@ -1,11 +1,12 @@
 ---
 title: Reflections on the AI Era
 draft: false
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-lang: en-US
 tags:
   - reflection
 translations:
-  zh: "/05random/reflections-on-the-ai-era"
+  zh: /05random/reflections-on-the-ai-era
+lang: en-US
 ---
+

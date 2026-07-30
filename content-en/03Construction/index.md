@@ -1,9 +1,10 @@
 ---
 title: Structural Engineering
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-lang: en-US
 translations:
-  zh: "/03construction/"
+  zh: /03construction/
+lang: en-US
 ---
+
 This folder stores notes on structural calculation and analysis.

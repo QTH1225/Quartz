@@ -1,14 +1,14 @@
 ---
 title: Quartz功能测试文章
 draft: false
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
   - 测试
   - Quartz
   - Markdown
 translations:
-  en: "/en/01code/quartz-feature-test-article"
+  en: /en/01code/quartz-feature-test-article
 ---
 
 这是一篇用于检查 Quartz 渲染效果的测试文章，覆盖数学公式、PDF 嵌入、普通代码块、折叠超长代码块、表格、任务列表和引用等常见内容形态。
@@ -45,20 +45,20 @@ $$
 
 下面使用 Obsidian 原生附件嵌入语法测试 PDF 内嵌显示。Quartz 构建网页时会把这个 PDF embed 转成网页预览。
 
-![[Attachments/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf]]
+![[Attachments/04Notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf]]
 
-[打开 PDF 附件](/Attachments/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf)
+[打开 PDF 附件](/attachments/04notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf)
 
 ## 图片嵌入测试
 
 单张图片：
 
-![单张图片测试](../Attachments/quartz-test-single.svg)
+![单张图片测试](../Attachments/01Code/quartz-test-single.svg)
 *单张图片测试*
 
 并排图片：
 
-| ![并排图片左图](../Attachments/quartz-test-left.svg) | ![并排图片右图](../Attachments/quartz-test-right.svg) |
+| ![并排图片左图](../Attachments/01Code/quartz-test-left.svg) | ![并排图片右图](../Attachments/01Code/quartz-test-right.svg) |
 | --- | --- |
 | *并排图片左图* | *并排图片右图* |
 
@@ -220,4 +220,4 @@ function renderAuthors(authors: Author[]) {
 
 ## 内部链接测试
 
-可以从这里跳转到 [[document-engineering-introduction-and-writing|文档工程介绍与写法]]，检查 wikilink 是否能正确解析为内部链接。
+可以从这里跳转到 [[doc-engineering|文档工程介绍与写法]]，检查 wikilink 是否能正确解析为内部链接。

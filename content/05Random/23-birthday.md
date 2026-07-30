@@ -1,0 +1,86 @@
+---
+title: 23岁|保持好奇心的尝试与前行
+draft: false
+author: Qin Tianhao
+authorLink: https://github.com/QTH1225
+description: 22岁这一年的小总结以及感悟，希望自己可以在下一年继续慢慢前行不要着急
+published: 2025-12-25
+tags:
+  - Blogging
+  - Birthday
+category: Guides
+image: https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225163945225.webp
+---
+
+## 这一年
+每当到我的生日的时候，也就意味着这一年基本又要过去了。这是我第一次在我的生日的时候尝试总结这一年，所以一时还有些不知道如何下笔。总的来说，这一年过的是又困难又快乐的，不过总的来说，是快乐要多于困难的。
+
+困难的是因为一些事情，我常常陷入怀疑和自我怀疑的情绪，大部分的时候还伴随着焦虑和不安，体重也是大幅的波动（大概有20斤，年初减肥结果下半年胖回来了）。这种情绪的来源也有很多吧，有时候是课题的进展缓慢，或者是内心的不安以及愤懑。这些情绪常常把我带到一个焦虑却又无所适从的地步，然后这种无所适从又加重我的焦虑以此循环。
+<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225161816914.webp" alt="做毕设时拍到的夕阳" style="max-width: 50%; height: auto; display: block; margin: 0 auto;">
+    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">做毕设时拍到的夕阳</figcaption>
+</figure>
+开心的是顺利本科毕业进入了研究生阶段，还认识了很好的老师、师兄师姐对我非常照顾。并且这一年还尝试了很多以前未曾深入的东西，比如第一次搭建自己的博客、第一次当B站up主、第一次用git开发自己的项目（虽然很小只是个模板项目），还有第一次给电脑重装Ubuntu系统和windows系统（虽然过程也很曲折）等等。
+<iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1eUq6BaExX&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" &autoplay=0> </iframe>
+
+[QTH1225/LaTeX-in-ICM-MCM](https://github.com/QTH1225/LaTeX-in-ICM-MCM)
+
+在这个过程中也认识了不少网友在一起学习交流。这些都是我之前少有的经历。或者说，现在的我是结构工程研究生，但是也对计科略懂那么一点。我生活中的支点不再仅仅是专业科研上的问题了，同时也加入了很多兴趣上的小支点，这些都让我非常开心。
+
+
+回想这一年，上半年一直在忙于我的毕业设计，那个我认为是全院无出其右的毕业设计（没错就是这么自信）。当时做毕业设计的时候我常常一个人待在房间四五天不出门，大部分是点外卖，然后工作累了就玩会游戏。其实现在来看，这种作息还是蛮不健康的。我们确实应该多与环境接触，这样才能更好地了解这个世界。最后我毕设的成绩没有达到预想的那样，只取得了校优。但是我仍然可以自信的说学院往后数三年可能不会有这么复杂的设计了。
+
+<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225155719813.webp" alt="建筑-结构-手绘三位一体毕设" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">建筑-结构-手绘三位一体毕设</figcaption>
+</figure>
+
+下半年开始我不再将全部期望放在专业上了，因为毕设以及国奖的事让我明白很多时候实力是决定不了所有事情的，因此还不如分配一定时间给自己一直想做的事情。我首先找框架将原来的博客替换掉了，变成一个可以真正记录我学习的博客。然后用git开发了自己两年前的模板项目，在GitHub上面也收获了不少star。为了更好地完善项目，我又开始学习README的写法、版本语义管理以及在B站录制教学视频。在此期间我甚至对Linux系统感兴趣安装了Ubuntu，结果把我旧电脑的D盘给清空了导致很多软件没法使用，我又不得不重装windows。现在看来也是一路磕磕绊绊地学习。
+
+<a href="https://www.star-history.com/#QTH1225/LaTeX-in-ICM-MCM&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=QTH1225/LaTeX-in-ICM-MCM&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=QTH1225/LaTeX-in-ICM-MCM&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=QTH1225/LaTeX-in-ICM-MCM&type=date&legend=top-left" />
+ </picture>
+</a>
+
+看到不少优秀的同学都在朋友圈或者博客中晒他们获得的成就或者奖励，我却总是不习惯晒这些东西。因此我的这篇博客中也不会全部写我取得的奖励或者成就，一方面我认为如果想要了解我的成就的话自然可以找简历等，另一方面我认为自己也并没有很优秀，可能只是进步比较大吧。还记得我大一的时候连什么是路径都不明白，软件也是全装C盘，当时计算基础课是我听的最困难的课了。现在以平静的心再去看竟然也能理解不少，对于上面的知识也多了很多耐心。在我的QQ空间中，我更倾向于记录我的emo时刻，因为我认为这些才是真实的自己。无论是什么人都不可能一直勇往直前无坚不摧，而只有在抑郁或者不安的时候才能真正地从这些情绪中看见自己。
+
+这一年也去了河北的秦皇岛与山海关去看大海，还有去南通比赛。每个地方好像都有自己的特色。自从高中之后就很少有时间去跨城市玩了。这次趁毕业也看了大海，尝到了咸咸的海水。希望有一天我还是能去海的那边看看，去看看海那边的世界。
+<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225164203232.webp" alt="北戴河看海" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">北戴河看海</figcaption>
+</figure>
+
+现在，我正在用Ubuntu中的Obsidian写着这篇博客，这些都是我两年前想不到的。而如今看两年前的我，我可能会感叹“会的不多，但是好奇心挺大，看不出以后会做什么”。现在的我，仍然不知道两年后我会干什么，可能会学习很多新的东西，认识新的人。
+
+## 感悟及未来寄语
+### 去尝试，不要怕错误
+
+在小学的时候我们就被教育做题要追求正确率，不要盲目做题。在长大后我们仍然将这些教诲牢记于心，处处都保持着我们的正确率：与人交往要做“正确”的事，考试要有“正确”的步骤等等。我们没有意识到，所谓的“正确”限制虽然能让我们很快地得到结果，但让我们少了很多尝试的机会，而对于工科来说这些几乎是致命的。我们知道如何做对事情，却缺乏解决错误的能力。这也是为什么我们常常提问都成问题，不能以谦逊的态度清晰地描述一个问题。工科就像学开车一样，你可以提前学开车操作，但是你不能拿着一本开车教程上车，真正的开车都是从尝试踩下离合开始。因此也希望我明年能够尝试更多自己感兴趣的东西，不要怕犯错，犯错去改正就是，但是因为害怕犯错就不去尝试感兴趣的事，其实和害怕被打叉而在考场交白卷一样了。
+<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225162454015.webp" alt="第一次自己装系统时的蓝屏" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">第一次自己装系统时的蓝屏</figcaption>
+</figure>
+
+### 多和人接触
+
+“人是社会性的动物”，之前我对这句话还没有多大感悟。在上半年把自己封闭起来做毕设才慢慢体会到它应该是正确的。当不和别人接触的时候，虽然会显得非常安静，但是渐渐地会与世界脱离。这种脱离会造成很多社交能力的退化，例如长时间谈话的能力、与人交谈的能力，同时会将你的性格向沉默内向转变。当然，并不是说我们不需要沉默内向的人，而是这种封闭会让你不知道如何社交而被迫“沉默内向”，这样的改变其实是不利于发展的。
+<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225155719812.webp" alt="做毕设时拍到的夕阳" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">做毕设时拍到的夕阳</figcaption>
+</figure>
+
+### 永远相信自己
+
+还记得我两年前参加美赛的时候，虽然自己已经拼尽所有力气但是还是只拿了参与奖。当时心高气傲觉得自己的东西就是最棒的，应该拿最高奖。现在看来拿什么奖项已经不重要了，但是那份相信自己就是最棒的自信却影响了我很久。无论是后来做毕业设计或者参加一些比赛，我都无比相信自己做的东西。换句话说，如果一个人连他自己做的研究都不相信的话，那么它应该趁早换个研究方向。这种相信大部分时候可以让我主动去追寻一些困难但正确的事情。同时也在更多困难的时候相信自己可以顺利解决。很多时候遇见一些困难的事情我也经常问自己为什么一直很自信，不过思考之后我给出的回答是”如果这点自信都没有，那干脆就不要干了“。希望我也能在新的一年继续保持这样相信的力量。
+
+### 找好自己的兴趣
+
+最后是关于兴趣的一点闲谈吧。这一年的下半年也发现了兴趣对于人的影响，干了好多身边人可能不会干的事情。一方面是因为我觉得做这些事情和别人不一样感觉很有意思，另一方面我需要这些与众不同的事情来将我从专业上挪开。任何一个做研究的人都不可能只研究一件事一个方向，也不可能生活中只有学术。边边的好多人都有自己专业之外所擅长的事情，正是这些事情塑造了专业中独一无二的自己。今天生日过去又是一个新的一年，我又会对什么感兴趣呢？我也不知道，可能继续在开源社区尝试开发自己的项目？尝试数据科学？或者尝试做UP主分享知识？这些的可能只有等明年才能知道了。
+
+<div class="handwriting-font">
+<div class="left-align">醒时画天醉时眠，月下独酌，树下独坐，何人不识我。</div>
+<div class="right-align">——2025年12月25日，徐州</div>
+</div>

@@ -1,13 +1,13 @@
 ---
 title: "Fable: Treasure in the Tomb"
 draft: false
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-lang: en-US
 tags:
   - fiction
 translations:
-  zh: "/05random/treasure-in-the-tomb"
+  zh: /05random/treasure-in-the-tomb
+lang: en-US
 ---
 
 There was once a man named Dao Ai. He was skilled in theft and was known by his contemporaries as the Shiqian of his age. People said he could climb a ten-story cliff without tools, steal treasure from a palace guarded by hundreds, and rarely let anyone see his face. Legend also said he had an apprentice named Dao Xinqing, who often traveled with him through palaces and tombs.

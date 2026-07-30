@@ -1,15 +1,15 @@
 ---
 title: Quartz Feature Test Article
 draft: false
-author: Tianhao Qin
+author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-lang: en-US
 tags:
   - test
   - Quartz
   - Markdown
 translations:
-  zh: "/01code/quartz-feature-test-article"
+  zh: /01code/quartz-feature-test-article
+lang: en-US
 ---
 
 This article is used to check Quartz rendering. It covers math formulas, PDF embedding, regular code blocks, collapsible long code blocks, tables, task lists, quotes, and common image layouts.
@@ -46,20 +46,20 @@ $$
 
 The following uses Obsidian-style attachment embedding to test PDF inline display. Quartz converts this PDF embed into a web preview during build.
 
-![[/Attachments/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf]]
+![[/Attachments/04Notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf]]
 
-[Open PDF attachment](/Attachments/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf)
+[Open PDF attachment](/attachments/04notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf)
 
 ## Image Embed Test
 
 Single image:
 
-![Single image test](/Attachments/quartz-test-single.svg)
+![Single image test](/attachments/01code/quartz-test-single.svg)
 *Single image test*
 
 Side-by-side images:
 
-| ![Left side-by-side image](/Attachments/quartz-test-left.svg) | ![Right side-by-side image](/Attachments/quartz-test-right.svg) |
+| ![Left side-by-side image](/attachments/01code/quartz-test-left.svg) | ![Right side-by-side image](/attachments/01code/quartz-test-right.svg) |
 | --- | --- |
 | *Left side-by-side image* | *Right side-by-side image* |
 

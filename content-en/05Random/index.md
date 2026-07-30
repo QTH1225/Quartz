@@ -1,7 +1,10 @@
 ---
 title: Random Essays
-lang: en-US
+author: Qin Tianhao
+authorLink: https://github.com/QTH1225
 translations:
-  zh: "/05random/"
+  zh: /05random/
+lang: en-US
 ---
+
 This folder stores personal essays and reflections.
