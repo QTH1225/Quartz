@@ -33,10 +33,7 @@ pinned: false
 
 推荐安装：网页快开、截图识别+翻译、finding、图片批量处理插件
 
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20250927092308543.png" alt="uTools界面展示" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">uTools 界面展示</figcaption>
-</figure>
+![uTools 界面展示](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20250927092308543.png)
 
 keyviz或keycastOW：显示键盘以及鼠标操作，录屏时可以使用
 [mulaRahul/keyviz](https://github.com/mulaRahul/keyviz)
@@ -54,19 +51,12 @@ dirctory opus可能会在部分电脑上右键二级文件夹时会卡死，但�
 博主两种都体验过，Imtip主要是在鼠标周围生成提示输入状态的文字（例如中、En以及A）比较直观；而ImputTip可以根据输入法状态的不同调整鼠标样式，较为简洁。ImputTip虽然兼容了ImTip的文字显示，但其黑白名单机制较为复杂（当然可定制化程度也更高），所以博主暂时只启用了鼠标方案。
 
 [Everything](https://www.voidtools.com/zh-cn/)：比系统搜索强大的多的搜索软件，非常快
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20250927095210877.png" alt="Everything快捷搜索框展示" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">Everything快捷搜索框展示</figcaption>
-</figure>
+![Everything快捷搜索框展示](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20250927095210877.png)
 
 [Stardock Groupy](https://www.stardock.com/products/groupy/)或[Office Tab](https://www.extendoffice.com/product/office-tab.html)：窗口管理软件，前者可以管理所有窗口，后者主要是对Office三件套进行窗口管理
 
 [Geek Uninstaller](https://geekuninstaller.com/)：卸载软件，可以顺带清理残留文件与注册表。但是该软件卸载逻辑是清楚软件文件夹下的所有文件，如果软件不是按文件夹分别安装的请谨慎卸载。同时清理残留文件与注册表时应仔细检查是否为所要卸载的软件的残留。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20250927100659872.png" alt="Geekuninstaller界面" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">Geekuninstaller界面
-    </figcaption>
-</figure>
+![Geekuninstaller界面](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20250927100659872.png)
 
 ContextMenuManager：鼠标右键管理软件，防止右键无用选项挤占空间。但是该软件基本逻辑是更改注册表以更改右键选项，所以在更改前尽量先备份注册表以及创建系统还原点以防止出现错误。
 [BluePointLilac/ContextMenuManager](https://github.com/BluePointLilac/ContextMenuManager)

@@ -53,6 +53,9 @@ plugins:
         - git
         - filesystem
     order: 10
+  - source: "./quartz/plugins/published-date"
+    enabled: true
+    order: 11
   - source: "@quartz-community/syntax-highlighting"
     enabled: true
     options:
@@ -67,6 +70,9 @@ plugins:
       enableInHtmlEmbed: false
       enableCheckbox: true
     order: 30
+  - source: "./quartz/plugins/image-captions"
+    enabled: true
+    order: 35
   - source: "@quartz-community/github-flavored-markdown"
     enabled: true
     order: 40

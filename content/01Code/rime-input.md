@@ -29,10 +29,7 @@ category: Tools
 
 所以，博主这里使用的是双拼。双拼也是属于音码输入的范围。但与全拼输入不同的是，双拼中一次击键对应一个声母或韵母，通过这种“声母+韵母”的组合，两次击键就可以打出一个字的完整拼音。例如双拼，全拼输入需要键入“shuangpin”，而双拼（小鹤）只需要键入“ulpb”即可。大大减少了长音节汉字的击键次数。当然，由于双拼输入仍属于音码的范畴，所以仍然不能避免候选过多的弊端，常常需要翻页找字。所以，也有搭配辅助码进行使用的双拼。但是博主这里由于学习成本过高所以没有继续探索（等有时间再学），感兴趣的朋友可以尝试使用小鹤音形进行输入。
 
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251016205150651.png" alt="万象配置文件展示" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">万象配置文件展示</figcaption>
-</figure>
+![万象配置文件展示](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251016205150651.png)
 
 ### 直接辅助码与间接辅助码
 搜狗输入中,一般使用的是间接辅助码。而在rime配置万象后，默认的是直接辅助码。这可能对一些习惯间接辅助码的人来说不太习惯，所以可以改为间接辅助码。关于直接辅助码与间接辅助码可以参考[萌新该选哪个辅助码方案](https://docs.qq.com/doc/DQ3dYQ2VXeXZtamhB)。

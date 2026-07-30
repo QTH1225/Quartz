@@ -78,22 +78,13 @@ git merge upstream/master # 如果上游分支是 master
 当然，有时候上游的更改并不能令我们满意，这时候可以在合并冲突的时候保留自己的更改（例如各类API、个人信息等），这样可以让我们避免在更新后需要重新设置重复的信息。
 ## Obsidian的博客管理方法
 [Obsidian](https://obsidian.md/)是一个非常全面的笔记管理软件，可以用于知识库的建立、日记的管理和一些其他的功能。相比于[Typora](https://typoraio.cn/)这种，Obsidian不仅免费、具有丰富的插件生态，而且具有更多对笔记的管理方法，可以参考[Pkmer](https://pkmer.net/zh/)中对于知识管理的介绍。因此，博主认为obisdian更适合系统的笔记管理。但是这里只讲使用Obsidian进行博客管理的一些配置与注意事项，所以主要介绍Obsidian用于Mizuki博客管理的相关配置与联动，而不是专门介绍Obsidian的使用。配置完成后的效果如下图。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109091203104.png" alt="博客编辑区" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">博客编辑区</figcaption>
-</figure>
+![博客编辑区](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109091203104.png)
 
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109091509419.png" alt="博客管理base文件" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">博客管理base文件</figcaption>
-</figure>
+![博客管理base文件](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109091509419.png)
 
 ### content目录下的设置
 首先我们需要知道，Obsidian的管理单位是“**库**”，你可以为不同用途的笔记创建多个库。而Mizuki的所有博客文档都放在`src/content`下，所以我们直接选择`content`文件夹作为我们的库。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109091730892.webp" alt="仓库的选择" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">仓库的选择</figcaption>
-</figure>
+![仓库的选择](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109091730892.webp)
 选择完成后你就能看到左侧文件列表了。这时候我们会发现，Obsidian将所有文件都列在了左侧，我们可以随时打开任意一个文件夹进行修改。
 
 ### 插件，让Obsidian更加智能
@@ -158,15 +149,9 @@ $$
 现在你可以在你的电脑上随时更新你的博客了，但是问题也随之而来了。你不可能随时带着你的电脑，有时候我们携带的只是手机或者平板，那么能否保持笔记的多端同步呢。这样我们随时都可以写笔记并把想法记录下来。虽然Obsidian提供了官方的同步服务，但是其高昂的价格让很多小伙伴望而却步。这时候我们可以使用`Remotely Save`插件，配合一些网盘进行同步操作，这样我们就可以随时随地写笔记了。当然，你也可以使用git插件每次进行拉取与提交，与vscode中的方式相同，这里不再赘述。
 
 博主这里使用的是OneDrive个人版进行同步，在插件中鉴权后进行连接，然后设置自动同步即可。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109095223967.webp" alt="Remotely Save 插件设置" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">Remotely Save 插件设置</figcaption>
-</figure>
+![Remotely Save 插件设置](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109095223967.webp)
 现在我们已经把笔记上传到服务端了，现在我们需要在其他设备上写笔记了。这时候我们需要创建一个与**同步仓库同名的仓库** 。在新设备上下载Remotely Save插件后再次按照上述步骤重新设置一遍，然后选择`如果修改超过百分比则终止同步`为100%（即去除此保护），因为我们要将远端的所有文件同步到本地。同步完成后可以设置一个最大更改限制。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109095900044.webp" alt="最大修改限制设置" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">最大修改限制设置</figcaption>
-</figure>
+![最大修改限制设置](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251109095900044.webp)
 接下来点击左侧的同步按钮进行同步即可，静待一会就可以同步完了。当然，你也可以通过Git插件的拉取上传来进行同步。不过博主这里更加习惯同步与部署功能分离。这样可以在部署前有一定检查与完善的空间。
 
 ## 博客寄语

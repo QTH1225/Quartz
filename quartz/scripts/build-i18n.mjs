@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process"
 import { cpSync, existsSync, rmSync } from "node:fs"
 import path from "node:path"
 import process from "node:process"
+import "./patch-quartz-date-format.mjs"
 
 function run(label, args, env) {
   console.log(`\n[${label}] node quartz/bootstrap-cli.mjs ${args.join(" ")}\n`)

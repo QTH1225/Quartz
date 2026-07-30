@@ -1,0 +1,13 @@
+{
+  "name": "published-date",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "quartz": {
+    "name": "published-date",
+    "displayName": "Published Date",
+    "description": "Prefer frontmatter published dates while falling back to modified dates.",
+    "version": "1.0.0",
+    "category": "transformer"
+  }
+}

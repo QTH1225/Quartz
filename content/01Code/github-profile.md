@@ -15,17 +15,11 @@ pinned: false
 一般情况下，GitHub 个人主页会显示其仓库信息、提交信息。但是如果你拜访别人的github，会发现有些主页能够让你眼前一亮。这种定制的主页能够更加详细地介绍你的贡献、提交信息以及个人信息，远比默认主页包含了更多信息。当然，大家也可以照抄我Github中的配置然后修改，我的配置文件的地址如下。
 [QTH1225/QTH1225](https://github.com/QTH1225/QTH1225)
 我们先了解github中profile中设置方法，然后再进行美化。我们首先在 GitHub 上新建一个仓库，仓库名和自己 Github 用户名相同，然后添加一个 README.md 自述文件，在该文件里添加信息即可。该文件中的信息会自动添加到你的Github主页中。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107101308442.png" alt="GitHub Profile页面展示" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">GitHub Profile页面展示</figcaption>
-</figure>
+![GitHub Profile页面展示](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107101308442.png)
 
 ## 侧边栏的定制
 当然，在我们定制自己的github主页前，别忘了GitHub在侧边栏也可以添加自己的基本信息，包括名字、签名、公司、邮箱以及链接等。侧边栏也是个人信息中很重要的一部分。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107101545231.png" alt="GitHub Profile侧边栏展示" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">GitHub Profile侧边栏展示</figcaption>
-</figure>
+![GitHub Profile侧边栏展示](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107101545231.png)
 
 ## 所使用的组件
 ### 打字机
@@ -184,10 +178,7 @@ The number of views of this page is as follows.
 ```
 ### GitHub Profile编辑器
 如果你不想进行繁琐组件研究，那么你可以使用[GitHub Profile编辑器](https://profilinator.rishav.dev/)。这是一个是一个可视化 profile 生成工具，使用者无需学习 Markdown 语法，仅需要在对应窗口中输入或者选择相应的内容，工具会自动生成 Markdown 脚本。脚本编辑完成以后，直接复制粘贴到自己的 Github 即可。
-<figure style="text-align: center; margin: 2rem auto; display: flex; flex-direction: column; align-items: center;">
-    <img src="https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107102828998.png" alt="GitHub Profile编辑器" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="color: #666; font-style: italic; margin-top: 1rem; text-align: center; width: 100%;">GitHub Profile编辑器</figcaption>
-</figure>
+![GitHub Profile编辑器](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107102828998.png)
 
 ## 放在最后
 

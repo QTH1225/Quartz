@@ -1,0 +1,16 @@
+{
+  "name": "image-captions",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "quartz": {
+    "name": "image-captions",
+    "displayName": "Image Captions",
+    "description": "Render standalone Markdown images with alt text as figure captions.",
+    "version": "1.0.0",
+    "category": "transformer",
+    "quartzVersion": ">=5.0.0"
+  }
+}
