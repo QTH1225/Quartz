@@ -8,7 +8,6 @@ published: 2025-12-25
 tags:
   - Blogging
   - Birthday
-category: Guides
 image: https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225163945225.webp
 ---
 

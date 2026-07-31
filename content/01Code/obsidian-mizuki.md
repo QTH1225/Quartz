@@ -9,7 +9,6 @@ tags:
   - Mizuki
   - Workflow
   - Obsidian
-category: Tools
 ---
 
 ## Mizuki博客的搭建
@@ -113,7 +112,6 @@ published: 2025-01-01
 tags:
   - Template
   - Mizuki
-category: Technology
 draft: true
 ---
 ```

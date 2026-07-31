@@ -7,7 +7,6 @@ description: 碾压混凝土含气量的测定原理及方法
 published: 2025-10-27
 tags:
   - Concrete
-category: Experiment
 ---
 
 ## 直读式含气量测定仪介绍 

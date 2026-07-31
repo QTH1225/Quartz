@@ -6,7 +6,6 @@ authorLink: https://github.com/QTH1225
 published: 2025-10-07
 tags:
   - LaTeX
-category: CS
 ---
 
 

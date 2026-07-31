@@ -8,7 +8,6 @@ published: 2025-11-19
 tags:
   - Mechanics
   - Elastoplasticity
-category: Mechanics
 ---
 
 ## 弹塑性力学的研究内容

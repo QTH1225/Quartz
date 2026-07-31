@@ -7,7 +7,6 @@ description: 详细介绍Zotero插件的功能、安装方法
 published: 2026-03-09
 tags:
   - Zotero
-category: Tools
 ---
 
 

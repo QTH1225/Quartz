@@ -7,7 +7,6 @@ description: 基于EasyMCM全面且专业的美赛模板，支持多种排版样
 published: 2025-12-12
 tags:
   - LaTeX
-category: CS
 ---
 
 
@@ -17,7 +16,7 @@ category: CS
 </div>
 一个专为美国大学生数学建模竞赛（MCM/ICM）设计的LaTeX模板库，基于EasyMCM模板进行了深度优化和功能增强，提供完整的论文写作解决方案。本项目在我的github同步进行发布。
 
-[QTH1225/LaTeX-in-ICM-MCM](https://github.com/QTH1225/LaTeX-in-ICM-MCM)
+Github ：[QTH1225/LaTeX-in-ICM-MCM](https://github.com/QTH1225/LaTeX-in-ICM-MCM)
 
 <div align="center">
 <table>

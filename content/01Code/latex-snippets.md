@@ -7,7 +7,6 @@ published: 2025-01-01
 tags:
   - LaTeX
   - Updating
-category: CS
 ---
 
 ## 什么是Snippets

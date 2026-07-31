@@ -7,13 +7,12 @@ description: 如何配置一个好看的Github Profile页面
 published: 2025-10-18
 tags:
   - Blogging
-category: CS
 pinned: false
 ---
 
 ## Github Profile是什么
 一般情况下，GitHub 个人主页会显示其仓库信息、提交信息。但是如果你拜访别人的github，会发现有些主页能够让你眼前一亮。这种定制的主页能够更加详细地介绍你的贡献、提交信息以及个人信息，远比默认主页包含了更多信息。当然，大家也可以照抄我Github中的配置然后修改，我的配置文件的地址如下。
-[QTH1225/QTH1225](https://github.com/QTH1225/QTH1225)
+Github：[QTH1225/QTH1225](https://github.com/QTH1225/QTH1225)
 我们先了解github中profile中设置方法，然后再进行美化。我们首先在 GitHub 上新建一个仓库，仓库名和自己 Github 用户名相同，然后添加一个 README.md 自述文件，在该文件里添加信息即可。该文件中的信息会自动添加到你的Github主页中。
 ![GitHub Profile页面展示](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251107101308442.png)
 

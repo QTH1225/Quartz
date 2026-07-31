@@ -8,7 +8,6 @@ published: 2025-11-27
 tags:
   - Elastoplasticity
   - Mechanics
-category: Mechanics
 ---
 
 ## 外力

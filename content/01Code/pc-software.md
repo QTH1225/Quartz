@@ -7,7 +7,6 @@ description: 博主推荐的一些在电脑端好用的软件
 published: 2025-09-27
 tags:
   - software
-category: Guides
 pinned: false
 ---
 
@@ -38,6 +37,7 @@ pinned: false
 keyviz或keycastOW：显示键盘以及鼠标操作，录屏时可以使用
 [mulaRahul/keyviz](https://github.com/mulaRahul/keyviz)
 [allrobot/KeyCastOW_chinese](https://github.com/allrobot/KeyCastOW_chinese)
+
 [PixPin](https://pixpin.cn/)：截图工具，支持长截图与动态截图，可以参考[PixPin使用文档 ](https://pixpin.cn/docs/start/quick-start)
 
 [DeskPins](https://deskpins.en.softonic.com/)：窗口置顶工具，可以将任意窗口置为顶层

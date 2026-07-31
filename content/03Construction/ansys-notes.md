@@ -7,7 +7,6 @@ published: 2025-10-07
 tags:
   - ANSYS
   - Note
-category: FEM
 ---
 
 

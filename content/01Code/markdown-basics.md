@@ -9,7 +9,6 @@ updated: 2026-07-30
 tags:
   - Markdown
   - Mermaid
-category: CS
 ---
 
 这篇文章由原来的 Markdown 基础教程、Markdown 扩展功能示例和 Mermaid 图表示例整理而来。原来的几篇文章更像完整语法清单，内容比较分散；这里把博客写作中真正常用的部分合并成一篇中文速查笔记，方便在 Obsidian 和 Quartz 中直接参考。
