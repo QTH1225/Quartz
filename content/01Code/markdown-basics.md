@@ -5,7 +5,6 @@ author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: 汇总 Markdown 基础语法、扩展语法与 Mermaid 图表写法，作为博客写作时的速查笔记。
 published: 2025-08-20
-updated: 2026-07-30
 tags:
   - Markdown
   - Mermaid

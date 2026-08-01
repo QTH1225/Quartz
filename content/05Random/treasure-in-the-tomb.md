@@ -1,5 +1,5 @@
 ---
-title: 【寓言故事】墓中珍宝
+title: 寓言故事|墓中珍宝
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225

@@ -1,5 +1,5 @@
 ---
-title: 【微小说】尾生抱树
+title: 微小说|尾生抱树
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225

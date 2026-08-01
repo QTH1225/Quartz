@@ -17,9 +17,7 @@ image: https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225163945225.we
 困难的是因为一些事情，我常常陷入怀疑和自我怀疑的情绪，大部分的时候还伴随着焦虑和不安，体重也是大幅的波动（大概有20斤，年初减肥结果下半年胖回来了）。这种情绪的来源也有很多吧，有时候是课题的进展缓慢，或者是内心的不安以及愤懑。这些情绪常常把我带到一个焦虑却又无所适从的地步，然后这种无所适从又加重我的焦虑以此循环。
 ![做毕设时拍到的夕阳](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225161816914.webp)
 开心的是顺利本科毕业进入了研究生阶段，还认识了很好的老师、师兄师姐对我非常照顾。并且这一年还尝试了很多以前未曾深入的东西，比如第一次搭建自己的博客、第一次当B站up主、第一次用git开发自己的项目（虽然很小只是个模板项目），还有第一次给电脑重装Ubuntu系统和windows系统（虽然过程也很曲折）等等。
-<iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1eUq6BaExX&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" &autoplay=0> </iframe>
 
-[QTH1225/LaTeX-in-ICM-MCM](https://github.com/QTH1225/LaTeX-in-ICM-MCM)
 
 在这个过程中也认识了不少网友在一起学习交流。这些都是我之前少有的经历。或者说，现在的我是结构工程研究生，但是也对计科略懂那么一点。我生活中的支点不再仅仅是专业科研上的问题了，同时也加入了很多兴趣上的小支点，这些都让我非常开心。
 
@@ -29,14 +27,6 @@ image: https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225163945225.we
 ![建筑-结构-手绘三位一体毕设](https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225155719813.webp)
 
 下半年开始我不再将全部期望放在专业上了，因为毕设以及国奖的事让我明白很多时候实力是决定不了所有事情的，因此还不如分配一定时间给自己一直想做的事情。我首先找框架将原来的博客替换掉了，变成一个可以真正记录我学习的博客。然后用git开发了自己两年前的模板项目，在GitHub上面也收获了不少star。为了更好地完善项目，我又开始学习README的写法、版本语义管理以及在B站录制教学视频。在此期间我甚至对Linux系统感兴趣安装了Ubuntu，结果把我旧电脑的D盘给清空了导致很多软件没法使用，我又不得不重装windows。现在看来也是一路磕磕绊绊地学习。
-
-<a href="https://www.star-history.com/#QTH1225/LaTeX-in-ICM-MCM&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=QTH1225/LaTeX-in-ICM-MCM&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=QTH1225/LaTeX-in-ICM-MCM&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=QTH1225/LaTeX-in-ICM-MCM&type=date&legend=top-left" />
- </picture>
-</a>
 
 看到不少优秀的同学都在朋友圈或者博客中晒他们获得的成就或者奖励，我却总是不习惯晒这些东西。因此我的这篇博客中也不会全部写我取得的奖励或者成就，一方面我认为如果想要了解我的成就的话自然可以找简历等，另一方面我认为自己也并没有很优秀，可能只是进步比较大吧。还记得我大一的时候连什么是路径都不明白，软件也是全装C盘，当时计算基础课是我听的最困难的课了。现在以平静的心再去看竟然也能理解不少，对于上面的知识也多了很多耐心。在我的QQ空间中，我更倾向于记录我的emo时刻，因为我认为这些才是真实的自己。无论是什么人都不可能一直勇往直前无坚不摧，而只有在抑郁或者不安的时候才能真正地从这些情绪中看见自己。
 
