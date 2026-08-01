@@ -9,7 +9,6 @@ tags:
   - Blogging
 pinned: false
 ---
-
 ## Github Profile是什么
 一般情况下，GitHub 个人主页会显示其仓库信息、提交信息。但是如果你拜访别人的github，会发现有些主页能够让你眼前一亮。这种定制的主页能够更加详细地介绍你的贡献、提交信息以及个人信息，远比默认主页包含了更多信息。当然，大家也可以照抄我Github中的配置然后修改，我的配置文件的地址如下。
 Github：[QTH1225/QTH1225](https://github.com/QTH1225/QTH1225)

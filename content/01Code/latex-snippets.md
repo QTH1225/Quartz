@@ -13,9 +13,9 @@ tags:
 snippets原本是在vscode中设置一些重复性的代码片段的快捷键，使得我们可以快速插入长段重复率较高的代码。当你在markdown中打公式的时候，你一定会体会到那种LaTeX的冗长与复杂。虽然LaTeX公式在很多平台被认为是一种对公式的标准写法，但是想要在不进行任何设置的情况下快速而准确地打出来基本是不可能的。而Obsidian中的LaTeX suite插件受到[Gilles Castel](https://castel.dev/)的启发，也实现了在obsidian中快速插入公式的操作。此处也列出一些参考文档以供大家学习。
 
 - [Gilles Castel](https://castel.dev/)（Vim+LaTeX方案）
-- https://forum-zh.obsidian.md/t/topic/22006
+-  [我如何用 ob 做考研笔记](https://forum-zh.obsidian.md/t/topic/22006)
 
-[artisticat1/obsidian-latex-suite](https://github.com/artisticat1/obsidian-latex-suite)
+Github:[artisticat1/obsidian-latex-suite](https://github.com/artisticat1/obsidian-latex-suite)
 
 此外，由于本节涉及大量的LaTeX符号。所以最好对LaTeX符号有一定的了解。如果你需要一些资料可以参考如下链接：
 

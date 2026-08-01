@@ -3,7 +3,7 @@ title: PC软件推荐
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-description: 博主推荐的一些在电脑端好用的软件
+description: 推荐的一些在电脑端好用的软件
 published: 2025-09-27
 tags:
   - software
