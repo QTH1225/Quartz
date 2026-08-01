@@ -2,6 +2,59 @@
 
 // put your custom CSS here!
 
+@media all and (min-width: 801px) {
+  .sidebar.left {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+  }
+
+  .sidebar.left > .explorer,
+  .sidebar.left > .recent-notes {
+    flex: 0 0 auto;
+  }
+
+  .sidebar.left > .explorer {
+    overflow: visible;
+  }
+
+  .sidebar.left > .explorer .explorer-content {
+    overflow: visible;
+  }
+}
+
+.recent-notes > ul.recent-ul > li.recent-li {
+  margin: 0;
+}
+
+.recent-notes .recent-notes-toggle h3 {
+  display: inline-block;
+  margin: 0;
+  line-height: 1.2rem;
+}
+
+.recent-notes .recent-notes-toggle .fold {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.recent-notes .recent-li .section > .desc > h3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.recent-notes .recent-li .section > .desc > h3 > a {
+  color: var(--dark);
+  opacity: 0.75;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  line-height: 1.6rem;
+}
+
 .page-header .tags {
   flex-wrap: nowrap;
   overflow-x: auto;
