@@ -257,15 +257,19 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-  - source: "@quartz-community/footer"
+  - source: "./quartz/plugins/footer"
     enabled: true
     options:
       links:
-        GitHub: https://github.com/QTH1225/Quartz/
+        GitHub: https://github.com/QTH1225/Quartz
+        RSS: /index.xml
+      license:
+        text: CC BY-NC-SA 4.0
+        url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans
     layout:
       position: footer
       priority: 50
-  - source: "@quartz-community/recent-notes"
+  - source: "./quartz/plugins/recent-notes"
     enabled: true
     options:
       limit: 5

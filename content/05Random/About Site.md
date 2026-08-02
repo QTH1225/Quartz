@@ -26,21 +26,22 @@ tags:
 
 # 我希望带来什么
 
-坦然地说，本站的
+
 
 # 本站的一些使用技巧
 
 
+
 # 本站的历史
 
-- 2026.08：本站主题从Mizuki更换为[Quartz5主题](https://quartz.jzhao.xyz/)<br/>
+- 2026.08：本站主题从Mizuki更换为[Quartz5主题](https://quartz.jzhao.xyz/)  
 博客回归简约，使用双链主要进行知识管理，偏向输出内容。
 
-- 2025.10：本站改为使用基于Astro框架的[Mizuki主题](https://docs.mizuki.mysqil.com/guide/get-started/)<br/>
+- 2025.10：本站改为使用基于Astro框架的[Mizuki主题](https://docs.mizuki.mysqil.com/guide/get-started/)  
 博客向复杂的大型项目转变，增加了更多内容如相册、友链、音乐等内容。
 
-- 2023.12：本站正式建立，采用的是Jekyll框架，参考[蔡汉霖学长的博客](https://caihanlin.com/)<br/>
-这是我第一次建立自己的博客，虽然非常简单但是算是一次很好的模仿与尝试。
+- 2023.12：本站正式建立，采用的是Jekyll框架，参考[蔡汉霖学长的博客](https://caihanlin.com/)  
+这是我第一次建立自己的博客，页面简单，主要偏向于模仿与尝试。
 
 
 

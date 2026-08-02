@@ -92,6 +92,8 @@ npm run build:i18n
 
 - `public/` 根目录是中文站点
 - `public/en/` 是英文站点
+- `public/index.xml` 是 RSS 订阅源
+- `public/sitemap.xml` 是搜索引擎站点地图
 
 如果部署平台或 GitHub Actions 中仍然使用：
 
@@ -120,4 +122,6 @@ Warning: content/01Code/index.md isn't yet tracked by git, dates will be inaccur
 
 ## 许可证
 
-内容部分采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可，代码部分遵循 Quartz 的 MIT 许可证。
+博客原创内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可。也就是说，非商业使用、转载和改编需要署名，并以相同协议共享。
+
+站点框架基于 [Quartz](https://github.com/jackyzha0/quartz) 构建，Quartz 相关源代码保留其上游 MIT 许可证。页脚中的 `RSS` 链接指向 `/index.xml`，可用于订阅博客更新；`sitemap.xml` 主要供搜索引擎发现页面使用。

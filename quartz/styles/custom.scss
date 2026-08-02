@@ -4,22 +4,27 @@
 
 @media all and (min-width: 801px) {
   .sidebar.left {
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
-    overscroll-behavior: contain;
+    min-height: 0;
   }
 
-  .sidebar.left > .explorer,
   .sidebar.left > .recent-notes {
     flex: 0 0 auto;
   }
 
   .sidebar.left > .explorer {
-    overflow: visible;
+    flex: 1 1 auto;
+    min-height: 8rem;
+    overflow: hidden;
   }
 
   .sidebar.left > .explorer .explorer-content {
-    overflow: visible;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
   }
 }
 

@@ -1,0 +1,35 @@
+{
+  "name": "recent-notes",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components": "./dist/components/index.js"
+  },
+  "quartz": {
+    "name": "recent-notes",
+    "displayName": "Recent Notes",
+    "description": "Display recently updated notes with local collapsed-state support.",
+    "version": "1.0.0",
+    "category": "component",
+    "quartzVersion": ">=5.0.0",
+    "defaultOptions": {
+      "limit": 5,
+      "linkToMore": false,
+      "showTags": false,
+      "showDate": false,
+      "defaultCollapsed": true,
+      "hideTagPages": true,
+      "hideFolderPages": true
+    },
+    "components": {
+      "RecentNotes": {
+        "displayName": "Recent Notes",
+        "description": "Recent notes list for the sidebar.",
+        "version": "1.0.0",
+        "defaultPosition": "left",
+        "defaultPriority": 60
+      }
+    }
+  }
+}
