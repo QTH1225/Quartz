@@ -1,6 +1,6 @@
 ---
 title: Zotero插件详细指南
-draft: false
+draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: 详细介绍Zotero插件的功能、安装方法
