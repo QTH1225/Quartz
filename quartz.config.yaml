@@ -14,7 +14,7 @@ configuration:
     - Template
     - .obsidian
     - "**/*.base"
-    - 04Notes/文献精读
+    - 03Notes/文献精读
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
