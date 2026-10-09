@@ -8,6 +8,9 @@ published: 2025-09-27
 tags:
   - software
 pinned: false
+translations:
+  en: /en/01dev/pc-software
+lang: zh-CN
 ---
 
 ## 软件的推荐

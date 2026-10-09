@@ -6,6 +6,9 @@ authorLink: https://github.com/QTH1225
 published: 2025-10-07
 tags:
   - Template
+translations:
+  en: /en/01dev/rime-input
+lang: zh-CN
 ---
 
 ## 小狼毫输入法配置

@@ -7,6 +7,7 @@ tags:
   - 剪力墙
 translations:
   en: /en/02engineering/structure/shear-wall-layout
+lang: zh-CN
 ---
 
 ## 剪力墙布置（纯剪）

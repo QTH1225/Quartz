@@ -9,6 +9,9 @@ tags:
   - Mizuki
   - Workflow
   - Obsidian
+translations:
+  en: /en/01dev/obsidian-mizuki
+lang: zh-CN
 ---
 
 ## Mizuki博客的搭建
@@ -106,19 +109,21 @@ git merge upstream/master # 如果上游分支是 master
 ```markdown
 ---
 title: Template
+draft: true
 author: Qin Tianhao
+authorLink: https://github.com/QTH1225
 description: Your description Here
 published: 2025-01-01
 tags:
   - Template
   - Mizuki
-draft: true
+lang: zh-CN
 ---
 ```
 
 3. **`LaTeX Suite`插件**
 
-关于如何在笔记中快速输入公式，那就不得不提[Gilles Castel](https://castel.dev/)大佬，他配置的Vim+Snippets具有恐怖的输入效率。但是配置比较麻烦而且不太适合国人笔记习惯，而该插件主要解决Markdown中LaTeX公式快速输入的问题，通过设置触发快捷键来进行LaTeX公式的快速输入。特别适合用Obsidian做理工科笔记的同学，该插件的配置可以参考<a href="/01code/latex-snippets">LaTeX中的Snippets设置</a>（即[LaTeX中的Snippets设置](latex-snippets.md)）以及[如何用LaTeX Suite真正实践数学笔记 - 经验分享 - Obsidian 中文论坛](https://forum-zh.obsidian.md/t/topic/22521)。该插件熟练之后可以很快地输入公式。例如下面的公式，我的实际键入与对应的LaTeX公式如下，可以看到，大部分括号`{}`、语法提示符`\`都被映射到了字母区，而不必不停地切换符号。
+关于如何在笔记中快速输入公式，那就不得不提[Gilles Castel](https://castel.dev/)大佬，他配置的Vim+Snippets具有恐怖的输入效率。但是配置比较麻烦而且不太适合国人笔记习惯，而该插件主要解决Markdown中LaTeX公式快速输入的问题，通过设置触发快捷键来进行LaTeX公式的快速输入。特别适合用Obsidian做理工科笔记的同学，该插件的配置可以参考<a href="/01dev/latex-snippets">LaTeX中的Snippets设置</a>（即[LaTeX中的Snippets设置](latex-snippets.md)）以及[如何用LaTeX Suite真正实践数学笔记 - 经验分享 - Obsidian 中文论坛](https://forum-zh.obsidian.md/t/topic/22521)。该插件熟练之后可以很快地输入公式。例如下面的公式，我的实际键入与对应的LaTeX公式如下，可以看到，大部分括号`{}`、语法提示符`\`都被映射到了字母区，而不必不停地切换符号。
 ```
 	Input:dm sum ooo n=1 1/nsr = pisr/6
 	Output:
@@ -142,7 +147,7 @@ $$
 *.base
 ```
 
-其次，由于`.base`是直接读取文件夹下的文档名称并形成跳转链接的。因此，我们尽量采取Mizuki文档中的文件格式写法，而不是文件夹写法，也就是直接在`posts`目录下创建`md`文档，而不是创建文件夹。如果采用文件夹写法，虽然可以通过文章的title字段区分文章，但是由于需要保留跳转的功能，第一列需要保留一列index，这样不够美观。因此本博客也是采用文件写法，即直接在`posts`目录下创建`md`文件。同时配合图床来实现跳转，图床的配置可以参考<a href="/01code/piclist-github">Piclist×Github图床的搭建</a>（即[Piclist×Github图床的搭建](piclist-github.md)）一文。
+其次，由于`.base`是直接读取文件夹下的文档名称并形成跳转链接的。因此，我们尽量采取Mizuki文档中的文件格式写法，而不是文件夹写法，也就是直接在`posts`目录下创建`md`文档，而不是创建文件夹。如果采用文件夹写法，虽然可以通过文章的title字段区分文章，但是由于需要保留跳转的功能，第一列需要保留一列index，这样不够美观。因此本博客也是采用文件写法，即直接在`posts`目录下创建`md`文件。同时配合图床来实现跳转；图床配置笔记“Piclist×Github图床的搭建”仍在整理中。
 ### Windows与ios系统多端同步
 现在你可以在你的电脑上随时更新你的博客了，但是问题也随之而来了。你不可能随时带着你的电脑，有时候我们携带的只是手机或者平板，那么能否保持笔记的多端同步呢。这样我们随时都可以写笔记并把想法记录下来。虽然Obsidian提供了官方的同步服务，但是其高昂的价格让很多小伙伴望而却步。这时候我们可以使用`Remotely Save`插件，配合一些网盘进行同步操作，这样我们就可以随时随地写笔记了。当然，你也可以使用git插件每次进行拉取与提交，与vscode中的方式相同，这里不再赘述。
 

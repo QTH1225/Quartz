@@ -9,6 +9,7 @@ tags:
   - Markdown
 translations:
   en: /en/01dev/quartz-feature-test-article
+lang: zh-CN
 ---
 
 这是一篇用于检查 Quartz 渲染效果的测试文章，覆盖数学公式、PDF 嵌入、普通代码块、折叠超长代码块、表格、任务列表和引用等常见内容形态。
@@ -45,20 +46,20 @@ $$
 
 下面使用 Obsidian 原生附件嵌入语法测试 PDF 内嵌显示。Quartz 构建网页时会把这个 PDF embed 转成网页预览。
 
-![[Attachments/04Notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf]]
+![[Attachments/03Notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf]]
 
-[打开 PDF 附件](/attachments/04notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf)
+[打开 PDF 附件](/attachments/03notes/提问的艺术How-To-Ask-Questions-The-Smart-Way.pdf)
 
 ## 图片嵌入测试
 
 单张图片：
 
-![单张图片测试](../Attachments/01Code/quartz-test-single.svg)
+![单张图片测试](../Attachments/01Dev/quartz-test-single.svg)
 *单张图片测试*
 
 并排图片：
 
-| ![并排图片左图](../Attachments/01Code/quartz-test-left.svg) | ![并排图片右图](../Attachments/01Code/quartz-test-right.svg) |
+| ![并排图片左图](../Attachments/01Dev/quartz-test-left.svg) | ![并排图片右图](../Attachments/01Dev/quartz-test-right.svg) |
 | --- | --- |
 | *并排图片左图* | *并排图片右图* |
 

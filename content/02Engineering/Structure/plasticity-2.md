@@ -8,10 +8,13 @@ published: 2025-11-10
 tags:
   - Mechanics
   - Elastoplasticity
+translations:
+  en: /en/02engineering/structure/plasticity-2
+lang: zh-CN
 ---
 
 ## 前情提要
-通过<a href="/03construction/plasticity-1">弹塑性力学|绪论及基础部分</a>（即[弹塑性力学|绪论及基础概念](/03construction/plasticity-1)）了解完弹塑性力学的研究内容以及基本概念后，我们需要首先对所使用的主要数学工具——张量，进行一些简单的介绍与分析。
+在前一篇尚未发布的笔记“弹塑性力学｜绪论及基础概念”中梳理完弹塑性力学的研究内容和基本概念后，这里先对主要数学工具——张量——作简要介绍与分析。
 
 ## 张量的介绍
 ### 张量的下标含义

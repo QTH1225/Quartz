@@ -14,6 +14,11 @@
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
     "build:i18n": "node quartz/scripts/build-i18n.mjs",
+    "check:content": "node quartz/scripts/audit-content.mjs",
+    "check:bilingual": "node quartz/scripts/audit-bilingual.mjs",
+    "check:language-switch": "node quartz/scripts/audit-language-switch.mjs",
+    "check:built-links": "node quartz/scripts/audit-built-links.mjs",
+    "format:content-frontmatter": "node quartz/scripts/normalize-content-frontmatter.mjs",
     "patch-quartz-date-format": "node quartz/scripts/patch-quartz-date-format.mjs",
     "postinstall": "node quartz/scripts/patch-quartz-date-format.mjs",
     "docs": "npx quartz build --serve -d docs",

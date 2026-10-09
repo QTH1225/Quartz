@@ -8,6 +8,9 @@ published: 2025-11-27
 tags:
   - Elastoplasticity
   - Mechanics
+translations:
+  en: /en/02engineering/structure/plasticity-3
+lang: zh-CN
 ---
 
 ## 外力

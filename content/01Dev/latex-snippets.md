@@ -7,6 +7,9 @@ published: 2025-01-01
 tags:
   - LaTeX
   - Updating
+translations:
+  en: /en/01dev/latex-snippets
+lang: zh-CN
 ---
 
 ## 什么是Snippets

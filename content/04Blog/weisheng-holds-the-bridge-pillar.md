@@ -6,7 +6,8 @@ authorLink: https://github.com/QTH1225
 tags:
   - 随笔故事
 translations:
-  en: /en/06misc/weisheng-holds-the-bridge-pillar
+  en: /en/04blog/weisheng-holds-the-bridge-pillar
+lang: zh-CN
 ---
 
 老桥下，散步的我碰到了一个男生，穿着粗布衣服，眺望着河的对岸。

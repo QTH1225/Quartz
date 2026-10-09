@@ -6,6 +6,7 @@ authorLink: https://github.com/QTH1225
 tags:
   - 现象思考
 translations:
-  en: /en/06misc/reflections-on-the-ai-era
+  en: /en/04blog/reflections-on-the-ai-era
+lang: zh-CN
 ---
 

@@ -8,6 +8,9 @@ published: 2025-08-20
 tags:
   - Markdown
   - Mermaid
+translations:
+  en: /en/01dev/markdown-basics
+lang: zh-CN
 ---
 
 这篇文章由原来的 Markdown 基础教程、Markdown 扩展功能示例和 Mermaid 图表示例整理而来。原来的几篇文章更像完整语法清单，内容比较分散；这里把博客写作中真正常用的部分合并成一篇中文速查笔记，方便在 Obsidian 和 Quartz 中直接参考。
@@ -150,7 +153,7 @@ def hello(name: str) -> str:
 图片语法和链接很像，只是在前面多一个 `!`。
 
 ```markdown
-![图片名称](../Attachments/01Code/example.png)
+![图片名称](../Attachments/01Dev/quartz-test-single.svg)
 ```
 
 在当前博客中，单独成段的 Markdown 图片会被转换成带图注的图片：方括号里的文字会显示为图片下方的名称。这样比手写 HTML 更适合在 Obsidian 中维护。

@@ -500,77 +500,81 @@ export async function handleBuild(argv) {
   })
 
   const buildMutex = new Mutex()
+  const fullBuildMutex = new Mutex()
   let lastBuildMs = 0
   const cleanupBuilds = Array(buildTargets.length).fill(null)
   const build = async (clientRefresh) => {
     const buildStart = new Date().getTime()
     lastBuildMs = buildStart
-    const release = await buildMutex.acquire()
-    if (lastBuildMs > buildStart) {
-      release()
-      return
-    }
+    return fullBuildMutex.runExclusive(async () => {
+      const release = await buildMutex.acquire()
+      if (lastBuildMs > buildStart) {
+        release()
+        return
+      }
 
-    if (cleanupBuilds.some((cleanupBuild) => cleanupBuild !== null)) {
-      console.log(styleText("yellow", "Detected a source code change, doing a hard rebuild..."))
-      for (const cleanupBuild of cleanupBuilds) {
-        if (cleanupBuild) {
-          await cleanupBuild()
+      if (cleanupBuilds.some((cleanupBuild) => cleanupBuild !== null)) {
+        console.log(styleText("yellow", "Detected a source code change, doing a hard rebuild..."))
+        for (const cleanupBuild of cleanupBuilds) {
+          if (cleanupBuild) {
+            await cleanupBuild()
+          }
         }
+        cleanupBuilds.fill(null)
       }
-      cleanupBuilds.fill(null)
-    }
 
-    const result = await ctx.rebuild().catch((err) => {
-      console.error(
-        `${styleText("red", "Failed to build Quartz.")} Check for syntax errors in your configuration or plugins.`,
-      )
-      console.log(`Reason: ${styleText("gray", err.message ?? String(err))}`)
-      process.exit(1)
-    })
-    release()
+      const result = await ctx.rebuild().catch((err) => {
+        console.error(
+          `${styleText("red", "Failed to build Quartz.")} Check for syntax errors in your configuration or plugins.`,
+        )
+        console.log(`Reason: ${styleText("gray", err.message ?? String(err))}`)
+        process.exit(1)
+      })
+      release()
 
-    if (argv.bundleInfo) {
-      const outputFileName = "quartz/.quartz-cache/transpiled-build.mjs"
-      const meta = result.metafile.outputs[outputFileName]
-      console.log(
-        `Successfully transpiled ${Object.keys(meta.inputs).length} files (${prettyBytes(
-          meta.bytes,
-        )})`,
-      )
-      console.log(await esbuild.analyzeMetafile(result.metafile, { color: true }))
-    }
-
-    // bypass module cache
-    // https://github.com/nodejs/modules/issues/307
-    const refresh = () => {
-      if (isI18nBuild) {
-        copySharedAttachments(argv.output, true)
-      }
-      clientRefresh()
-    }
-
-    for (const [idx, target] of buildTargets.entries()) {
-      if (target.label) {
+      if (argv.bundleInfo) {
+        const outputFileName = "quartz/.quartz-cache/transpiled-build.mjs"
+        const meta = result.metafile.outputs[outputFileName]
         console.log(
-          `\n[${target.label}] quartz build -d ${target.argv.directory} -o ${target.argv.output}\n`,
+          `Successfully transpiled ${Object.keys(meta.inputs).length} files (${prettyBytes(
+            meta.bytes,
+          )})`,
+        )
+        console.log(await esbuild.analyzeMetafile(result.metafile, { color: true }))
+      }
+
+      // bypass module cache
+      // https://github.com/nodejs/modules/issues/307
+      const refresh = () => {
+        if (isI18nBuild) {
+          copySharedAttachments(argv.output, true)
+        }
+        clientRefresh()
+      }
+
+      for (const [idx, target] of buildTargets.entries()) {
+        if (target.label) {
+          console.log(
+            `\n[${target.label}] quartz build -d ${target.argv.directory} -o ${target.argv.output}\n`,
+          )
+        }
+
+        const { default: buildQuartz } = await withEnv(
+          target.env,
+          () => import(`../../${cacheFile}?update=${randomUUID()}-${target.label ?? "default"}`),
+        )
+        // ^ this import is relative, so base "cacheFile" path can't be used
+
+        cleanupBuilds[idx] = await withEnv(target.env, () =>
+          buildQuartz(target.argv, buildMutex, refresh),
         )
       }
 
-      const { default: buildQuartz } = await withEnv(target.env, () =>
-        import(`../../${cacheFile}?update=${randomUUID()}-${target.label ?? "default"}`),
-      )
-      // ^ this import is relative, so base "cacheFile" path can't be used
-
-      cleanupBuilds[idx] = await withEnv(target.env, () =>
-        buildQuartz(target.argv, buildMutex, refresh),
-      )
-    }
-
-    if (isI18nBuild) {
-      copySharedAttachments(argv.output)
-    }
-    clientRefresh()
+      if (isI18nBuild) {
+        copySharedAttachments(argv.output)
+      }
+      clientRefresh()
+    })
   }
 
   let clientRefresh = () => {}

@@ -8,6 +8,9 @@ published: 2025-11-19
 tags:
   - Mechanics
   - Elastoplasticity
+translations:
+  en: /en/02engineering/structure/plasticity-1
+lang: zh-CN
 ---
 
 ## 弹塑性力学的研究内容

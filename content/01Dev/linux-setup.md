@@ -8,6 +8,9 @@ published: 2025-01-01
 tags:
   - Template
   - Mizuki
+translations:
+  en: /en/01dev/linux-setup
+lang: zh-CN
 ---
 
 ## Linux的双系统安装

@@ -8,6 +8,7 @@ tags:
   - 水泥基材料
 translations:
   en: /en/02engineering/materials/polymer-cement
+lang: zh-CN
 ---
 
 

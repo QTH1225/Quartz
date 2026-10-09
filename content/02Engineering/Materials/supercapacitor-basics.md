@@ -8,6 +8,7 @@ tags:
   - 超级电容器
 translations:
   en: /en/02engineering/materials/supercapacitor-basics
+lang: zh-CN
 ---
 
 

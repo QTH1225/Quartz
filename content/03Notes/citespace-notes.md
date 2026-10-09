@@ -8,6 +8,7 @@ tags:
   - CiteSpace
 translations:
   en: /en/03notes/citespace-notes
+lang: zh-CN
 ---
 
 

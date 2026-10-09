@@ -9,6 +9,7 @@ tags:
   - 人工智能
 translations:
   en: /en/03notes/doc-engineering
+lang: zh-CN
 ---
 
 ## 为什么需要文档工程

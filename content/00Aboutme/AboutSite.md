@@ -7,6 +7,9 @@ description: 关于本站的一些信息
 published: 2025-01-01
 tags:
   - aboutme
+translations:
+  en: /en/00aboutme/aboutsite
+lang: zh-CN
 ---
 
 # 本站的历史

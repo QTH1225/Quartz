@@ -8,6 +8,7 @@ tags:
   - 水泥基电池
 translations:
   en: /en/02engineering/materials/cement-battery
+lang: zh-CN
 ---
 
 

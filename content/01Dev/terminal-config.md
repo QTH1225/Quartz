@@ -8,6 +8,9 @@ published: 2025-01-01
 tags:
   - Template
   - Mizuki
+translations:
+  en: /en/01dev/terminal-config
+lang: zh-CN
 ---
 
 Clink插件

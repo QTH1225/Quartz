@@ -7,6 +7,9 @@ published: 2025-01-01
 tags:
   - Template
   - Mizuki
+translations:
+  en: /en/01dev/piclist-github
+lang: zh-CN
 ---
 
 ## 什么是图床

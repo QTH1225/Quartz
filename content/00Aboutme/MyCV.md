@@ -7,6 +7,9 @@ description: 本人参与的竞赛以及获得的奖励
 published: 2025-01-01
 tags:
   - aboutme
+translations:
+  en: /en/00aboutme/mycv
+lang: zh-CN
 ---
 # 教育经历
 

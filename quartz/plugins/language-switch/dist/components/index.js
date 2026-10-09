@@ -37,7 +37,11 @@ const css = `
 `
 
 function languageFromLocale(locale) {
-  return String(locale ?? "en-US").toLowerCase().startsWith("zh") ? "zh" : "en"
+  return String(locale ?? "en-US")
+    .toLowerCase()
+    .startsWith("zh")
+    ? "zh"
+    : "en"
 }
 
 function normalizeRoot(root) {
@@ -55,12 +59,6 @@ function normalizePath(value, root) {
   return `${normalizeRoot(root)}${raw.replace(/^\/+/, "")}`
 }
 
-function mirrorPath(slug, root) {
-  const cleanSlug = String(slug || "index").replace(/\/index$/, "")
-  if (!cleanSlug || cleanSlug === "index") return normalizeRoot(root)
-  return `${normalizeRoot(root)}${cleanSlug.replace(/^\/+/, "").replace(/\/?$/, "/")}`
-}
-
 export function LanguageSwitch(userOpts = {}) {
   const opts = {
     roots: { ...defaults.roots, ...(userOpts.roots ?? {}) },
@@ -73,7 +71,8 @@ export function LanguageSwitch(userOpts = {}) {
     const target = current === "zh" ? "en" : "zh"
     const root = opts.roots[target]
     const translations = frontmatter.translations ?? {}
-    const href = normalizePath(translations[target], root) ?? mirrorPath(fileData?.slug, root)
+    const href = normalizePath(translations[target], root)
+    if (!href) return null
     const label = opts.labels[target] ?? target.toUpperCase()
     const title = target === "zh" ? "切换到中文" : "Switch to English"
     const className = [displayClass, "language-switch"].filter(Boolean).join(" ")

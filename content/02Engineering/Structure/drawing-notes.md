@@ -7,6 +7,7 @@ tags:
   - CAD图纸
 translations:
   en: /en/02engineering/structure/drawing-notes
+lang: zh-CN
 ---
 
 ## 建筑图绘制

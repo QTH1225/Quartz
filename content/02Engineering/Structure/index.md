@@ -1,9 +1,11 @@
 ---
 title: 结构工程（Construction）
+draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 translations:
   en: /en/02engineering/structure/
+lang: zh-CN
 ---
 
 该文件夹主要存放结构计算与分析的笔记
