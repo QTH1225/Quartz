@@ -1,5 +1,4 @@
 .DS_Store
-.gitignore
 node_modules
 public
 prof
@@ -7,7 +6,17 @@ tsconfig.tsbuildinfo
 .obsidian
 .quartz-cache
 private/
-content/04Notes/文献精读/
+/content/03Notes/文献精读/
+/content-en/03Notes/文献精读/
+
+# Local environment secrets; example configurations remain versioned.
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Local build cache.
+.turbo/
 .replit
 replit.nix
 .quartz/

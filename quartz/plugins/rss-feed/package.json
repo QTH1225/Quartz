@@ -1,0 +1,16 @@
+{
+  "name": "rss-feed",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "quartz": {
+    "name": "rss-feed",
+    "displayName": "Article RSS Feed",
+    "version": "1.0.0",
+    "category": "emitter",
+    "defaultOptions": {
+      "rssLimit": 10,
+      "rssSlug": "index"
+    }
+  }
+}

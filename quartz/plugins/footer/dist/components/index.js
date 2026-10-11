@@ -49,10 +49,13 @@ export function Footer(userOpts = {}) {
 
   const version = getQuartzVersion()
 
-  function Component({ displayClass }) {
+  function Component({ displayClass, cfg }) {
     const year = new Date().getFullYear()
     const links = opts.links ?? {}
     const license = opts.license ?? defaults.license
+    const basePath = cfg?.baseUrl
+      ? new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")
+      : ""
 
     return jsx("footer", {
       class: `${displayClass ?? ""}`,
@@ -77,7 +80,13 @@ export function Footer(userOpts = {}) {
           children: Object.entries(links).map(([text, link]) =>
             jsx("li", {
               children: jsx("a", {
-                href: link,
+                href:
+                  text.toUpperCase() === "RSS" &&
+                  basePath &&
+                  link.startsWith("/") &&
+                  !link.startsWith(`${basePath}/`)
+                    ? `${basePath}${link}`
+                    : link,
                 children: text,
               }),
             }),

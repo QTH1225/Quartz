@@ -105,6 +105,8 @@ npm run build:i18n
 - `public/index.xml` 是 RSS 订阅源
 - `public/sitemap.xml` 是搜索引擎站点地图
 
+RSS 仅收录正式发布的 Markdown 文章，排除首页、目录页、自动生成页面、草稿、未列出及加密笔记，优先按 `published` 日期倒序取最新 10 篇；未设置发布时间时沿用 Quartz 的 Git/文件日期信息。中文订阅地址为 `https://tianhao.blog/index.xml`，英文为 `https://tianhao.blog/en/index.xml`；页脚和 RSS 自动发现链接随当前语言切换。搜索索引与站点地图仍保留标签页、目录页。
+
 部署时也可使用 `npx quartz build`；指定 `-d content` 才会只生成中文站点。
 
 目录调整后，可运行下列命令检查内容、双语映射和生成页面的链接：
@@ -114,6 +116,7 @@ npm run check:content
 npm run check:bilingual
 npm run check:built-links
 npm run check:built-domain
+npm run check:rss
 npm run check:language-switch
 ```
 

@@ -125,7 +125,12 @@ plugins:
     enabled: true
     options:
       enableSiteMap: true
-      enableRSS: true
+      enableRSS: false
+  - source: "./quartz/plugins/rss-feed"
+    enabled: true
+    options:
+      rssLimit: 10
+      rssSlug: index
   - source: "@quartz-community/favicon"
     enabled: true
   - source: "@quartz-community/og-image"
