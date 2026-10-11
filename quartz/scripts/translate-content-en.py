@@ -30,6 +30,7 @@ FIELD_ORDER = [
     "description",
     "published",
     "tags",
+    "aliases",
     "pinned",
     "image",
     "translations",
@@ -90,21 +91,20 @@ TITLE_OVERRIDES = {
     "00Aboutme/MyCV.md": "Curriculum Vitae",
     "00Aboutme/Papers.md": "Publications",
     "00Aboutme/Projects.md": "Projects",
-    "01Dev/claude-code-config.md": "A Simple Claude Code Configuration",
-    "01Dev/github-profile.md": "Configuring a GitHub Profile",
-    "01Dev/index.md": "Code and Tools",
-    "01Dev/latex-notes.md": "LaTeX Notes I",
-    "01Dev/latex-snippets.md": "Using Snippets in LaTeX",
-    "01Dev/linux-setup.md": "Getting Started with Linux",
-    "01Dev/markdown-basics.md": "Markdown Writing and Extended Syntax",
-    "01Dev/mcm-template.md": "An EasyMCM-based LaTeX Template for MCM/ICM",
-    "01Dev/obsidian-mizuki.md": "Publishing a Blog with Obsidian and Mizuki",
-    "01Dev/pc-software.md": "Recommended PC Software",
-    "01Dev/piclist-github.md": "Setting Up PicList with GitHub as an Image Host",
-    "01Dev/quartz-feature-test-article.md": "Quartz Feature Test Article",
-    "01Dev/rime-input.md": "Configuring the Weasel Input Method",
-    "01Dev/terminal-config.md": "Configuring Windows Terminal",
-    "01Dev/word-layout.md": "The Art of Word Typesetting",
+    "05Tools/claude-code-config.md": "A Simple Claude Code Configuration",
+    "01Code/github-profile.md": "Configuring a GitHub Profile",
+    "01Code/index.md": "Code and Development",
+    "01Code/latex-notes.md": "LaTeX Notes I",
+    "05Tools/latex-snippets.md": "Using Snippets in LaTeX",
+    "05Tools/linux-setup.md": "Getting Started with Linux",
+    "01Code/markdown-basics.md": "Markdown Writing and Extended Syntax",
+    "05Tools/mcm-template.md": "An EasyMCM-based LaTeX Template for MCM/ICM",
+    "05Tools/obsidian-mizuki.md": "Publishing a Blog with Obsidian and Mizuki",
+    "05Tools/pc-software.md": "Recommended PC Software",
+    "05Tools/piclist-github.md": "Setting Up PicList with GitHub as an Image Host",
+    "05Tools/rime-input.md": "Configuring the Weasel Input Method",
+    "05Tools/terminal-config.md": "Configuring Windows Terminal",
+    "05Tools/word-layout.md": "The Art of Word Typesetting",
     "02Engineering/index.md": "Engineering",
     "02Engineering/Materials/cement-battery.md": "Concepts and Background of Cement-Based Batteries",
     "02Engineering/Materials/cement-hydration.md": "Cement Hydration Process and Products",
@@ -121,12 +121,12 @@ TITLE_OVERRIDES = {
     "02Engineering/Structure/shear-wall-layout.md": "Shear Wall Layout Requirements",
     "03Notes/ask-questions.md": "Reading | The Art of Asking Questions",
     "03Notes/citespace-notes.md": "Bibliometrics I | Using CiteSpace",
-    "03Notes/doc-engineering.md": "Introduction to Document Engineering and How to Write Documents",
-    "03Notes/doc-project.md": "Building a Document Engineering Project",
-    "03Notes/harness-engineering.md": "Harness Engineering: A Comprehensive Overview",
+    "01Code/doc-engineering.md": "Introduction to Document Engineering and How to Write Documents",
+    "01Code/doc-project.md": "Building a Document Engineering Project",
+    "01Code/harness-engineering.md": "Harness Engineering: A Comprehensive Overview",
     "03Notes/index.md": "Research Notes",
     "03Notes/Signs of AI writing.md": "Signs of AI Writing",
-    "03Notes/zotero-plugins.md": "A Detailed Guide to Zotero Plugins",
+    "05Tools/zotero-plugins.md": "A Detailed Guide to Zotero Plugins",
     "04Blog/23-birthday.md": "At 23 | Staying Curious, Trying, and Moving Forward",
     "04Blog/index.md": "Personal Essays",
     "04Blog/reflections-on-the-ai-era.md": "Reflections on the AI Era",
@@ -142,21 +142,21 @@ DESCRIPTION_OVERRIDES = {
     "00Aboutme/MyCV.md": "A concise overview of my education, experience, and achievements.",
     "00Aboutme/Papers.md": "A list of my publications.",
     "00Aboutme/Projects.md": "Projects I have participated in.",
-    "01Dev/claude-code-config.md": "Notes on a simple Claude Code configuration.",
-    "01Dev/github-profile.md": "How to create an attractive GitHub profile.",
-    "01Dev/linux-setup.md": "Installing Linux and completing the basic setup.",
-    "01Dev/markdown-basics.md": "A quick reference for Markdown basics, extended syntax, and Mermaid diagrams.",
-    "01Dev/mcm-template.md": "A comprehensive EasyMCM-based MCM/ICM template with multiple typesetting options.",
-    "01Dev/obsidian-mizuki.md": "A workflow for publishing a blog with Obsidian and Mizuki.",
-    "01Dev/pc-software.md": "Recommended desktop software for everyday use.",
-    "01Dev/terminal-config.md": "Notes on configuring Windows Terminal.",
-    "01Dev/word-layout.md": "Practical techniques for professional typesetting in Microsoft Word.",
+    "05Tools/claude-code-config.md": "Notes on a simple Claude Code configuration.",
+    "01Code/github-profile.md": "How to create an attractive GitHub profile.",
+    "05Tools/linux-setup.md": "Installing Linux and completing the basic setup.",
+    "01Code/markdown-basics.md": "A quick reference for Markdown basics, extended syntax, and Mermaid diagrams.",
+    "05Tools/mcm-template.md": "A comprehensive EasyMCM-based MCM/ICM template with multiple typesetting options.",
+    "05Tools/obsidian-mizuki.md": "A workflow for publishing a blog with Obsidian and Mizuki.",
+    "05Tools/pc-software.md": "Recommended desktop software for everyday use.",
+    "05Tools/terminal-config.md": "Notes on configuring Windows Terminal.",
+    "05Tools/word-layout.md": "Practical techniques for professional typesetting in Microsoft Word.",
     "02Engineering/Materials/rcc-air-content.md": "Principles and procedures for measuring the air content of roller-compacted concrete.",
     "02Engineering/Structure/plasticity-1.md": "An introduction to elastoplasticity and its basic concepts.",
     "02Engineering/Structure/plasticity-2.md": "An introduction to tensor analysis for elastoplasticity.",
     "02Engineering/Structure/plasticity-3.md": "Notes on stress analysis in elastoplasticity.",
     "03Notes/ask-questions.md": "How to ask better questions and obtain useful answers.",
-    "03Notes/zotero-plugins.md": "A detailed guide to Zotero plugins and their installation.",
+    "05Tools/zotero-plugins.md": "A detailed guide to Zotero plugins and their installation.",
     "04Blog/23-birthday.md": "Reflections on my twenty-third year and a reminder to keep moving forward at my own pace.",
 }
 INLINE_RE = re.compile(
@@ -193,13 +193,16 @@ def page_url(relative_path: Path, english: bool = False) -> str:
 
 
 def legacy_relative_path(relative_path: Path) -> Path | None:
+    # Prefer the current mirrored layout so future runs reuse reviewed English notes.
+    if (LEGACY_EN_ROOT / relative_path).exists():
+        return relative_path
     parts = list(relative_path.parts)
     if not parts:
         return None
     if parts == ["index.md"]:
         return Path("index.md")
     mappings = {
-        "01Dev": "01Code",
+        "01Code": "01Code",
         "03Notes": "04Notes",
         "04Blog": "05Random",
         "06Misc": "06Misc",
@@ -461,10 +464,10 @@ def finalize_existing_output() -> None:
         english_frontmatter["lang"] = "en-US"
         english_body = (
             english_body.replace("/attachments/04notes/", "/attachments/03notes/")
-            .replace("/attachments/01code/", "/attachments/01dev/")
+            .replace("/attachments/01dev/", "/attachments/01code/")
             .replace("/Attachments/04Notes/", "/Attachments/03Notes/")
             .replace("Attachments/04Notes/", "Attachments/03Notes/")
-            .replace("../Attachments/01Code/", "../Attachments/01Dev/")
+            .replace("../Attachments/01Dev/", "../Attachments/01Code/")
         )
         yaml_text = yaml.safe_dump(
             ordered_frontmatter(english_frontmatter),

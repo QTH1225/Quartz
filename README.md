@@ -9,7 +9,7 @@
 - 中文站点输出到 `public/`
 - 英文站点输出到 `public/en/`
 
-注意：Quartz 默认命令 `npx quartz build` 只会构建单个内容目录，不会自动构建双语站点。本项目的双语构建入口是 `npm run build:i18n`。
+本项目已扩展构建入口：不指定 `-d` 时，`npx quartz build` 和 `npx quartz build --serve` 会同时构建中英文站点。指定 `-d` 时只构建选定的内容目录；也可使用 `npm run build:i18n` 顺序构建双语站点。
 
 ## 主题和样式
 
@@ -21,11 +21,16 @@
 
 一级目录使用带编号的英文文件夹名，方便控制导航顺序并生成英文 URL：
 
-- `01Code`
-- `02Composite`
-- `03Construction`
-- `04Notes`
-- `05Random`
+- `00Aboutme`：个人资料
+- `01Code`：代码、开发与计算机基础
+- `02Engineering/Materials`：材料研究
+- `02Engineering/Structure`：结构工程
+- `03Notes`：科研与阅读笔记
+- `04Blog`：个人随笔
+- `05Tools`：工具配置与实践
+- `06Misc`：杂项
+
+英文目录与中文目录一一对应。附件集中在 `content/Attachments/`，按对应分类保存，例如 `Attachments/01Code/`；构建时会同时复制到中文与英文站点。
 
 目录和文章的网页显示名称由 Markdown frontmatter 中的 `title` 控制。因此文件夹名可以保持英文，网页上仍然可以显示中文标题。
 
@@ -61,11 +66,14 @@ npm install
 # 安装 Quartz v5 插件
 npx quartz plugin install --from-config
 
-# 启动中文站点开发服务器
+# 启动中英文站点开发服务器
 npx quartz build --serve
 
-# 只构建中文站点
+# 构建中英文站点
 npx quartz build
+
+# 只构建中文站点
+npx quartz build -d content
 
 # 构建中英文双语站点
 npm run build:i18n
@@ -78,7 +86,7 @@ node quartz/bootstrap-cli.mjs build -d content -o public
 node quartz/bootstrap-cli.mjs build -d content-en -o public/en
 ```
 
-如果只运行 `npx quartz build`，输出中不会包含 `/en/` 英文站点。
+不指定 `-d` 的 `npx quartz build` 同样会生成 `/en/` 英文站点。
 
 ## 部署
 
@@ -95,13 +103,16 @@ npm run build:i18n
 - `public/index.xml` 是 RSS 订阅源
 - `public/sitemap.xml` 是搜索引擎站点地图
 
-如果部署平台或 GitHub Actions 中仍然使用：
+部署时也可使用 `npx quartz build`；指定 `-d content` 才会只生成中文站点。
+
+目录调整后，可运行下列命令检查内容、双语映射和生成页面的链接：
 
 ```bash
-npx quartz build
+npm run check:content
+npm run check:bilingual
+npm run check:built-links
+npm run check:language-switch
 ```
-
-则只会发布中文站点，不会发布英文站点。
 
 ## 常见提示
 

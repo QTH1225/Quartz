@@ -13,6 +13,7 @@ const preferredOrder = [
   "description",
   "published",
   "tags",
+  "aliases",
   "pinned",
   "image",
   "translations",

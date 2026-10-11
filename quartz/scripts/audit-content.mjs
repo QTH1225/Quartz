@@ -14,6 +14,7 @@ const frontmatterOrder = [
   "description",
   "published",
   "tags",
+  "aliases",
   "pinned",
   "image",
   "translations",
