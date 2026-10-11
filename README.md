@@ -2,6 +2,8 @@
 
 这个数字花园基于 [Quartz v5](https://quartz.jzhao.xyz/) 构建，用于将笔记、随笔和科研资料发布为可访问的网站。
 
+生产域名为 `https://tianhao.blog`。在 `quartz.config.yaml` 中设置 `configuration.baseUrl: tianhao.blog`（不加协议）；中英文构建统一读取此配置，英文自动追加 `/en`。部署环境若设置了 `QUARTZ_BASE_URL`，该变量会覆盖文件配置，应删除旧值或设置为 `tianhao.blog`。
+
 站点当前采用中英文双语内容结构：
 
 - 中文内容位于 `content/`
@@ -79,7 +81,7 @@ npx quartz build -d content
 npm run build:i18n
 ```
 
-`npm run build:i18n` 会依次执行：
+`npm run build:i18n` 调用与 `npx quartz build` 相同的双语构建入口，依次生成以下输出：
 
 ```bash
 node quartz/bootstrap-cli.mjs build -d content -o public
@@ -111,6 +113,7 @@ npm run build:i18n
 npm run check:content
 npm run check:bilingual
 npm run check:built-links
+npm run check:built-domain
 npm run check:language-switch
 ```
 

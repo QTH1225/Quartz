@@ -41,7 +41,7 @@ Github：[QTH1225/QTH1225](https://github.com/QTH1225/QTH1225)
 ```markdown
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/QTH1225)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:1340356343@qq.com)
-[![Website](https://img.shields.io/badge/Blog-0088CC?style=for-the-badge&logo=google-chrome&logoColor=white)](https://qintianhao.com)
+[![Website](https://img.shields.io/badge/Blog-0088CC?style=for-the-badge&logo=google-chrome&logoColor=white)](https://tianhao.blog)
 These are the skills that I know and have mastered:
 ```
 当然，他们也可以仅作展示之用。
@@ -84,7 +84,7 @@ jobs:
       - name: Pull in dev.to posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          feed_list: "https://www.qintianhao.com/rss.xml" # Replace this with your RSS link
+          feed_list: "https://tianhao.blog/index.xml" # Replace this with your RSS link
 ```
 ### 贪吃蛇数据贡献图
 你可以在你的GitHub profile中以贪吃蛇的形式展示你的贡献图，就像这样

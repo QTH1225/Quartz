@@ -42,7 +42,7 @@ These badges can be linked to your personal information page, such as the follow
 ```markdown
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/QTH1225)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:1340356343@qq.com)
-[![Website](https://img.shields.io/badge/Blog-0088CC?style=for-the-badge&logo=google-chrome&logoColor=white)](https://qintianhao.com)
+[![Website](https://img.shields.io/badge/Blog-0088CC?style=for-the-badge&logo=google-chrome&logoColor=white)](https://tianhao.blog)
 These are the skills that I know and have mastered:
 ```
 Of course, they can only be shown.
@@ -85,7 +85,7 @@ jobs:
       - name: Pull in dev.to posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          feed_list: "https://www.qintianhao.com/rss.xml" # Replace this with your RSS link
+          feed_list: "https://tianhao.blog/en/index.xml" # Replace this with your RSS link
 ```
 ### Snake Eating Data Contribution Map
 You can show your contribution in your GitHub profile in the form of a snake-eating scheme, like this.

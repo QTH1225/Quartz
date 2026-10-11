@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: zh-CN
-  baseUrl: quartz.jzhao.xyz
+  baseUrl: tianhao.blog
   ignorePatterns:
     - private
     - templates

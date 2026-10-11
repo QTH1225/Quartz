@@ -18,6 +18,7 @@
     "check:bilingual": "node quartz/scripts/audit-bilingual.mjs",
     "check:language-switch": "node quartz/scripts/audit-language-switch.mjs",
     "check:built-links": "node quartz/scripts/audit-built-links.mjs",
+    "check:built-domain": "node quartz/scripts/audit-built-domain.mjs",
     "format:content-frontmatter": "node quartz/scripts/normalize-content-frontmatter.mjs",
     "patch-quartz-date-format": "node quartz/scripts/patch-quartz-date-format.mjs",
     "postinstall": "node quartz/scripts/patch-quartz-date-format.mjs",
