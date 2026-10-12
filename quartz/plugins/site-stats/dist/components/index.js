@@ -66,8 +66,12 @@ function installSiteStats() {
   let timer
   let generation = 0
 
-  function currentUrl() {
+  function currentUrl(host) {
     const url = new URL(window.location.href)
+    // Count HTTP/HTTPS and www/apex visits under the configured canonical URL.
+    url.protocol = "https:"
+    url.hostname = host
+    url.port = ""
     url.hash = ""
     url.search = ""
     return url.href
@@ -94,13 +98,14 @@ function installSiteStats() {
     const widget = document.querySelector(".site-stats")
     if (!widget) return
     const status = widget.querySelector(".site-stats-status")
-    // Preview hosts must not generate production visits. Both language builds
-    // use the hostname in cfg.baseUrl, so / and /en/ share the site totals.
-    if (window.location.hostname !== widget.dataset.siteStatsHost) {
+    // Only the configured host and its www/apex counterpart are production.
+    // Other subdomains and local previews must not generate production visits.
+    const normalizeHost = (host) => host.toLowerCase().replace(/^www\./, "")
+    if (normalizeHost(window.location.hostname) !== normalizeHost(widget.dataset.siteStatsHost)) {
       status.textContent = widget.dataset.previewText
       return
     }
-    const url = currentUrl()
+    const url = currentUrl(widget.dataset.siteStatsHost)
     if (url === lastUrl) {
       showCounts(widget)
       return

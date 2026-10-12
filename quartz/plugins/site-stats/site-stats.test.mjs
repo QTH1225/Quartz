@@ -140,11 +140,38 @@ test("a same-page navigation after aborting a pending load does not leave the co
 })
 
 test("local/preview hosts do not contact Busuanzi", async () => {
-  for (const host of ["localhost:8080", "127.0.0.1:8080", "preview.example.org"]) {
+  for (const host of [
+    "localhost:8080",
+    "127.0.0.1:8080",
+    "preview.example.org",
+    "preview.tianhao.blog",
+    "tianhao.blog.example.org",
+    "www.www.tianhao.blog",
+  ]) {
     const b = browser(`http://${host}/`)
     await b.event("nav")
     assert.equal(b.requests.length, 0)
     assert.equal(b.state.widget.status.textContent, "本地预览不计入统计")
+  }
+})
+
+test("www/apex and HTTP/HTTPS use the same canonical counter URL in both languages", async () => {
+  for (const origin of [
+    "http://tianhao.blog",
+    "https://tianhao.blog",
+    "http://www.tianhao.blog",
+    "https://www.tianhao.blog",
+  ]) {
+    for (const path of ["/", "/en/01Code/article"]) {
+      const b = browser(`${origin}${path}?utm_source=test#heading`)
+      const task = b.event("nav")
+      assert.equal(b.requests.length, 1)
+      assert.equal(b.state.widget.status.textContent, "")
+      assert.equal(JSON.parse(b.requests[0].options.body).url, `https://tianhao.blog${path}`)
+      respond(b.requests[0])
+      await task
+      assert.equal(b.state.widget.elements.busuanzi_site_pv.textContent, "12")
+    }
   }
 })
 

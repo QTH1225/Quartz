@@ -297,13 +297,22 @@ test("list loading uses text and SVG controls have explicit bounded dimensions",
 })
 
 test("local preview reads live comments but hides posting; production can post", async () => {
-  for (const hostname of ["localhost", "tianhao.blog"]) {
+  for (const hostname of [
+    "localhost",
+    "127.0.0.1",
+    "preview.tianhao.blog",
+    "tianhao.blog.example.org",
+    "www.www.tianhao.blog",
+    "tianhao.blog",
+    "www.tianhao.blog",
+  ]) {
+    const preview = !["tianhao.blog", "www.tianhao.blog"].includes(hostname)
     const b = browser({ hostname })
     await b.event("nav")
     assert.equal(b.calls.length, 1)
     assert.equal(b.calls[0].envId, envId)
-    assert.equal(b.state.widget.classes.has("is-readonly"), hostname === "localhost")
-    assert.equal(b.state.widget.notice.textContent, hostname === "localhost" ? "readonly" : "")
+    assert.equal(b.state.widget.classes.has("is-readonly"), preview)
+    assert.equal(b.state.widget.notice.textContent, preview ? "readonly" : "")
   }
   assert.match(TwikooComments({ envId }).css, /\.is-readonly \.tk-submit/)
 })

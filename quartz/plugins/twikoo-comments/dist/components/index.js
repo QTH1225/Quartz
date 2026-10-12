@@ -162,7 +162,11 @@ function installTwikooComments() {
         else if (receivedComments) loaded()
       }
     }
-    const preview = window.location.hostname !== widget.dataset.productionHost
+    // www and the apex domain are the same production site; unrelated hosts
+    // remain read-only previews, including local development servers.
+    const normalizeHost = (host) => host.toLowerCase().replace(/^www\./, "")
+    const preview =
+      normalizeHost(window.location.hostname) !== normalizeHost(widget.dataset.productionHost)
     const readonly = preview && widget.dataset.previewReadonly === "true"
     widget.classList.toggle("is-readonly", readonly)
     widget.querySelector(".twikoo-comments-preview").textContent = readonly
