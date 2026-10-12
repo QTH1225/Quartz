@@ -11,6 +11,7 @@
 
   .sidebar.left > .recent-notes {
     flex: 0 0 auto;
+    margin-top: auto;
   }
 
   .sidebar.left > .explorer {
@@ -25,6 +26,15 @@
     overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior: contain;
+  }
+
+  .sidebar.left > .explorer.collapsed {
+    flex: 0 0 auto;
+    min-height: 1.2rem;
+  }
+
+  .sidebar.left > .explorer.collapsed > .explorer-content {
+    display: none;
   }
 }
 

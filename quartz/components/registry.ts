@@ -22,6 +22,8 @@ export interface RegisteredComponent {
 export class ComponentRegistry {
   private components = new Map<string, RegisteredComponent>()
   private instanceCache = new Map<string, QuartzComponent>()
+  private constructorIds = new WeakMap<QuartzComponentConstructor<any>, number>()
+  private nextConstructorId = 0
   private optionOverrides = new Map<string, Record<string, unknown>>()
 
   register(
@@ -68,11 +70,13 @@ export class ComponentRegistry {
   ): QuartzComponent {
     const optsKey = options !== undefined ? JSON.stringify(options) : ""
     // Use constructor identity + serialized options as cache key
-    // We store constructor name as a hint but rely on a unique id for identity
-    const ctorId =
-      (constructor as unknown as { __cacheId?: string }).__cacheId ??
-      ((constructor as unknown as { __cacheId: string }).__cacheId =
-        `ctor_${this.instanceCache.size}`)
+    // Cache size is not an identity: invalidation and different registry
+    // instances can otherwise assign the same ID to unrelated constructors.
+    let ctorId = this.constructorIds.get(constructor)
+    if (ctorId === undefined) {
+      ctorId = this.nextConstructorId++
+      this.constructorIds.set(constructor, ctorId)
+    }
     const cacheKey = `${ctorId}:${optsKey}`
 
     const cached = this.instanceCache.get(cacheKey)
@@ -117,13 +121,15 @@ export class ComponentRegistry {
     this.components.clear()
     this.instanceCache.clear()
     this.optionOverrides.clear()
+    this.constructorIds = new WeakMap()
+    this.nextConstructorId = 0
   }
 
   private findCachedInstance(
     constructor: QuartzComponentConstructor<any>,
   ): QuartzComponent | undefined {
-    const ctorId = (constructor as unknown as { __cacheId?: string }).__cacheId
-    if (!ctorId) return undefined
+    const ctorId = this.constructorIds.get(constructor)
+    if (ctorId === undefined) return undefined
     for (const [key, instance] of this.instanceCache) {
       if (key.startsWith(`${ctorId}:`)) return instance
     }

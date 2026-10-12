@@ -8,6 +8,7 @@ import { readPluginsJson } from "../cli/plugin-data.js"
 import { feedUrls, selectEntries } from "../plugins/rss-feed/dist/index.js"
 
 const config = readPluginsJson()
+const outputRoot = path.resolve(process.argv[2] ?? "public")
 const options =
   config.plugins.find((p) => p.source === "./quartz/plugins/rss-feed" && p.enabled)?.options ?? {}
 const baseUrl = (process.env.QUARTZ_BASE_URL ?? config.configuration.baseUrl).replace(/\/+$/, "")
@@ -46,8 +47,13 @@ function walk(directory) {
 }
 
 for (const [directory, output, base, locale] of [
-  ["content", "public", baseUrl, "zh-CN"],
-  ["content-en", "public/en", baseUrl.endsWith("/en") ? baseUrl : `${baseUrl}/en`, "en-US"],
+  ["content", outputRoot, baseUrl, "zh-CN"],
+  [
+    "content-en",
+    path.join(outputRoot, "en"),
+    baseUrl.endsWith("/en") ? baseUrl : `${baseUrl}/en`,
+    "en-US",
+  ],
 ]) {
   const content = []
   for (const relative of await globby("**/*.md", {
@@ -103,11 +109,11 @@ for (const [directory, output, base, locale] of [
     }
   }
   itemsChecked += entries.length
-  const feedPath = output === "public" ? `/${rssSlug}.xml` : `/en/${rssSlug}.xml`
+  const feedPath = output === outputRoot ? `/${rssSlug}.xml` : `/en/${rssSlug}.xml`
   for (const page of walk(output).filter(
     (file) =>
       file.endsWith(".html") &&
-      (output !== "public" || !file.startsWith(path.join("public", "en") + path.sep)),
+      (output !== outputRoot || !file.startsWith(path.join(outputRoot, "en") + path.sep)),
   )) {
     const html = fs.readFileSync(page, "utf8")
     if (!html.includes(`type="application/rss+xml"`) || !html.includes(`href="${feedPath}"`)) {

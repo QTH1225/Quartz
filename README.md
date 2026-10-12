@@ -69,7 +69,7 @@ npm install
 npx quartz plugin install --from-config
 
 # 启动中英文站点开发服务器
-npx quartz build --serve
+npm run dev
 
 # 构建中英文站点
 npx quartz build
@@ -89,6 +89,8 @@ node quartz/bootstrap-cli.mjs build -d content-en -o public/en
 ```
 
 不指定 `-d` 的 `npx quartz build` 同样会生成 `/en/` 英文站点。
+
+本地预览推荐 `npm run dev`，它明确调用本仓库的入口。如果 `npx quartz build --serve` 实际调用了 npm 缓存中的 Quartz，可能使用不同版本的 CLI，导致双语域名、附件或构建结果不一致。请先在原终端按 `Ctrl+C` 停止旧服务器，再运行 `npm run dev`，不要让两个构建进程同时写入 `public/`。
 
 ## 部署
 
@@ -118,9 +120,18 @@ npm run check:built-links
 npm run check:built-domain
 npm run check:rss
 npm run check:language-switch
+npm run check:site-stats
 ```
 
 ## 常见提示
+
+### 网站访问统计
+
+左侧搜索工具栏下方、探索目录上方显示不蒜子统计（桌面及平板侧栏）。包含全站访问/访客、本页阅读/访客，不显示今日访问及今日访客，中英文界面自动切换标签。
+
+接入的是 [busuanzi.cc](https://www.busuanzi.cc/doc.php)，不是其他同名计数服务。组件按官方 `3.6.9` 脚本的 POST 协议请求 `https://cdn.busuanzi.cc/api.php`，并使用官方全站及本页的四个计数标签 ID；不额外加载官方脚本，以免重复计数。Quartz 的每次页面导航会更新统计，过期请求会被取消；页内锚点和界面重绘不会额外计数。中文 `/` 和英文 `/en/` 使用同一域名的全站统计，各自页面的阅读量分开统计。
+
+仅在 `configuration.baseUrl` 所配置的主机名上发送请求，本地 `localhost` 预览不计数，也不会显示真实数字。广告拦截器或服务不可用时显示“统计暂不可用”，不会显示虚假的零。此第三方服务会接收当前页面地址及来源地址，访问记录由不蒜子处理；现有 Plausible 配置保持不变，两者的统计口径可能不同。上线需重新构建并部署 `public/`。
 
 构建时如果看到类似下面的警告：
 

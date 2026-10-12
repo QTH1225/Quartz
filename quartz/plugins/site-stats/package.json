@@ -1,0 +1,26 @@
+{
+  "name": "site-stats",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components": "./dist/components/index.js"
+  },
+  "quartz": {
+    "name": "site-stats",
+    "displayName": "Site Stats",
+    "description": "Busuanzi site and page counters with Quartz SPA support.",
+    "version": "1.0.0",
+    "category": "component",
+    "quartzVersion": ">=5.0.0",
+    "components": {
+      "SiteStats": {
+        "displayName": "Site Stats",
+        "description": "Bilingual visitor counters below the search toolbar.",
+        "version": "1.0.0",
+        "defaultPosition": "left",
+        "defaultPriority": 40
+      }
+    }
+  }
+}

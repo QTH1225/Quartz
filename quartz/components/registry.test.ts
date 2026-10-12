@@ -48,6 +48,26 @@ describe("register and get", () => {
 })
 
 describe("instantiate", () => {
+  test("different constructors never share an instance after cache invalidation", () => {
+    registry = new ComponentRegistry()
+    const firstCtor = (() => StubA) as unknown as QuartzComponentConstructor
+    const secondCtor = (() => StubB) as unknown as QuartzComponentConstructor
+    registry.instantiate(firstCtor)
+    registry.setOptionOverrides("plugin", { changed: true })
+    assert.strictEqual(registry.instantiate(secondCtor), StubB)
+    assert.strictEqual(registry.instantiate(firstCtor), StubA)
+  })
+
+  test("constructor identity remains isolated across registry instances", () => {
+    const first = new ComponentRegistry()
+    const second = new ComponentRegistry()
+    const firstCtor = (() => StubA) as unknown as QuartzComponentConstructor
+    const secondCtor = (() => StubB) as unknown as QuartzComponentConstructor
+    first.instantiate(firstCtor)
+    second.instantiate(secondCtor)
+    assert.strictEqual(second.instantiate(firstCtor), StubA)
+  })
+
   test("returns a component instance from a constructor", () => {
     registry = new ComponentRegistry()
     const instance = registry.instantiate(StubConstructor)
