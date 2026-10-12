@@ -121,9 +121,34 @@ npm run check:built-domain
 npm run check:rss
 npm run check:language-switch
 npm run check:site-stats
+npm run check:comments
 ```
 
 ## 常见提示
+
+### Twikoo 评论
+
+Quartz 连接 Mizuki 已有的 Netlify Twikoo 后台，不创建新数据库，也不重复导入评论。客户端沿用 `1.6.44`，静态资源位于 `quartz/static/twikoo/`，与现有后台匹配。后台地址是公开的前端配置；数据库连接串、管理员密码和评论导出文件不能放进博客仓库。
+
+评论显示在正式文章正文下方及首页，目录页、标签页、404、草稿、未列出/加密笔记不显示；单篇笔记可在 YAML 中设置 `comments: false` 关闭。中英文界面分别显示中文/英文，但对应文章共享同一评论标识。
+
+旧评论映射保存在 `quartz/plugins/twikoo-comments/dist/components/paths.js`：
+
+| Quartz 中文页面                         | 旧 Twikoo 评论标识                 |
+| --------------------------------------- | ---------------------------------- |
+| `/`                                     | `/posts/about-me`                  |
+| `/02engineering/structure/plasticity-2` | `/posts/elastoplastic-mechanics-2` |
+| `/05tools/obsidian-mizuki`              | `/posts/obsidianmizuki`            |
+| `/01code/github-profile`                | `/posts/github-profile`            |
+| `/05tools/mcm-template`                 | `/posts/latex-mcm-template`        |
+
+不要修改表中的旧标识，否则现有评论会关联不到页面。新文章默认使用 `/notes/文章slug`，移动分类目录不改变评论标识；重命名文章时，可在中英文 YAML 中同时设置同一个 `commentPath` 固定原标识。`npm run check:comments` 检查页面映射、语言、资源及标识冲突。
+
+运行 `npm run dev` 后，本地也能读取线上评论。默认 `previewReadOnly: true` 会在非正式域名的预览中隐藏留言输入框、回复及点赞控件，避免测试留言写入正式数据库；这只是前端预览保护，不是后台权限控制。部署到 `configuration.baseUrl` 的正式主机名后恢复留言功能。若确需在预览中测试真实留言，可把该选项设为 `false`，注意提交会直接写入线上数据库。
+
+本项目不会上传或导入评论备份，也不会改变 Netlify/MongoDB 配置。更换后台或升级版本前，应先导出备份。页面切换会重新挂载对应评论，切换前清理旧组件；本地读取失败时检查网络及后台跨域来源配置。
+
+评论列表使用文字加载提示，不显示大尺寸旋转遮罩；成功返回零评论后显示“暂无评论 / No comments yet”。加载失败或评论请求超过 20 秒时显示错误和重试按钮，不会把失败当作零评论。页面切换会清理请求状态监听及计时器，刷新会清除旧错误。
 
 ### 网站访问统计
 

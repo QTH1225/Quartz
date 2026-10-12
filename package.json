@@ -22,6 +22,7 @@
     "check:built-domain": "node quartz/scripts/audit-built-domain.mjs",
     "check:rss": "node quartz/scripts/audit-rss.mjs",
     "check:site-stats": "node --test quartz/plugins/site-stats/site-stats.test.mjs && node quartz/scripts/audit-site-stats.mjs",
+    "check:comments": "node --test quartz/plugins/twikoo-comments/twikoo-comments.test.mjs && node quartz/scripts/audit-comments.mjs",
     "format:content-frontmatter": "node quartz/scripts/normalize-content-frontmatter.mjs",
     "patch-quartz-date-format": "node quartz/scripts/patch-quartz-date-format.mjs",
     "postinstall": "node quartz/scripts/patch-quartz-date-format.mjs",

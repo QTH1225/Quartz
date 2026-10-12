@@ -194,3 +194,31 @@ article p > img + em {
   font-style: italic;
   text-align: center;
 }
+
+// Quartz's global img margin must not offset Twikoo avatars inside their frames.
+.twikoo-comments .tk-avatar {
+  align-self: flex-start;
+  line-height: 0;
+}
+
+.twikoo-comments .tk-avatar > .tk-avatar-img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+
+// Use the same typeface as article text for comments and their placeholder.
+.twikoo-comments .el-textarea__inner,
+.twikoo-comments .el-textarea__inner::placeholder {
+  font-family: var(--bodyFont);
+}
+
+// The Quartz frame already draws an <hr> before the page footer.
+.page-footer > .twikoo-comments {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
