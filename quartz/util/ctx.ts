@@ -8,6 +8,8 @@ export interface Argv {
   verbose: boolean
   output: string
   serve: boolean
+  /** Local URL prefix for this language target, separate from production baseUrl. */
+  serveBasePath?: string
   watch: boolean
   port: number
   wsPort: number

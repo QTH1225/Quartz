@@ -15,7 +15,7 @@ import { i18n } from "../i18n"
 import { styleText } from "util"
 import { resolveFrame } from "./frames"
 import type { TreeTransform } from "../plugins/types"
-import type { BuildCtx } from "../util/ctx"
+import type { Argv, BuildCtx } from "../util/ctx"
 
 interface RenderComponents {
   head: QuartzComponent
@@ -30,6 +30,15 @@ interface RenderComponents {
 }
 
 const headerRegex = new RegExp(/h[1-6]/)
+/** URL prefix used by client-side navigation, including the local /en target. */
+export function pageBasePath(
+  baseUrl: string | undefined,
+  argv: Pick<Argv, "serve" | "serveBasePath">,
+): string {
+  if (argv.serve) return argv.serveBasePath ?? ""
+  return baseUrl ? new URL(`https://${baseUrl}`).pathname.replace(/\/$/, "") : ""
+}
+
 export function pageResources(
   baseDir: FullSlug | RelativeURL,
   staticResources: StaticResources,
@@ -337,12 +346,8 @@ export function renderPage(
 
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
   const direction = i18n(cfg.locale).direction ?? "ltr"
-  // During local dev (--serve), the dev server serves from root without the
-  // baseUrl subpath, so basePath must be empty to avoid broken links.
-  const basePath =
-    componentData.ctx.argv.serve || !cfg.baseUrl
-      ? ""
-      : new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")
+  // Local builds omit the production subpath, but keep their language/server prefix.
+  const basePath = pageBasePath(cfg.baseUrl, componentData.ctx.argv)
   const doc = (
     <html lang={lang} dir={direction}>
       <Head {...componentData} />

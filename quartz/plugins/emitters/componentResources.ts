@@ -6,6 +6,8 @@ import { QuartzEmitterPlugin } from "../types"
 import spaRouterScript from "../../components/scripts/spa.inline"
 // @ts-ignore
 import popoverScript from "../../components/scripts/popover.inline"
+// @ts-ignore
+import goatcounterScript from "../../components/scripts/goatcounter.inline"
 import baseStyles from "../../styles/base.scss"
 import customStyles from "../../styles/custom.scss"
 import popoverStyle from "../../components/styles/popover.scss"
@@ -139,28 +141,14 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       document.head.appendChild(umamiScript);
     `)
   } else if (cfg.analytics?.provider === "goatcounter") {
-    componentResources.afterDOMLoaded.push(`
-      const goatcounterScriptPre = document.createElement('script');
-      goatcounterScriptPre.textContent = \`
-        window.goatcounter = { no_onload: true };
-      \`;
-      document.head.appendChild(goatcounterScriptPre);
-
-      const endpoint = "https://${cfg.analytics.websiteId}.${cfg.analytics.host ?? "goatcounter.com"}/count";
-      const goatcounterScript = document.createElement('script');
-      goatcounterScript.src = "${cfg.analytics.scriptSrc ?? "https://gc.zgo.at/count.js"}";
-      goatcounterScript.defer = true;
-      goatcounterScript.setAttribute('data-goatcounter', endpoint);
-      goatcounterScript.onload = () => {
-        window.goatcounter.endpoint = endpoint;
-        goatcounter.count({ path: location.pathname });
-        document.addEventListener('nav', () => {
-          goatcounter.count({ path: location.pathname });
-        });
-      };
-
-      document.head.appendChild(goatcounterScript);
-    `)
+    const options = {
+      productionHost: new URL(`https://${cfg.baseUrl}`).hostname,
+      endpoint: `https://${cfg.analytics.websiteId}.${cfg.analytics.host ?? "goatcounter.com"}/count`,
+      scriptSrc: cfg.analytics.scriptSrc ?? "https://gc.zgo.at/count.v5.js",
+    }
+    componentResources.afterDOMLoaded.push(
+      `const __QUARTZ_GOATCOUNTER_OPTIONS__ = ${JSON.stringify(options)};\n${goatcounterScript}`,
+    )
   } else if (cfg.analytics?.provider === "posthog") {
     componentResources.afterDOMLoaded.push(`
       const posthogScript = document.createElement("script");

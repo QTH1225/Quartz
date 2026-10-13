@@ -1,6 +1,6 @@
 import test, { describe } from "node:test"
 import assert from "node:assert"
-import { renderTranscludes, pageResources } from "./renderPage"
+import { renderTranscludes, pageResources, pageBasePath } from "./renderPage"
 import { Root, Element } from "hast"
 import { FullSlug } from "../util/path"
 import { GlobalConfiguration } from "../cfg"
@@ -265,6 +265,24 @@ describe("renderTranscludes", () => {
     const bq = root.children[0] as Element
     const text = JSON.stringify(bq.children)
     assert.ok(text.includes("Circular transclusion"), "self-reference should be blocked")
+  })
+})
+
+describe("pageBasePath", () => {
+  test("production retains configured Chinese and English paths", () => {
+    assert.equal(pageBasePath("tianhao.blog", { serve: false }), "")
+    assert.equal(pageBasePath("tianhao.blog/en", { serve: false }), "/en")
+  })
+  test("local bilingual preview retains the target's /en prefix", () => {
+    assert.equal(pageBasePath("tianhao.blog", { serve: true, serveBasePath: "" }), "")
+    assert.equal(pageBasePath("tianhao.blog/en", { serve: true, serveBasePath: "/en" }), "/en")
+  })
+  test("standalone previews omit the production prefix and respect custom server paths", () => {
+    assert.equal(pageBasePath("example.org/blog", { serve: true }), "")
+    assert.equal(
+      pageBasePath("example.org/blog/en", { serve: true, serveBasePath: "/preview/en" }),
+      "/preview/en",
+    )
   })
 })
 

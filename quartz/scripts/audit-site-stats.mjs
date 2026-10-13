@@ -1,16 +1,21 @@
 import fs from "node:fs"
 import path from "node:path"
+import vm from "node:vm"
 import { globby } from "globby"
 import { fromHtml } from "hast-util-from-html"
 import { readPluginsJson } from "../cli/plugin-data.js"
 
 const root = path.resolve(process.argv[2] ?? "public")
-const host = new URL(`https://${readPluginsJson().configuration.baseUrl}`).hostname
+const configuration = readPluginsJson().configuration
+const host = new URL(`https://${configuration.baseUrl}`).hostname
+const analytics = configuration.analytics
+const counterOrigin = `https://${analytics.websiteId}.${analytics.host ?? "goatcounter.com"}`
 const pages = await globby("**/*.html", { cwd: root })
 const errors = []
 let checked = 0
 const totals = new Map()
 const noteTotals = new Map()
+if (analytics.provider !== "goatcounter") errors.push("统计采集应使用 GoatCounter")
 
 function elements(node) {
   return [node, ...(node.children ?? []).flatMap(elements)].filter((n) => n.type === "element")
@@ -34,6 +39,8 @@ for (const page of pages) {
   checked++
   const widget = widgets[0]
   if (widget.properties.dataSiteStatsHost !== host) errors.push(`${page}：统计主机名不正确`)
+  if (widget.properties.dataGoatcounterOrigin !== counterOrigin)
+    errors.push(`${page}：公开计数账号与采集配置不一致`)
   const english = page.startsWith("en/")
   if (widget.properties.ariaLabel !== (english ? "Site statistics" : "网站统计")) {
     errors.push(`${page}：统计语言不正确`)
@@ -70,15 +77,13 @@ for (const page of pages) {
     if (!html.includes(english ? "Published words" : "已发布字数"))
       errors.push(`${page}：正文统计标签语言不正确`)
   }
-  if (nodes.some((node) => /^busuanzi_today_/.test(node.properties.id ?? ""))) {
-    errors.push(`${page}：不应显示今日访问或今日访客`)
+  if (/busuanzi/i.test(html)) {
+    errors.push(`${page}：不应残留不蒜子计数`)
   }
   for (const scope of ["site", "page"]) {
-    for (const kind of ["pv", "uv"]) {
-      const id = `busuanzi_${scope}_${kind}`
-      if (nodes.filter((node) => node.properties.id === id).length !== 1) {
-        errors.push(`${page}：官方计数标签 ${id} 缺失或重复`)
-      }
+    const id = `goatcounter_${scope}_count`
+    if (nodes.filter((node) => node.properties.id === id).length !== 1) {
+      errors.push(`${page}：计数标签 ${id} 缺失或重复`)
     }
   }
   const left = nodes.find((node) => hasClass(node, "sidebar") && hasClass(node, "left"))
@@ -89,9 +94,29 @@ for (const page of pages) {
   if (!(search >= 0 && search < stats && stats < explorer)) {
     errors.push(`${page}：统计组件未放在左侧搜索与探索之间`)
   }
-  if (nodes.some((node) => node.tagName === "script" && /busuanzi/.test(node.properties.src))) {
-    errors.push(`${page}：额外的官方脚本会重复计数`)
+}
+
+for (const script of await globby("**/postscript*.js", { cwd: root })) {
+  const entry = path.join(root, script)
+  let source = fs.readFileSync(entry, "utf8")
+  // Production emits an orchestrator with dynamic imports; preview is monolithic.
+  for (const [, filename] of source.matchAll(/import\(["']([^"']+)["']\)/g)) {
+    const chunk = fs.readFileSync(path.resolve(path.dirname(entry), filename), "utf8")
+    source += "\n" + chunk
+    if (chunk.includes("data-goatcounter-settings")) {
+      try {
+        // Must safely return on previews, without missing build-time helpers.
+        vm.runInNewContext(chunk, { window: { location: { hostname: "localhost" } } })
+      } catch (error) {
+        errors.push(`${filename}：采集脚本运行失败，会阻断探索栏初始化：${error.message}`)
+      }
+    }
   }
+  if (/busuanzi|plausible\.io/.test(source)) errors.push(`${script}：仍加载旧统计服务`)
+  if (!source.includes(`${counterOrigin}/count`))
+    errors.push(`${script}：缺少 GoatCounter 采集配置`)
+  if ((source.match(/data-goatcounter-settings/g) ?? []).length !== 1)
+    errors.push(`${script}：应有且仅有一个手动采集入口`)
 }
 
 if (!checked) errors.push("没有找到可验证的统计组件，请先构建网站")

@@ -5,7 +5,9 @@ configuration:
   enableSPA: true
   enablePopovers: true
   analytics:
-    provider: plausible
+    provider: goatcounter
+    websiteId: tianhao
+    scriptSrc: https://gc.zgo.at/count.v5.js
   locale: zh-CN
   baseUrl: tianhao.blog
   ignorePatterns:

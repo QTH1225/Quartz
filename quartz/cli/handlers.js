@@ -86,8 +86,9 @@ function configuredBaseUrl() {
 }
 
 function createBuildTargets(argv) {
+  const serveBasePath = (argv.baseDir ?? "").replace(/\/+$/, "")
   if (!shouldUseI18nBuild()) {
-    return [{ label: undefined, argv, env: {} }]
+    return [{ label: undefined, argv: { ...argv, serveBasePath }, env: {} }]
   }
 
   return [
@@ -97,6 +98,7 @@ function createBuildTargets(argv) {
         ...argv,
         directory: "content",
         output: argv.output,
+        serveBasePath,
       },
       env: {
         QUARTZ_LOCALE: "zh-CN",
@@ -108,6 +110,7 @@ function createBuildTargets(argv) {
         ...argv,
         directory: "content-en",
         output: path.join(argv.output, "en"),
+        serveBasePath: `${serveBasePath}/en`,
       },
       env: {
         QUARTZ_LOCALE: "en-US",
