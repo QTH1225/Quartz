@@ -1,4 +1,5 @@
 import { jsx } from "preact/jsx-runtime"
+import { publishedSummary } from "../../../published-word-count/dist/count.js"
 
 const metrics = [
   ["busuanzi_site_pv", "总访问量", "Total views"],
@@ -46,6 +47,26 @@ const css = `
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
+}
+.site-stats .site-stats-note-count,
+.site-stats .site-stats-word-count {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.site-stats .site-stats-note-count {
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--lightgray);
+}
+.site-stats .site-stats-note-count dd,
+.site-stats .site-stats-word-count dd { margin: 0; }
+.site-stats-word-count .site-stats-word-unit,
+.site-stats-note-count .site-stats-note-unit {
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--gray);
 }
 .site-stats-status {
   margin: 0.5rem 0 0;
@@ -152,11 +173,12 @@ function installSiteStats() {
 }
 
 export function SiteStats() {
-  function Component({ cfg, displayClass }) {
+  function Component({ cfg, allFiles, displayClass }) {
     const zh = String(cfg?.locale ?? "zh-CN")
       .toLowerCase()
       .startsWith("zh")
     const host = new URL(`https://${cfg.baseUrl}`).hostname
+    const { words: total, notes } = publishedSummary(allFiles, cfg.locale)
     return jsx("section", {
       class: ["site-stats", displayClass].filter(Boolean).join(" "),
       "aria-label": zh ? "网站统计" : "Site statistics",
@@ -178,14 +200,54 @@ export function SiteStats() {
           ],
         }),
         jsx("dl", {
-          children: metrics.map(([id, chinese, english]) =>
+          children: [
+            ...metrics.map(([id, chinese, english]) =>
+              jsx("div", {
+                children: [
+                  jsx("dt", { children: zh ? chinese : english }),
+                  jsx("dd", { children: jsx("span", { id, children: "—" }) }),
+                ],
+              }),
+            ),
             jsx("div", {
+              class: "site-stats-note-count",
+              title: zh
+                ? "有正文且 draft 为 false 的已发布笔记，不含关于我文件夹、根目录首页、空页、目录页和隐藏内容。"
+                : "Published notes with content and draft: false; excludes the about folder, root homepage, empty, directory and hidden pages.",
               children: [
-                jsx("dt", { children: zh ? chinese : english }),
-                jsx("dd", { children: jsx("span", { id, children: "—" }) }),
+                jsx("dt", { children: zh ? "已发布笔记" : "Published notes" }),
+                jsx("dd", {
+                  children: [
+                    jsx("span", {
+                      "data-published-note-count": notes,
+                      children: notes.toLocaleString(zh ? "zh-CN" : "en-US"),
+                    }),
+                    " ",
+                    jsx("span", { class: "site-stats-note-unit", children: zh ? "篇" : "notes" }),
+                  ],
+                }),
               ],
             }),
-          ),
+            jsx("div", {
+              class: "site-stats-word-count",
+              title: zh
+                ? "仅统计已发布正文：汉字按字、英文按词；不含代码块、公式和链接地址。"
+                : "Published prose only: words and Chinese characters; excludes code blocks, formulas and URLs.",
+              children: [
+                jsx("dt", { children: zh ? "已发布字数" : "Published words" }),
+                jsx("dd", {
+                  children: [
+                    jsx("span", {
+                      "data-published-word-count": total,
+                      children: total.toLocaleString(zh ? "zh-CN" : "en-US"),
+                    }),
+                    " ",
+                    jsx("span", { class: "site-stats-word-unit", children: zh ? "字" : "words" }),
+                  ],
+                }),
+              ],
+            }),
+          ],
         }),
         jsx("p", { class: "site-stats-status", role: "status", children: "" }),
       ],

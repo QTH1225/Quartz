@@ -9,6 +9,8 @@ const host = new URL(`https://${readPluginsJson().configuration.baseUrl}`).hostn
 const pages = await globby("**/*.html", { cwd: root })
 const errors = []
 let checked = 0
+const totals = new Map()
+const noteTotals = new Map()
 
 function elements(node) {
   return [node, ...(node.children ?? []).flatMap(elements)].filter((n) => n.type === "element")
@@ -36,6 +38,38 @@ for (const page of pages) {
   if (widget.properties.ariaLabel !== (english ? "Site statistics" : "网站统计")) {
     errors.push(`${page}：统计语言不正确`)
   }
+  const rows = elements(widget).filter((node) => hasClass(node, "site-stats-word-count"))
+  const value =
+    rows[0] &&
+    elements(rows[0]).find((node) => node.properties.dataPublishedWordCount !== undefined)
+  const count = Number(value?.properties.dataPublishedWordCount)
+  const language = english ? "en" : "zh"
+  const noteRows = elements(widget).filter((node) => hasClass(node, "site-stats-note-count"))
+  const noteValue =
+    noteRows[0] &&
+    elements(noteRows[0]).find((node) => node.properties.dataPublishedNoteCount !== undefined)
+  const noteCount = Number(noteValue?.properties.dataPublishedNoteCount)
+  if (noteRows.length !== 1 || !Number.isSafeInteger(noteCount) || noteCount <= 0) {
+    errors.push(`${page}：已发布笔记数缺失、重复或无效`)
+  } else {
+    if (noteTotals.has(language) && noteTotals.get(language) !== noteCount)
+      errors.push(`${page}：同一语言的笔记总数不一致`)
+    noteTotals.set(language, noteCount)
+    if (!html.includes(english ? "Published notes" : "已发布笔记"))
+      errors.push(`${page}：笔记数标签语言不正确`)
+    const descendants = elements(widget)
+    if (!(descendants.indexOf(noteRows[0]) < descendants.indexOf(rows[0])))
+      errors.push(`${page}：笔记数应位于整行正文量上方`)
+  }
+  if (rows.length !== 1 || !Number.isSafeInteger(count) || count <= 0) {
+    errors.push(`${page}：已发布正文统计缺失、重复或无效`)
+  } else {
+    if (totals.has(language) && totals.get(language) !== count)
+      errors.push(`${page}：同一语言的正文总量不一致`)
+    totals.set(language, count)
+    if (!html.includes(english ? "Published words" : "已发布字数"))
+      errors.push(`${page}：正文统计标签语言不正确`)
+  }
   if (nodes.some((node) => /^busuanzi_today_/.test(node.properties.id ?? ""))) {
     errors.push(`${page}：不应显示今日访问或今日访客`)
   }
@@ -62,5 +96,7 @@ for (const page of pages) {
 
 if (!checked) errors.push("没有找到可验证的统计组件，请先构建网站")
 console.log(`网站统计检查：${checked} 个页面，错误 ${errors.length}`)
+console.log(`已发布正文：中文 ${totals.get("zh")} 字；英文 ${totals.get("en")} words`)
+console.log(`已发布笔记：中文 ${noteTotals.get("zh")} 篇；英文 ${noteTotals.get("en")} 篇`)
 for (const error of errors) console.error(error)
 if (errors.length) process.exitCode = 1

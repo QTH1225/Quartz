@@ -96,6 +96,9 @@ plugins:
     options:
       renderEngine: katex
     order: 80
+  - source: "./quartz/plugins/published-word-count"
+    enabled: true
+    order: 100
   - source: "@quartz-community/citations"
     enabled: false
     order: 85
@@ -300,6 +303,16 @@ plugins:
     layout:
       position: left
       priority: 60
+  - source: "./quartz/plugins/mobile-recent-notes"
+    enabled: true
+    options:
+      limit: 5
+      hideTagPages: true
+      hideFolderPages: true
+    layout:
+      position: afterBody
+      priority: 5
+      display: mobile-only
   - source: "@quartz-community/spacer"
     enabled: true
     options: {}

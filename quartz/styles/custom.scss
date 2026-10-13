@@ -38,6 +38,12 @@
   }
 }
 
+@media all and ($mobile) {
+  .sidebar.left > .recent-notes {
+    display: none;
+  }
+}
+
 .recent-notes > ul.recent-ul > li.recent-li {
   margin: 0;
 }

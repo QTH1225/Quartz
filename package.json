@@ -23,6 +23,8 @@
     "check:rss": "node quartz/scripts/audit-rss.mjs",
     "check:site-stats": "node --test quartz/plugins/site-stats/site-stats.test.mjs && node quartz/scripts/audit-site-stats.mjs",
     "check:comments": "node --test quartz/plugins/twikoo-comments/twikoo-comments.test.mjs && node quartz/scripts/audit-comments.mjs",
+    "check:word-count": "node --test quartz/plugins/published-word-count/published-word-count.test.mjs && node quartz/scripts/audit-site-stats.mjs",
+    "check:recent-notes": "node --test quartz/plugins/mobile-recent-notes/mobile-recent-notes.test.mjs quartz/styles/explorer-collapse.test.mjs && node quartz/scripts/audit-recent-notes.mjs",
     "format:content-frontmatter": "node quartz/scripts/normalize-content-frontmatter.mjs",
     "patch-quartz-date-format": "node quartz/scripts/patch-quartz-date-format.mjs",
     "postinstall": "node quartz/scripts/patch-quartz-date-format.mjs",

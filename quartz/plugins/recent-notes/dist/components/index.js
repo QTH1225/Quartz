@@ -66,6 +66,45 @@ const css = `
   margin: 0 0 0.5rem 0;
   opacity: 0.6;
 }
+
+.recent-notes.recent-notes-mobile {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible;
+  margin-bottom: 1.5rem;
+}
+.recent-notes-mobile > h3 {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.recent-notes-mobile > ul.recent-ul {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1 1 0;
+  gap: 1rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+}
+.recent-notes-mobile > ul.recent-ul > li.recent-li {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.recent-notes-mobile .internal {
+  background-color: transparent;
+  font-weight: normal;
+}
 `
 
 const script = `
@@ -101,13 +140,17 @@ const defaults = {
 }
 
 function titleForLocale(locale) {
-  return String(locale ?? "en-US").toLowerCase().startsWith("zh")
+  return String(locale ?? "en-US")
+    .toLowerCase()
+    .startsWith("zh")
     ? "\u6700\u8fd1\u7684\u7b14\u8bb0"
     : "Recent Notes"
 }
 
 function seeMoreText(locale, remaining) {
-  return String(locale ?? "en-US").toLowerCase().startsWith("zh")
+  return String(locale ?? "en-US")
+    .toLowerCase()
+    .startsWith("zh")
     ? `\u67e5\u770b\u66f4\u591a${remaining}\u7bc7\u7b14\u8bb0 \u2192`
     : `See ${remaining} more \u2192`
 }
@@ -260,6 +303,33 @@ export function RecentNotes(userOpts = {}) {
     const remaining = Math.max(0, pages.length - opts.limit)
     const isCollapsed = opts.defaultCollapsed !== false
 
+    if (opts.horizontal) {
+      return jsx("nav", {
+        class: classNames(displayClass, "recent-notes", "recent-notes-mobile"),
+        "aria-label": opts.title ?? titleForLocale(locale),
+        children: [
+          jsx("h3", { children: opts.title ?? titleForLocale(locale) }),
+          jsx("ul", {
+            class: "recent-ul",
+            tabIndex: 0,
+            "aria-label": String(locale).startsWith("zh")
+              ? "横向滑动查看最近笔记"
+              : "Scroll to browse recent notes",
+            children: pages.slice(0, opts.limit).map((page) =>
+              jsx("li", {
+                class: "recent-li",
+                children: jsx("a", {
+                  href: resolveRelative(slug, page.slug),
+                  class: "internal",
+                  children: page.frontmatter?.title ?? "Untitled",
+                }),
+              }),
+            ),
+          }),
+        ],
+      })
+    }
+
     return jsx("div", {
       class: classNames(displayClass, "recent-notes", isCollapsed ? "collapsed" : undefined),
       children: [
@@ -267,7 +337,10 @@ export function RecentNotes(userOpts = {}) {
           type: "button",
           class: "recent-notes-toggle",
           "aria-expanded": isCollapsed ? "false" : "true",
-          children: [jsx("h3", { children: opts.title ?? titleForLocale(locale) }), renderFoldIcon()],
+          children: [
+            jsx("h3", { children: opts.title ?? titleForLocale(locale) }),
+            renderFoldIcon(),
+          ],
         }),
         jsx("ul", {
           class: "recent-ul",
@@ -331,6 +404,6 @@ export function RecentNotes(userOpts = {}) {
   }
 
   Component.css = css
-  Component.afterDOMLoaded = script
+  if (!userOpts.horizontal) Component.afterDOMLoaded = script
   return Component
 }

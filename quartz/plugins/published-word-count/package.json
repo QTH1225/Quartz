@@ -1,0 +1,13 @@
+{
+  "name": "published-word-count",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "quartz": {
+    "name": "published-word-count",
+    "displayName": "Published Word Count",
+    "description": "Count readable prose without code, formulas or link destinations.",
+    "version": "1.0.0",
+    "category": "transformer"
+  }
+}

@@ -87,6 +87,43 @@ test("Chinese and English render four official IDs without today's counters", ()
   }
 })
 
+test("published prose occupies its own full-width row and is rendered without a network request", () => {
+  const allFiles = [
+    {
+      filePath: "/zh/article.md",
+      relativePath: "article.md",
+      frontmatter: { draft: false },
+      publishedWordCount: { language: "zh", count: 12345 },
+    },
+    {
+      filePath: "/en/article.md",
+      relativePath: "article.md",
+      frontmatter: { draft: false },
+      publishedWordCount: { language: "en", count: 4567 },
+    },
+  ]
+  for (const [locale, label, count, formatted, unit] of [
+    ["zh-CN", "已发布字数", 12345, "12,345", "字"],
+    ["en-US", "Published words", 4567, "4,567", "words"],
+  ]) {
+    const html = render(SiteStats()({ cfg: { locale, baseUrl: "tianhao.blog" }, allFiles }))
+    assert.ok(html.includes(`data-published-word-count="${count}"`))
+    assert.ok(html.includes(`<dt>${label}</dt>`))
+    assert.ok(html.includes(formatted))
+    assert.ok(html.includes(`class="site-stats-word-unit">${unit}</span>`))
+    assert.ok(html.includes('data-published-note-count="1"'))
+    assert.ok(html.includes(locale.startsWith("zh") ? "已发布笔记" : "Published notes"))
+    assert.ok(html.indexOf("site-stats-note-count") > html.indexOf('id="busuanzi_page_uv"'))
+    assert.ok(html.indexOf("site-stats-note-count") < html.indexOf("site-stats-word-count"))
+    assert.ok(html.indexOf("site-stats-word-count") > html.indexOf('id="busuanzi_page_uv"'))
+  }
+  assert.match(SiteStats().css, /\.site-stats \.site-stats-word-count \{\s*grid-column: 1 \/ -1;/)
+  assert.match(
+    SiteStats().css,
+    /\.site-stats \.site-stats-note-count,\s*\.site-stats \.site-stats-word-count/,
+  )
+})
+
 test("initial nav counts once using the official POST protocol; render/hash do not count", async () => {
   const b = browser()
   assert.equal(b.requests.length, 0)
