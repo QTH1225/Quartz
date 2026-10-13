@@ -41,8 +41,8 @@ for (const page of await globby("**/*.html", { cwd: root })) {
       .map((x) => x.properties.href)
   if (JSON.stringify(links(desktop[0])) !== JSON.stringify(links(mobile[0])))
     errors.push(`${page}：桌面和移动端的笔记顺序或链接不一致`)
-  if (elements(mobile[0]).some((n) => n.tagName === "button"))
-    errors.push(`${page}：移动端不应显示侧栏折叠按钮`)
+  if (mobile[0].tagName !== "details" || !elements(mobile[0]).some((n) => n.tagName === "summary"))
+    errors.push(`${page}：移动端最近笔记应使用可展开的 details/summary`)
 }
 if (!checked) errors.push("没有找到最近笔记，请先构建网站")
 console.log(

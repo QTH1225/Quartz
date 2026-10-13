@@ -28,27 +28,31 @@ const props = {
   cfg: { locale: "zh-CN" },
 }
 
-test("mobile recent notes are a single horizontal navigation strip, not a collapsed sidebar button", () => {
+test("mobile recent notes use a native collapsed disclosure with a vertical list", () => {
   const component = MobileRecentNotes({ limit: 5 })
   const html = render(component(props))
-  assert.ok(html.includes('<nav class="recent-notes recent-notes-mobile"'))
+  assert.ok(html.includes('<details class="recent-notes recent-notes-mobile"'))
   assert.ok(html.includes("最近的笔记"))
-  assert.ok(html.includes('tabindex="0"'))
+  assert.ok(html.includes('<summary class="recent-notes-toggle"'))
+  assert.ok(!html.includes(" open"))
   assert.ok(!html.includes("<button"))
   assert.ok(!html.includes("collapsed"))
   assert.ok(html.indexOf("Newer note") < html.indexOf("Older note"))
   assert.ok(html.includes('href="../05tools/newer"'))
   for (const hidden of [">Tag<", ">Directory<", ">Private<"]) assert.ok(!html.includes(hidden))
   assert.equal(component.afterDOMLoaded, undefined)
-  assert.match(component.css, /\.recent-notes\.recent-notes-mobile\s*\{[^}]*flex-direction: row;/)
+  assert.match(component.css, /\.recent-notes\.recent-notes-mobile\s*\{[^}]*display: block;/)
   assert.match(
     component.css,
-    /\.recent-notes-mobile > ul\.recent-ul\s*\{[^}]*min-width: 0;[^}]*overflow-x: auto;/,
+    /\.recent-notes-mobile > ul\.recent-ul\s*\{[^}]*flex-direction: column;/,
   )
   assert.match(
     component.css,
-    /\.recent-notes-mobile > ul\.recent-ul > li\.recent-li\s*\{[^}]*white-space: nowrap;/,
+    /\.recent-notes-mobile > ul\.recent-ul > li\.recent-li\s*\{[^}]*white-space: normal;[^}]*overflow-wrap: anywhere;/,
   )
+  assert.match(component.css, /\.recent-notes-mobile:not\(\[open\]\) \.fold/)
+  const expanded = render(MobileRecentNotes({ defaultCollapsed: false })(props))
+  assert.ok(expanded.includes(" open"))
 })
 
 test("both languages use the same ordering and retain localized titles and links", () => {
@@ -68,6 +72,8 @@ test("desktop notes keep their collapsed behavior and bottom anchoring", () => {
   assert.ok(html.includes("recent-notes-toggle"))
   assert.ok(!html.includes("recent-notes-mobile"))
   assert.ok(component.afterDOMLoaded.includes("setupRecentNotes"))
+  assert.ok(component.afterDOMLoaded.includes('querySelectorAll("button.recent-notes-toggle")'))
+  assert.ok(!component.afterDOMLoaded.includes('querySelectorAll(".recent-notes-toggle")'))
   const css = fs.readFileSync(new URL("../../styles/custom.scss", import.meta.url), "utf8")
   assert.match(
     css,

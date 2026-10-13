@@ -2,6 +2,28 @@
 
 // put your custom CSS here!
 
+.center > article p,
+.center > article li {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: auto;
+}
+
+html[lang^="en"] .center > article p,
+html[lang^="en"] .center > article li {
+  hyphens: auto;
+}
+
+.center > article pre,
+.center > article pre code {
+  text-align: left;
+  text-align-last: auto;
+}
+
+.center > article code {
+  hyphens: none;
+}
+
 @media all and (min-width: 801px) {
   .sidebar.left {
     overflow-y: hidden;

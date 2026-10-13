@@ -68,38 +68,37 @@ const css = `
 }
 
 .recent-notes.recent-notes-mobile {
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: baseline;
-  gap: 0.75rem;
+  display: block;
   min-width: 0;
   max-width: 100%;
   overflow: visible;
   margin-bottom: 1.5rem;
 }
-.recent-notes-mobile > h3 {
-  flex: 0 0 auto;
-  margin: 0;
-  font-size: 0.85rem;
+.recent-notes-mobile > summary {
+  width: 100%;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0.35rem 0;
+}
+.recent-notes-mobile > summary::-webkit-details-marker { display: none; }
+.recent-notes-mobile > summary::marker { content: ""; }
+.recent-notes-mobile > summary h3 {
   white-space: nowrap;
 }
+.recent-notes-mobile:not([open]) .fold { transform: rotateZ(-90deg); }
 .recent-notes-mobile > ul.recent-ul {
   display: flex;
-  flex-wrap: nowrap;
-  flex: 1 1 0;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   min-width: 0;
-  margin: 0;
-  padding: 0 0 0.35rem;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  overscroll-behavior-x: contain;
+  margin: 0.5rem 0 0;
+  padding: 0;
 }
 .recent-notes-mobile > ul.recent-ul > li.recent-li {
-  flex: 0 0 auto;
   margin: 0;
   font-size: 0.85rem;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .recent-notes-mobile .internal {
   background-color: transparent;
@@ -109,7 +108,7 @@ const css = `
 
 const script = `
 function setupRecentNotes() {
-  for (const button of document.querySelectorAll(".recent-notes-toggle")) {
+  for (const button of document.querySelectorAll("button.recent-notes-toggle")) {
     if (button.dataset.recentNotesBound === "true") continue
     button.dataset.recentNotesBound = "true"
 
@@ -303,18 +302,21 @@ export function RecentNotes(userOpts = {}) {
     const remaining = Math.max(0, pages.length - opts.limit)
     const isCollapsed = opts.defaultCollapsed !== false
 
-    if (opts.horizontal) {
-      return jsx("nav", {
+    if (opts.mobileDisclosure) {
+      return jsx("details", {
         class: classNames(displayClass, "recent-notes", "recent-notes-mobile"),
+        open: !isCollapsed,
         "aria-label": opts.title ?? titleForLocale(locale),
         children: [
-          jsx("h3", { children: opts.title ?? titleForLocale(locale) }),
+          jsx("summary", {
+            class: "recent-notes-toggle",
+            children: [
+              jsx("h3", { children: opts.title ?? titleForLocale(locale) }),
+              renderFoldIcon(),
+            ],
+          }),
           jsx("ul", {
             class: "recent-ul",
-            tabIndex: 0,
-            "aria-label": String(locale).startsWith("zh")
-              ? "横向滑动查看最近笔记"
-              : "Scroll to browse recent notes",
             children: pages.slice(0, opts.limit).map((page) =>
               jsx("li", {
                 class: "recent-li",
@@ -404,6 +406,6 @@ export function RecentNotes(userOpts = {}) {
   }
 
   Component.css = css
-  if (!userOpts.horizontal) Component.afterDOMLoaded = script
+  if (!userOpts.mobileDisclosure) Component.afterDOMLoaded = script
   return Component
 }

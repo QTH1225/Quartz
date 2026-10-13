@@ -9,7 +9,7 @@
   "quartz": {
     "name": "mobile-recent-notes",
     "displayName": "Mobile Recent Notes",
-    "description": "A horizontal recent-notes strip above comments on mobile.",
+    "description": "An expandable recent-notes list above comments on mobile.",
     "version": "1.0.0",
     "category": "component",
     "quartzVersion": ">=5.0.0",
