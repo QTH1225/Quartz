@@ -88,6 +88,7 @@ jobs:
 ```
 ### 贪吃蛇数据贡献图
 你可以在你的GitHub profile中以贪吃蛇的形式展示你的贡献图，就像这样
+
 <picture>  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/QTH1225/QTH1225/output/github-contribution-grid-snake-dark.svg">  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/QTH1225/QTH1225/output/github-contribution-grid-snake.svg">  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/QTH1225/QTH1225/output/github-contribution-grid-snake.svg"> </picture>
 该项目的地址如下。
 [Platane/snk](https://github.com/Platane/snk)

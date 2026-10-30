@@ -5,6 +5,16 @@ filters:
     - file.ext != "pdf"
     - file.basename != "Template"
 views:
+  - type: kanban
+    name: 视图
+    filters:
+      and:
+        - '!file.inFolder("Attachments")'
+    groupBy:
+      property: file.folder
+      direction: ASC
+    order:
+      - title
   - type: table
     name: 表格
     filters:

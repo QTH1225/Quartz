@@ -170,6 +170,19 @@ html[lang^="en"] .center > article li {
   opacity: 1;
 }
 
+// Align article tables with the prose column, regardless of their content length.
+// Keep automatic column sizing and the base horizontal scrollbar for wide tables.
+.center > article .table-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.center > article .table-container > table {
+  width: 100%;
+  margin: 1rem 0;
+  table-layout: auto;
+}
+
 .table-container table img {
   display: block;
   max-width: 100%;
