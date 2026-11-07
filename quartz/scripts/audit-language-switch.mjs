@@ -2,6 +2,7 @@ import fs from "node:fs"
 import path from "node:path"
 import process from "node:process"
 import { parse as parseYaml } from "yaml"
+import publication from "../publication.json" with { type: "json" }
 
 const root = process.cwd()
 const contentRoot = path.join(root, "content")
@@ -41,7 +42,9 @@ function route(relative, english = false) {
 
 function htmlPath(relative, english = false) {
   const withoutExtension = relative.replace(/\.md$/i, "")
-  const segments = withoutExtension.split("/").map((part) => part.replace(/\s+/g, "-").toLowerCase())
+  const segments = withoutExtension
+    .split("/")
+    .map((part) => part.replace(/\s+/g, "-").toLowerCase())
   const isIndex = segments.at(-1) === "index"
   const htmlRelative = isIndex
     ? path.join(...segments.slice(0, -1), "index.html")
@@ -61,6 +64,14 @@ for (const { fullPath, relative } of walk(contentRoot)) {
     errors.push(`${relative}：缺少中文构建页面`)
     continue
   }
+  if (!publication.englishEnabled) {
+    const zhHtml = fs.readFileSync(zhHtmlPath, "utf8")
+    if (/class="[^"]*\blanguage-switch\b/.test(zhHtml)) {
+      errors.push(`${relative}：英文发布暂停时不应显示语言切换按钮`)
+    }
+    checked += 1
+    continue
+  }
   if (!fs.existsSync(enHtmlPath)) {
     errors.push(`${relative}：缺少英文构建页面`)
     continue
@@ -76,6 +87,11 @@ for (const { fullPath, relative } of walk(contentRoot)) {
   checked += 1
 }
 
-console.log(`已检查 ${checked} 对已发布页面的双向语言切换；错误：${errors.length}`)
+if (!publication.englishEnabled && fs.existsSync(path.join(publicRoot, "en"))) {
+  errors.push("英文发布暂停时不应保留 public/en 构建产物")
+}
+console.log(
+  `已检查 ${checked} 个已发布页面的语言入口（英文${publication.englishEnabled ? "启用" : "暂停"}）；错误：${errors.length}`,
+)
 for (const error of errors) console.error(`- ${error}`)
 if (errors.length > 0) process.exitCode = 1

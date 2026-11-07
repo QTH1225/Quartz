@@ -2,16 +2,18 @@
 
 这个数字花园基于 [Quartz v5](https://quartz.jzhao.xyz/) 构建，用于将笔记、随笔和科研资料发布为可访问的网站。
 
-生产域名为 `https://tianhao.blog`。在 `quartz.config.yaml` 中设置 `configuration.baseUrl: tianhao.blog`（不加协议）；中英文构建统一读取此配置，英文自动追加 `/en`。部署环境若设置了 `QUARTZ_BASE_URL`，该变量会覆盖文件配置，应删除旧值或设置为 `tianhao.blog`。
+生产域名为 `https://tianhao.blog`。在 `quartz.config.yaml` 中设置 `configuration.baseUrl: tianhao.blog`（不加协议）；构建统一读取此配置。部署环境若设置了 `QUARTZ_BASE_URL`，该变量会覆盖文件配置，应删除旧值或设置为 `tianhao.blog`。
 
-站点当前采用中英文双语内容结构：
+站点当前只发布中文，保留完整的双语源文件结构：
 
 - 中文内容位于 `content/`
-- 英文内容位于 `content-en/`
+- 英文内容位于 `content-en/`，暂不发布
 - 中文站点输出到 `public/`
-- 英文站点输出到 `public/en/`
+- 英文恢复发布后输出到 `public/en/`
 
-本项目已扩展构建入口：不指定 `-d` 时，`npx quartz build` 和 `npx quartz build --serve` 会同时构建中英文站点。指定 `-d` 时只构建选定的内容目录；也可使用 `npm run build:i18n` 顺序构建双语站点。
+发布开关位于 `quartz/publication.json`，当前为 `"englishEnabled": false`。它统一控制英文构建和语言切换按钮。`npm run build`、`npx quartz build`、`npm run dev` 以及原部署命令 `npm run build:i18n` 都遵守此开关，当前只生成中文站。构建会清理旧输出，因此不会残留上一次的 `public/en/`。
+
+以后恢复英文时，只需将 `englishEnabled` 改为 `true`，重启预览进程并重新构建、部署，即可恢复 `/en/`、语言按钮和英文搜索索引、RSS、站点地图。无需修改文章的 `draft` 或 `translations`。暂停期间不支持用 `-d content-en` 绕过开关发布英文。
 
 ## 主题和样式
 
@@ -32,13 +34,13 @@
 - `05Tools`：工具配置与实践
 - `06Misc`：杂项
 
-英文目录与中文目录一一对应。附件集中在 `content/Attachments/`，按对应分类保存，例如 `Attachments/01Code/`；构建时会同时复制到中文与英文站点。
+英文目录与中文目录一一对应。附件集中在 `content/Attachments/`，按对应分类保存，例如 `Attachments/01Code/`；启用英文发布时，构建会将共用附件复制到英文站点。
 
 目录和文章的网页显示名称由 Markdown frontmatter 中的 `title` 控制。因此文件夹名可以保持英文，网页上仍然可以显示中文标题。
 
 Quartz 会将 URL slug 规范化为小写。例如 `content/01Code/index.md` 最终对应 `/01code/`。双语跳转链接也应使用小写 URL。
 
-中英文文章通过 frontmatter 的 `translations` 字段建立对应关系：
+中英文文章通过 frontmatter 的 `translations` 字段建立对应关系，暂停英文发布时仍保留这些字段，但不显示语言入口：
 
 ```yaml
 ---
@@ -68,54 +70,48 @@ npm install
 # 安装 Quartz v5 插件
 npx quartz plugin install --from-config
 
-# 启动中英文站点开发服务器
+# 启动本地预览（当前只发布中文）
 npm run dev
 
-# 构建中英文站点
-npx quartz build
+# 按发布开关构建站点
+npm run build
 
 # 只构建中文站点
 npx quartz build -d content
 
-# 构建中英文双语站点
+# 兼容原部署命令，同样遵守发布开关
 npm run build:i18n
 ```
 
-`npm run build:i18n` 调用与 `npx quartz build` 相同的双语构建入口，依次生成以下输出：
-
-```bash
-node quartz/bootstrap-cli.mjs build -d content -o public
-node quartz/bootstrap-cli.mjs build -d content-en -o public/en
-```
-
-不指定 `-d` 的 `npx quartz build` 同样会生成 `/en/` 英文站点。
+`npm run build:i18n` 保留旧命令名称以兼容现有部署设置，但不会强制发布英文。仅在 `englishEnabled: true` 且不指定 `-d` 时，构建入口才会依次生成中文站点及 `/en/` 英文站点，英文域名路径自动从 `configuration.baseUrl` 派生。
 
 本地预览推荐 `npm run dev`，它明确调用本仓库的入口。如果 `npx quartz build --serve` 实际调用了 npm 缓存中的 Quartz，可能使用不同版本的 CLI，导致双语域名、附件或构建结果不一致。请先在原终端按 `Ctrl+C` 停止旧服务器，再运行 `npm run dev`，不要让两个构建进程同时写入 `public/`。
 
 ## 部署
 
-部署生产站点时应使用：
+部署生产站点时可以使用：
 
 ```bash
-npm run build:i18n
+npm run build
 ```
 
 部署目录为 `public/`。其中：
 
 - `public/` 根目录是中文站点
-- `public/en/` 是英文站点
+- 当前不生成 `public/en/`，也不生成英文搜索索引、RSS 或站点地图
 - `public/index.xml` 是 RSS 订阅源
 - `public/sitemap.xml` 是搜索引擎站点地图
 
-RSS 仅收录正式发布的 Markdown 文章，排除首页、目录页、自动生成页面、草稿、未列出及加密笔记，优先按 `published` 日期倒序取最新 10 篇；未设置发布时间时沿用 Quartz 的 Git/文件日期信息。中文订阅地址为 `https://tianhao.blog/index.xml`，英文为 `https://tianhao.blog/en/index.xml`；页脚和 RSS 自动发现链接随当前语言切换。搜索索引与站点地图仍保留标签页、目录页。
+RSS 仅收录正式发布的 Markdown 文章，排除首页、目录页、自动生成页面、草稿、未列出及加密笔记，优先按 `published` 日期倒序取最新 10 篇；未设置发布时间时沿用 Quartz 的 Git/文件日期信息。当前订阅地址为 `https://tianhao.blog/index.xml`。搜索索引与站点地图仍保留中文标签页、目录页；英文发布恢复后才会重新生成英文对应文件。
 
-部署时也可使用 `npx quartz build`；指定 `-d content` 才会只生成中文站点。
+现有部署平台若仍使用 `npm run build:i18n` 或 `npx quartz build`，无需更改命令。部署目录保持 `public/`。部署应替换旧站点产物，不应将新文件增量叠加到旧英文目录上；如果 CDN 仍返回旧 `/en/` 页面，需要清除相应缓存。搜索引擎已经收录的旧页面也需要时间才能移除。
 
 目录调整后，可运行下列命令检查内容、双语映射和生成页面的链接：
 
 ```bash
 npm run check:content
 npm run check:bilingual
+npm run check:publication
 npm run check:built-links
 npm run check:built-domain
 npm run check:rss

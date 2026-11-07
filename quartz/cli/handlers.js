@@ -16,6 +16,7 @@ import { randomUUID } from "crypto"
 import { Mutex } from "async-mutex"
 import { CreateArgv } from "./args.js"
 import { globby } from "globby"
+import publication from "../publication.json" with { type: "json" }
 import {
   exitIfCancel,
   escapePath,
@@ -71,10 +72,6 @@ function hasCliOption(longName, shortName) {
   })
 }
 
-function shouldUseI18nBuild() {
-  return !hasCliOption("--directory", "-d") && fs.existsSync(path.join(cwd, "content-en"))
-}
-
 function appendEnBaseUrl(baseUrl) {
   if (!baseUrl) return undefined
   const normalized = String(baseUrl).replace(/\/+$/, "")
@@ -85,9 +82,20 @@ function configuredBaseUrl() {
   return process.env.QUARTZ_BASE_URL ?? readPluginsJson()?.configuration?.baseUrl
 }
 
-function createBuildTargets(argv) {
+export function createBuildTargets(
+  argv,
+  {
+    englishEnabled = publication.englishEnabled,
+    directorySpecified = hasCliOption("--directory", "-d"),
+  } = {},
+) {
   const serveBasePath = (argv.baseDir ?? "").replace(/\/+$/, "")
-  if (!shouldUseI18nBuild()) {
+  if (!englishEnabled && path.resolve(argv.directory) === path.join(cwd, "content-en")) {
+    throw new Error(
+      "英文发布已暂停。如需恢复，请将 quartz/publication.json 的 englishEnabled 设为 true。",
+    )
+  }
+  if (!englishEnabled || directorySpecified || !fs.existsSync(path.join(cwd, "content-en"))) {
     return [{ label: undefined, argv: { ...argv, serveBasePath }, env: {} }]
   }
 
@@ -730,6 +738,7 @@ export async function handleBuild(argv) {
       "quartz.config.*.yaml",
       "quartz.config.default.yaml",
       "quartz/plugins/language-switch/**/*",
+      "quartz/publication.json",
     ])
     chokidar
       .watch(paths, { ignoreInitial: true })

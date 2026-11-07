@@ -1,6 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { readPluginsJson } from "../cli/plugin-data.js"
+import publication from "../publication.json" with { type: "json" }
 
 const outputRoot = path.resolve(process.argv[2] ?? "public")
 const baseUrl = process.env.QUARTZ_BASE_URL ?? readPluginsJson()?.configuration?.baseUrl
@@ -37,7 +38,7 @@ function walk(directory) {
 for (const [prefix, expectedBase] of [
   ["", base],
   ["en", enBase],
-]) {
+].filter(([prefix]) => publication.englishEnabled || prefix !== "en")) {
   const cname = path.join(outputRoot, prefix, "CNAME")
   if (fs.readFileSync(cname, "utf8").trim() !== base.hostname) {
     errors.push(`${cname}：CNAME 应为 ${base.hostname}`)
@@ -77,7 +78,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `已检查 ${pages.length} 个页面、${checked} 个绝对地址及中英文 CNAME；生产域名：${base.hostname}`,
+  `已检查 ${pages.length} 个页面、${checked} 个绝对地址及已启用语言 CNAME；生产域名：${base.hostname}`,
 )
 console.log(`域名错误：${errors.length}`)
 for (const error of errors) console.error(`- ${error}`)

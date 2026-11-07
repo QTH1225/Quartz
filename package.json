@@ -14,7 +14,9 @@
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
     "dev": "node quartz/bootstrap-cli.mjs build --serve",
+    "build": "node quartz/bootstrap-cli.mjs build",
     "build:i18n": "node quartz/scripts/build-i18n.mjs",
+    "check:publication": "node --test quartz/cli/publication.test.mjs quartz/scripts/audit-publication.test.mjs && node quartz/scripts/audit-publication.mjs",
     "check:content": "node quartz/scripts/audit-content.mjs",
     "check:bilingual": "node quartz/scripts/audit-bilingual.mjs",
     "check:language-switch": "node quartz/scripts/audit-language-switch.mjs",

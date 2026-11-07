@@ -30,3 +30,4 @@ lang: zh-CN
 学士学位论文：基于 ICCP 技术-TRC 模板的装配式框剪结构优化设计与耐久性分析——以厦门宏东渔旅酒店为例
 - 链接：[[Attachments/00Aboutme/毕业设计.pdf|学士学位论文]]
 - 设计图纸：[[Attachments/00Aboutme/图纸.pdf|设计图纸]]
+- 宣传海报：[[优秀本科毕设.pdf|优秀本科毕业设计]]  [[毕设Poster.pdf|毕业设计海报]]

@@ -5,6 +5,7 @@ import { parse } from "yaml"
 import { fromHtml } from "hast-util-from-html"
 import { slugifyFilePath } from "@quartz-community/utils"
 import { readPluginsJson } from "../cli/plugin-data.js"
+import publication from "../publication.json" with { type: "json" }
 import {
   canonicalPath,
   commentPath,
@@ -26,7 +27,7 @@ let widgetsChecked = 0
 for (const [directory, prefix] of [
   ["content", ""],
   ["content-en", "en/"],
-]) {
+].filter(([directory]) => publication.englishEnabled || directory !== "content-en")) {
   for (const relativePath of await globby("**/*.md", {
     cwd: directory,
     ignore: config.configuration.ignorePatterns,
@@ -83,7 +84,7 @@ for (const [route, legacy] of Object.entries(legacyPaths)) {
 }
 if (!widgetsChecked) errors.push("没有找到评论组件，请先构建网站")
 console.log(
-  `评论检查：${widgetsChecked} 个中英文页面，${Object.keys(legacyPaths).length} 组旧评论映射，错误 ${errors.length}`,
+  `评论检查：${widgetsChecked} 个已发布页面，${Object.keys(legacyPaths).length} 组旧评论映射，错误 ${errors.length}`,
 )
 for (const error of errors) console.error(error)
 if (errors.length) process.exitCode = 1

@@ -2,8 +2,8 @@ import { spawnSync } from "node:child_process"
 import process from "node:process"
 import "./patch-quartz-date-format.mjs"
 
-// The CLI already builds both languages, derives /en from the configured baseUrl,
-// and copies shared attachments. Keep both build commands on the same code path.
+// Keep existing deployment commands working. The CLI follows publication.json:
+// Chinese only while English is paused; both languages when it is restored.
 const result = spawnSync(process.execPath, ["quartz/bootstrap-cli.mjs", "build"], {
   cwd: process.cwd(),
   env: process.env,

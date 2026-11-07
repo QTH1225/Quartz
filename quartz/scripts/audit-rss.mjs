@@ -6,6 +6,7 @@ import { parse } from "yaml"
 import { slugifyFilePath, simplifySlug } from "@quartz-community/utils"
 import { readPluginsJson } from "../cli/plugin-data.js"
 import { feedUrls, selectEntries } from "../plugins/rss-feed/dist/index.js"
+import publication from "../publication.json" with { type: "json" }
 
 const config = readPluginsJson()
 const outputRoot = path.resolve(process.argv[2] ?? "public")
@@ -54,7 +55,7 @@ for (const [directory, output, base, locale] of [
     baseUrl.endsWith("/en") ? baseUrl : `${baseUrl}/en`,
     "en-US",
   ],
-]) {
+].filter(([directory]) => publication.englishEnabled || directory !== "content-en")) {
   const content = []
   for (const relative of await globby("**/*.md", {
     cwd: directory,
@@ -127,7 +128,7 @@ for (const [directory, output, base, locale] of [
 }
 
 console.log(
-  `已检查中英文 RSS 的 ${itemsChecked} 条正式文章及 ${pagesChecked} 个页面的订阅链接；错误：${errors.length}`,
+  `已检查已启用语言 RSS 的 ${itemsChecked} 条正式文章及 ${pagesChecked} 个页面的订阅链接；错误：${errors.length}`,
 )
 for (const error of errors) console.error(`- ${error}`)
 if (errors.length) process.exitCode = 1
