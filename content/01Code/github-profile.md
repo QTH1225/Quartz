@@ -6,7 +6,8 @@ authorLink: https://github.com/QTH1225
 description: 如何配置一个好看的Github Profile页面
 published: 2025-10-18
 tags:
-  - Blogging
+  - GitHub
+  - 个人主页
 pinned: false
 translations:
   en: /en/01code/github-profile

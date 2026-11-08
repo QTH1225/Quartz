@@ -4,7 +4,8 @@ draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
-  - AI
+  - 人工智能
+  - 阅读
 translations:
   en: /en/03notes/signs-of-ai-writing
 lang: zh-CN

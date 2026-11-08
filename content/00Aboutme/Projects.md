@@ -6,7 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 本人参与的项目
 published: 2025-01-01
 tags:
-  - aboutme
+  - 关于我
 translations:
   en: /en/00aboutme/projects
 lang: zh-CN

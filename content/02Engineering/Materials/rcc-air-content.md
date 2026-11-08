@@ -6,7 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 碾压混凝土含气量的测定原理及方法
 published: 2025-10-27
 tags:
-  - Concrete
+  - 混凝土
 translations:
   en: /en/02engineering/materials/rcc-air-content
 lang: zh-CN

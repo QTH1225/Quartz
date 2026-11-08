@@ -6,8 +6,8 @@ authorLink: https://github.com/QTH1225
 description: 22岁这一年的小总结以及感悟，希望自己可以在下一年继续慢慢前行不要着急
 published: 2025-12-25
 tags:
-  - Blogging
-  - Birthday
+  - 生日
+  - 年度总结
 image: https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225163945225.webp
 translations:
   en: /en/04blog/23-birthday

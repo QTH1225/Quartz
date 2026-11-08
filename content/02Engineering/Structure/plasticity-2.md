@@ -6,8 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 弹塑性力学中的张量分析初步
 published: 2025-11-10
 tags:
-  - Mechanics
-  - Elastoplasticity
+  - 弹塑性力学
 translations:
   en: /en/02engineering/structure/plasticity-2
 lang: zh-CN

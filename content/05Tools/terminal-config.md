@@ -6,8 +6,8 @@ authorLink: https://github.com/QTH1225
 description: Windows终端的配置
 published: 2025-01-01
 tags:
-  - Template
-  - Mizuki
+  - 终端
+  - 系统配置
 translations:
   en: /en/05tools/terminal-config
 lang: zh-CN

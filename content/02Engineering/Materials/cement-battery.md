@@ -5,7 +5,6 @@ author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
   - 储能器件
-  - 水泥基电池
 translations:
   en: /en/02engineering/materials/cement-battery
 lang: zh-CN

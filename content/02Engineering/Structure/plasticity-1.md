@@ -6,8 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 本文是弹塑性力学的绪论部分
 published: 2025-11-19
 tags:
-  - Mechanics
-  - Elastoplasticity
+  - 弹塑性力学
 translations:
   en: /en/02engineering/structure/plasticity-1
 lang: zh-CN

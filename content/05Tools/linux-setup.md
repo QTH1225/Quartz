@@ -6,8 +6,8 @@ authorLink: https://github.com/QTH1225
 description: Linux安装及基本配置
 published: 2025-01-01
 tags:
-  - Template
-  - Mizuki
+  - Linux
+  - 系统配置
 translations:
   en: /en/05tools/linux-setup
 lang: zh-CN

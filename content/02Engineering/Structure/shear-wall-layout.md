@@ -4,7 +4,7 @@ draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
-  - 剪力墙
+  - 结构设计
 translations:
   en: /en/02engineering/structure/shear-wall-layout
 lang: zh-CN

@@ -6,8 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 弹塑性力学中的应力分析部分
 published: 2025-11-27
 tags:
-  - Elastoplasticity
-  - Mechanics
+  - 弹塑性力学
 translations:
   en: /en/02engineering/structure/plasticity-3
 lang: zh-CN

@@ -6,7 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 推荐的一些在电脑端好用的软件
 published: 2025-09-27
 tags:
-  - software
+  - 软件
 pinned: false
 translations:
   en: /en/05tools/pc-software

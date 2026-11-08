@@ -5,7 +5,8 @@ author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 published: 2025-10-07
 tags:
-  - Template
+  - Rime
+  - 输入法
 translations:
   en: /en/05tools/rime-input
 lang: zh-CN

@@ -7,7 +7,7 @@ description: Obsidian×Mizuki博客发布流程
 published: 2025-11-09
 tags:
   - Mizuki
-  - Workflow
+  - 工作流
   - Obsidian
 translations:
   en: /en/05tools/obsidian-mizuki
@@ -114,9 +114,7 @@ author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: Your description Here
 published: 2025-01-01
-tags:
-  - Template
-  - Mizuki
+tags: []
 lang: zh-CN
 ---
 ```

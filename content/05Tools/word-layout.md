@@ -6,8 +6,8 @@ authorLink: https://github.com/QTH1225
 description: 你不会还在把Word当成打字工具吧？
 published: 2025-11-30
 tags:
-  - software
-  - tools
+  - 软件
+  - 文档排版
 translations:
   en: /en/05tools/word-layout
 lang: zh-CN

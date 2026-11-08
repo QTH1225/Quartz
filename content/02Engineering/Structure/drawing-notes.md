@@ -4,7 +4,7 @@ draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
-  - CAD图纸
+  - 工程制图
 translations:
   en: /en/02engineering/structure/drawing-notes
 lang: zh-CN

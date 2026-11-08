@@ -5,8 +5,9 @@ author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 published: 2025-01-01
 tags:
-  - Template
-  - Mizuki
+  - 图床
+  - PicList
+  - GitHub
 translations:
   en: /en/05tools/piclist-github
 lang: zh-CN

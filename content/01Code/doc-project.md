@@ -4,7 +4,6 @@ draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
-  - docs
   - 文档工程
   - 人工智能
 translations:

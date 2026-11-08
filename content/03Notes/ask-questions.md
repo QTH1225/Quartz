@@ -1,12 +1,12 @@
 ---
-title: 阅读| 提问的艺术
+title: 阅读笔记| 提问的艺术
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: 如何问出一个好问题？如何得到你想要的答案？
 published: 2025-10-06
 tags:
-  - Reading
+  - 阅读
 translations:
   en: /en/03notes/ask-questions
 lang: zh-CN

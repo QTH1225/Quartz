@@ -6,7 +6,7 @@ authorLink: https://github.com/QTH1225
 description: 简单配置一下Claude Code并记录
 published: 2025-01-01
 tags:
-  - tools
+  - 工具
 translations:
   en: /en/05tools/claude-code-config
 lang: zh-CN
