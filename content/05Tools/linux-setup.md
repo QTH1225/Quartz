@@ -53,6 +53,10 @@ lang: zh-CN
 
 ## Linux的软件配置
 
+### MATLAB（Arch Linux / Niri）
+
+在 Arch Linux 的 Niri/Wayland 桌面上使用 MPM 安装 MATLAB R2026b，以及下载中断、启动崩溃和中文输入无法切换的完整排查，单独记录在 [[matlab-linux|Arch Linux 下安装 MATLAB 与中文输入修复]]。最终通过在线授权模式启动，并使用 `QT_IM_MODULE=ibus`、`QT_IM_MODULES=ibus`、`QT_QPA_PLATFORM=xcb` 和 `IBUS_USE_PORTAL=1` 接通 Fcitx5 的 IBus 兼容接口。
+
 ### 备份Backup
 这个可以直接使用ubuntu自带的备份或下载timeshift进行系统备份。备份时需要注意是否备份了个人文件，还是仅备份系统文件。
 
