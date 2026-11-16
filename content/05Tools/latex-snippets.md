@@ -6,9 +6,6 @@ authorLink: https://github.com/QTH1225
 published: 2025-01-01
 tags:
   - LaTeX
-translations:
-  en: /en/05tools/latex-snippets
-lang: zh-CN
 ---
 
 ## 什么是Snippets

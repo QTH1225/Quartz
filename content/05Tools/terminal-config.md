@@ -8,9 +8,6 @@ published: 2025-01-01
 tags:
   - 终端
   - 系统配置
-translations:
-  en: /en/05tools/terminal-config
-lang: zh-CN
 ---
 
 Clink插件

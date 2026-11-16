@@ -4,7 +4,6 @@ import vm from "node:vm"
 import { globby } from "globby"
 import { fromHtml } from "hast-util-from-html"
 import { readPluginsJson } from "../cli/plugin-data.js"
-import publication from "../publication.json" with { type: "json" }
 
 const root = path.resolve(process.argv[2] ?? "public")
 const configuration = readPluginsJson().configuration
@@ -124,8 +123,5 @@ if (!checked) errors.push("没有找到可验证的统计组件，请先构建�
 console.log(`网站统计检查：${checked} 个页面，错误 ${errors.length}`)
 console.log(`已发布正文：中文 ${totals.get("zh")} 字`)
 console.log(`已发布笔记：中文 ${noteTotals.get("zh")} 篇`)
-if (publication.englishEnabled) {
-  console.log(`已发布英文：${totals.get("en")} words，${noteTotals.get("en")} 篇`)
-}
 for (const error of errors) console.error(error)
 if (errors.length) process.exitCode = 1

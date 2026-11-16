@@ -16,7 +16,6 @@ import { randomUUID } from "crypto"
 import { Mutex } from "async-mutex"
 import { CreateArgv } from "./args.js"
 import { globby } from "globby"
-import publication from "../publication.json" with { type: "json" }
 import {
   exitIfCancel,
   escapePath,
@@ -60,72 +59,9 @@ function resolveContentPath(contentPath) {
   return path.join(cwd, contentPath)
 }
 
-function hasCliOption(longName, shortName) {
-  return process.argv.some((arg) => {
-    return (
-      arg === longName ||
-      arg.startsWith(`${longName}=`) ||
-      arg === shortName ||
-      arg.startsWith(`${shortName}=`) ||
-      (!arg.startsWith("--") && arg.startsWith(shortName) && arg.length > shortName.length)
-    )
-  })
-}
-
-function appendEnBaseUrl(baseUrl) {
-  if (!baseUrl) return undefined
-  const normalized = String(baseUrl).replace(/\/+$/, "")
-  return normalized.endsWith("/en") ? normalized : `${normalized}/en`
-}
-
-function configuredBaseUrl() {
-  return process.env.QUARTZ_BASE_URL ?? readPluginsJson()?.configuration?.baseUrl
-}
-
-export function createBuildTargets(
-  argv,
-  {
-    englishEnabled = publication.englishEnabled,
-    directorySpecified = hasCliOption("--directory", "-d"),
-  } = {},
-) {
+export function createBuildTargets(argv) {
   const serveBasePath = (argv.baseDir ?? "").replace(/\/+$/, "")
-  if (!englishEnabled && path.resolve(argv.directory) === path.join(cwd, "content-en")) {
-    throw new Error(
-      "英文发布已暂停。如需恢复，请将 quartz/publication.json 的 englishEnabled 设为 true。",
-    )
-  }
-  if (!englishEnabled || directorySpecified || !fs.existsSync(path.join(cwd, "content-en"))) {
-    return [{ label: undefined, argv: { ...argv, serveBasePath }, env: {} }]
-  }
-
-  return [
-    {
-      label: "zh",
-      argv: {
-        ...argv,
-        directory: "content",
-        output: argv.output,
-        serveBasePath,
-      },
-      env: {
-        QUARTZ_LOCALE: "zh-CN",
-      },
-    },
-    {
-      label: "en",
-      argv: {
-        ...argv,
-        directory: "content-en",
-        output: path.join(argv.output, "en"),
-        serveBasePath: `${serveBasePath}/en`,
-      },
-      env: {
-        QUARTZ_LOCALE: "en-US",
-        QUARTZ_BASE_URL: appendEnBaseUrl(configuredBaseUrl()),
-      },
-    },
-  ]
+  return [{ label: undefined, argv: { ...argv, serveBasePath }, env: {} }]
 }
 
 async function withEnv(env, fn) {
@@ -149,19 +85,6 @@ async function withEnv(env, fn) {
         process.env[key] = value
       }
     }
-  }
-}
-
-function copySharedAttachments(output, quiet = false) {
-  const sharedAttachments = path.join(output, "attachments")
-  const localizedAttachments = path.join(output, "en", "attachments")
-
-  if (!fs.existsSync(sharedAttachments)) return
-
-  fs.rmSync(localizedAttachments, { recursive: true, force: true })
-  fs.cpSync(sharedAttachments, localizedAttachments, { recursive: true })
-  if (!quiet) {
-    console.log(styleText("gray", `[i18n] copied shared attachments to ${localizedAttachments}`))
   }
 }
 
@@ -441,7 +364,6 @@ export async function handleBuild(argv) {
   }
 
   const buildTargets = createBuildTargets(argv)
-  const isI18nBuild = buildTargets.length > 1
 
   console.log(`\n${styleText(["bgGreen", "black"], ` Quartz v${version} `)} \n`)
   const ctx = await esbuild.context({
@@ -557,9 +479,6 @@ export async function handleBuild(argv) {
       // bypass module cache
       // https://github.com/nodejs/modules/issues/307
       const refresh = () => {
-        if (isI18nBuild) {
-          copySharedAttachments(argv.output, true)
-        }
         clientRefresh()
       }
 
@@ -581,9 +500,6 @@ export async function handleBuild(argv) {
         )
       }
 
-      if (isI18nBuild) {
-        copySharedAttachments(argv.output)
-      }
       clientRefresh()
     })
   }
@@ -737,8 +653,6 @@ export async function handleBuild(argv) {
       "quartz.config.yaml",
       "quartz.config.*.yaml",
       "quartz.config.default.yaml",
-      "quartz/plugins/language-switch/**/*",
-      "quartz/publication.json",
     ])
     chokidar
       .watch(paths, { ignoreInitial: true })

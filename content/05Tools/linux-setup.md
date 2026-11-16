@@ -8,9 +8,6 @@ published: 2025-01-01
 tags:
   - Linux
   - 系统配置
-translations:
-  en: /en/05tools/linux-setup
-lang: zh-CN
 ---
 
 ## Linux的双系统安装

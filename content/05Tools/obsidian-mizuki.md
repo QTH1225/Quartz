@@ -9,9 +9,6 @@ tags:
   - Mizuki
   - 工作流
   - Obsidian
-translations:
-  en: /en/05tools/obsidian-mizuki
-lang: zh-CN
 ---
 
 ## Mizuki博客的搭建

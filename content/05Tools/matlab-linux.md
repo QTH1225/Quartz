@@ -9,7 +9,6 @@ tags:
   - Linux
   - MATLAB
   - Fcitx5
-lang: zh-CN
 ---
 
 这次在 Arch Linux 的 Niri/Wayland 桌面安装 MATLAB，先后遇到了下载中断、启动崩溃，以及中文输入法无法切换的问题。最终通过官方 MATLAB Package Manager（MPM）完成安装，并使用在线授权模式和 IBus Portal 连接恢复了正常使用。

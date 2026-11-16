@@ -4,7 +4,7 @@ import process from "node:process"
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml"
 
 const contentRoot = path.join(process.cwd(), "content")
-const ignoredSegments = new Set([".obsidian", "Template"])
+const ignoredSegments = new Set([".obsidian", "Template", "Templates", "templates"])
 const preferredOrder = [
   "title",
   "draft",
@@ -16,27 +16,22 @@ const preferredOrder = [
   "aliases",
   "pinned",
   "image",
-  "translations",
-  "lang",
 ]
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     if (ignoredSegments.has(entry.name)) return []
     const fullPath = path.join(directory, entry.name)
+    const relativePath = path.relative(contentRoot, fullPath).replaceAll("\\", "/")
+    if (
+      ["02Research/Literature", "03Notes/Literature", "03Notes/文献精读", "private"].includes(
+        relativePath,
+      )
+    )
+      return []
     if (entry.isDirectory()) return walk(fullPath)
     return [fullPath]
   })
-}
-
-function pageUrl(filePath, english = false) {
-  const relative = path.relative(contentRoot, filePath).replaceAll("\\", "/").replace(/\.md$/i, "")
-  const parts = relative.split("/").map((part) => part.replace(/\s+/g, "-").toLowerCase())
-  const isIndex = parts.at(-1) === "index"
-  if (isIndex) parts.pop()
-  const route = parts.join("/")
-  const prefix = english ? "/en/" : "/"
-  return `${prefix}${route}${isIndex && route ? "/" : ""}`
 }
 
 const markdownFiles = walk(contentRoot).filter(
@@ -56,8 +51,8 @@ for (const filePath of markdownFiles) {
   data.draft ??= false
   data.author ??= "Qin Tianhao"
   data.authorLink ??= "https://github.com/QTH1225"
-  data.translations = { en: pageUrl(filePath, true) }
-  data.lang = "zh-CN"
+  delete data.translations
+  delete data.lang
 
   const ordered = {}
   for (const key of preferredOrder) {

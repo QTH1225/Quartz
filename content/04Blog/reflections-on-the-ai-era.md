@@ -5,8 +5,5 @@ author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
   - 现象思考
-translations:
-  en: /en/04blog/reflections-on-the-ai-era
-lang: zh-CN
 ---
 

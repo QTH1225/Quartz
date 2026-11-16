@@ -3,9 +3,7 @@ import fs from "node:fs"
 import os from "node:os"
 import path from "node:path"
 import test from "node:test"
-import { auditPublication as checkPublication } from "./audit-publication.mjs"
-
-const auditPublication = (root) => checkPublication(root, { englishEnabled: false })
+import { auditPublication } from "./audit-publication.mjs"
 
 function fixture(t) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "quartz-publication-"))

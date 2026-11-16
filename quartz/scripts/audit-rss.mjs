@@ -6,7 +6,6 @@ import { parse } from "yaml"
 import { slugifyFilePath, simplifySlug } from "@quartz-community/utils"
 import { readPluginsJson } from "../cli/plugin-data.js"
 import { feedUrls, selectEntries } from "../plugins/rss-feed/dist/index.js"
-import publication from "../publication.json" with { type: "json" }
 
 const config = readPluginsJson()
 const outputRoot = path.resolve(process.argv[2] ?? "public")
@@ -47,15 +46,7 @@ function walk(directory) {
   })
 }
 
-for (const [directory, output, base, locale] of [
-  ["content", outputRoot, baseUrl, "zh-CN"],
-  [
-    "content-en",
-    path.join(outputRoot, "en"),
-    baseUrl.endsWith("/en") ? baseUrl : `${baseUrl}/en`,
-    "en-US",
-  ],
-].filter(([directory]) => publication.englishEnabled || directory !== "content-en")) {
+for (const [directory, output, base, locale] of [["content", outputRoot, baseUrl, "zh-CN"]]) {
   const content = []
   for (const relative of await globby("**/*.md", {
     cwd: directory,

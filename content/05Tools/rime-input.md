@@ -7,9 +7,6 @@ published: 2025-10-07
 tags:
   - Rime
   - 输入法
-translations:
-  en: /en/05tools/rime-input
-lang: zh-CN
 ---
 
 ## 小狼毫输入法配置

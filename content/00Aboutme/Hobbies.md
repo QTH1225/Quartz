@@ -7,7 +7,4 @@ description: 本人爱好
 published: 2025-01-01
 tags:
   - 关于我
-translations:
-  en: /en/00aboutme/hobbies
-lang: zh-CN
 ---

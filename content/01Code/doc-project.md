@@ -6,9 +6,6 @@ authorLink: https://github.com/QTH1225
 tags:
   - 文档工程
   - 人工智能
-translations:
-  en: /en/01code/doc-project
-lang: zh-CN
 ---
 
 在了解[[01Code/doc-engineering|文档工程介绍与写法]]之后，我们应该学习如何建立一份文档工程了。

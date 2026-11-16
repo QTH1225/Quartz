@@ -7,7 +7,8 @@ tsconfig.tsbuildinfo
 .quartz-cache
 private/
 /content/03Notes/文献精读/
-/content-en/03Notes/文献精读/
+/content/03Notes/Literature/
+/content/02Research/Literature/
 
 # Local environment secrets; example configurations remain versioned.
 .env

@@ -6,9 +6,6 @@ authorLink: https://github.com/QTH1225
 tags:
   - 文档工程
   - 人工智能
-translations:
-  en: /en/01code/doc-engineering
-lang: zh-CN
 ---
 
 ## 为什么需要文档工程

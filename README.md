@@ -1,176 +1,84 @@
 # Tianhao's Lab
 
-这个数字花园基于 [Quartz v5](https://quartz.jzhao.xyz/) 构建，用于将笔记、随笔和科研资料发布为可访问的网站。
+基于 [Quartz v5](https://quartz.jzhao.xyz/) 的中文数字花园，用于发布代码、工程学习、科研笔记和个人随笔。
 
-生产域名为 `https://tianhao.blog`。在 `quartz.config.yaml` 中设置 `configuration.baseUrl: tianhao.blog`（不加协议）；构建统一读取此配置。部署环境若设置了 `QUARTZ_BASE_URL`，该变量会覆盖文件配置，应删除旧值或设置为 `tianhao.blog`。
+生产域名为 `https://tianhao.blog`。`quartz.config.yaml` 中的 `configuration.baseUrl` 填写 `tianhao.blog`，不加协议。部署环境的 `QUARTZ_BASE_URL` 会覆盖此配置，请检查是否仍有旧值。
 
-站点当前只发布中文，保留完整的双语源文件结构：
+## 内容与附件
 
-- 中文内容位于 `content/`
-- 英文内容位于 `content-en/`，暂不发布
-- 中文站点输出到 `public/`
-- 英文恢复发布后输出到 `public/en/`
+正文位于 `content/`，网站输出到 `public/`。英文站源文件、翻译脚本、双语发布开关和语言切换插件已移除。搜索、RSS 和站点地图只包含中文站页面；语言由 `configuration.locale: zh-CN` 统一管理，笔记 YAML 无需 `lang` 或 `translations`。
 
-发布开关位于 `quartz/publication.json`，当前为 `"englishEnabled": false`。它统一控制英文构建和语言切换按钮。`npm run build`、`npx quartz build`、`npm run dev` 以及原部署命令 `npm run build:i18n` 都遵守此开关，当前只生成中文站。构建会清理旧输出，因此不会残留上一次的 `public/en/`。
+| 正文目录     | 内容                       |
+| ------------ | -------------------------- |
+| `00Aboutme`  | 个人资料                   |
+| `01Code`     | 代码、开发与计算机基础     |
+| `02Research` | 结构、材料与公开的文献精读 |
+| `03Notes`    | 通用学习方法与知识笔记     |
+| `04Blog`     | 个人随笔                   |
+| `05Tools`    | 工具配置与实践             |
+| `06Misc`     | 杂项                       |
 
-以后恢复英文时，只需将 `englishEnabled` 改为 `true`，重启预览进程并重新构建、部署，即可恢复 `/en/`、语言按钮和英文搜索索引、RSS、站点地图。无需修改文章的 `draft` 或 `translations`。暂停期间不支持用 `-d content-en` 绕过开关发布英文。
+文件夹和文件名继续使用现有名称，网站标题由 YAML 的 `title` 控制，URL 由 Quartz 转为小写。纯中文站不要求将文件名或技术专名改成中文。
 
-## 主题和样式
+附件统一平铺在 `Attachments/分类目录/` 下，不按笔记名称创建子目录，例如：
 
-- **主题**: 基于 Quartz v5 的现代简约风格
-- **颜色方案**: 保留原 Quartz v4 配置中的浅色/深色模式
-- **排版**: 保留原 Quartz v4 配置中的中英文阅读体验
-
-## 内容目录
-
-一级目录使用带编号的英文文件夹名，方便控制导航顺序并生成英文 URL：
-
-- `00Aboutme`：个人资料
-- `01Code`：代码、开发与计算机基础
-- `02Engineering/Materials`：材料研究
-- `02Engineering/Structure`：结构工程
-- `03Notes`：科研与阅读笔记
-- `04Blog`：个人随笔
-- `05Tools`：工具配置与实践
-- `06Misc`：杂项
-
-英文目录与中文目录一一对应。附件集中在 `content/Attachments/`，按对应分类保存，例如 `Attachments/01Code/`；启用英文发布时，构建会将共用附件复制到英文站点。
-
-目录和文章的网页显示名称由 Markdown frontmatter 中的 `title` 控制。因此文件夹名可以保持英文，网页上仍然可以显示中文标题。
-
-Quartz 会将 URL slug 规范化为小写。例如 `content/01Code/index.md` 最终对应 `/01code/`。双语跳转链接也应使用小写 URL。
-
-中英文文章通过 frontmatter 的 `translations` 字段建立对应关系，暂停英文发布时仍保留这些字段，但不显示语言入口：
-
-```yaml
----
-title: 示例文章
-translations:
-  en: "/en/01code/example"
----
+```text
+content/
+  01Code/markdown-basics.md
+  Attachments/01Code/markdown-example.svg
+  00Aboutme/Papers.md
+  Attachments/00Aboutme/毕业设计.pdf
 ```
 
-英文文章对应写法：
+Obsidian Attachment Management 的 `attachmentRoot` 为 `Attachments/`，`attachmentPath` 为 `${notepath}`，不附加 `${notename}`。公开正文按一级分类平铺，科研附件统一放在 `Attachments/02Research/`。共用附件只保留一份，通过完整的知识库相对路径引用，例如 `[[Attachments/00Aboutme/毕设Poster.pdf|毕业设计海报]]`。Markdown 图片可使用相对于当前笔记的路径，空格需要编码。
 
-```yaml
----
-title: Example Article
-lang: en-US
-translations:
-  zh: "/01code/example"
----
-```
+`content/Templates/` 为模板目录，不发布。ZotLit 原始文献库位于 `content/02Research/Literature/`，被 Git 和构建同时忽略；旧路径 `03Notes/Literature` 和旧私有目录 `03Notes/文献精读` 的忽略规则继续保留，防止未重载的插件重新创建旧目录后误发布。不要把私有笔记的附件放到公开的 `Attachments/` 下；附件应存放在同一个被忽略的私有目录内。
 
-## 本地开发
+Research 围绕具体研究问题积累专业理论、试验方法和文献证据；Notes 整理可复用的学习方法与知识；Blog 以个人经历、感受和观点为主。文献是否归入 Research 取决于内容与研究问题的关系，普通阅读摘记仍可放在 Notes。ZotLit 原始同步目录迁移到 `02Research/Literature`，插件路径已同步修改，仍保持私有；适合公开的精读文章单独整理到 Research。
+
+`02Research` 目录内不再细分 Materials、Structure 等子目录，使用首页分组、现有标签和双链连接文章。移动没有改变原文标签或草稿状态。
+
+## 开发与部署
 
 ```bash
-# 安装依赖
 npm install
-
-# 安装 Quartz v5 插件
-npx quartz plugin install --from-config
-
-# 启动本地预览（当前只发布中文）
 npm run dev
-
-# 按发布开关构建站点
-npm run build
-
-# 只构建中文站点
-npx quartz build -d content
-
-# 兼容原部署命令，同样遵守发布开关
-npm run build:i18n
-```
-
-`npm run build:i18n` 保留旧命令名称以兼容现有部署设置，但不会强制发布英文。仅在 `englishEnabled: true` 且不指定 `-d` 时，构建入口才会依次生成中文站点及 `/en/` 英文站点，英文域名路径自动从 `configuration.baseUrl` 派生。
-
-本地预览推荐 `npm run dev`，它明确调用本仓库的入口。如果 `npx quartz build --serve` 实际调用了 npm 缓存中的 Quartz，可能使用不同版本的 CLI，导致双语域名、附件或构建结果不一致。请先在原终端按 `Ctrl+C` 停止旧服务器，再运行 `npm run dev`，不要让两个构建进程同时写入 `public/`。
-
-## 部署
-
-部署生产站点时可以使用：
-
-```bash
 npm run build
 ```
 
-部署目录为 `public/`。其中：
+`npm run dev` 使用本仓库入口进行本地预览。旧服务器需先在原终端用 `Ctrl+C` 停止，避免多个进程同时写入 `public/`。`npx quartz build --serve` 若调用 npm 缓存中的其他版本，结果可能与本仓库不同。
 
-- `public/` 根目录是中文站点
-- 当前不生成 `public/en/`，也不生成英文搜索索引、RSS 或站点地图
-- `public/index.xml` 是 RSS 订阅源
-- `public/sitemap.xml` 是搜索引擎站点地图
+部署构建命令使用 `npm run build`，输出目录为 `public/`。保留 `npm run build:i18n` 作为旧部署配置的兼容别名，它现在也只构建中文站。现有部署可继续使用，建议之后将平台命令改为 `npm run build`。
 
-RSS 仅收录正式发布的 Markdown 文章，排除首页、目录页、自动生成页面、草稿、未列出及加密笔记，优先按 `published` 日期倒序取最新 10 篇；未设置发布时间时沿用 Quartz 的 Git/文件日期信息。当前订阅地址为 `https://tianhao.blog/index.xml`。搜索索引与站点地图仍保留中文标签页、目录页；英文发布恢复后才会重新生成英文对应文件。
+部署时替换旧产物；如 CDN 仍缓存旧 `/en/` 页面，需要清除缓存。此次本地修改不会自动更新线上网站。
 
-现有部署平台若仍使用 `npm run build:i18n` 或 `npx quartz build`，无需更改命令。部署目录保持 `public/`。部署应替换旧站点产物，不应将新文件增量叠加到旧英文目录上；如果 CDN 仍返回旧 `/en/` 页面，需要清除相应缓存。搜索引擎已经收录的旧页面也需要时间才能移除。
+`edgeone.json` 为本次科研目录迁移配置了旧网址到新网址的 301 跳转，供 EdgeOne Pages 部署读取。它不改变域名、构建命令或其他平台设置，本地 Quartz 预览不执行这些平台规则。旧分类目录首页跳转到“研究与文献”，旧文章路径跳转到同名新文章。
 
-目录调整后，可运行下列命令检查内容、双语映射和生成页面的链接：
+RSS 地址为 `https://tianhao.blog/index.xml`，收录最新 10 篇正式文章，排除首页、目录、草稿、未列出及加密笔记。优先按 `published` 排序，未填写时使用 Git/文件日期。`sitemap.xml` 供搜索引擎发现页面，搜索索引位于 `static/contentIndex.json`。
+
+## 检查
 
 ```bash
 npm run check:content
-npm run check:bilingual
 npm run check:publication
 npm run check:built-links
 npm run check:built-domain
 npm run check:rss
-npm run check:language-switch
 npm run check:site-stats
 npm run check:comments
+npm run check:recent-notes
 ```
 
-## 常见提示
+内容检查包含草稿，忽略模板及私有文献。`format:content-frontmatter` 为中文 YAML 规范化工具，不会生成英文映射，也不会处理私有文献或 ZotLit 模板。
 
-### Twikoo 评论
+## 评论与统计
 
-Quartz 连接 Mizuki 已有的 Netlify Twikoo 后台，不创建新数据库，也不重复导入评论。客户端沿用 `1.6.44`，静态资源位于 `quartz/static/twikoo/`，与现有后台匹配。后台地址是公开的前端配置；数据库连接串、管理员密码和评论导出文件不能放进博客仓库。
+评论沿用 Mizuki 的 Netlify Twikoo 后台和既有评论标识。旧文章映射位于 `quartz/plugins/twikoo-comments/dist/components/paths.js`，不要随意修改，否则可能关联不到已有评论。新文章默认使用 `/notes/文章slug`，如需重命名文章，可提前通过 YAML 的 `commentPath` 固定原标识。后台密钥、数据库连接串和评论导出文件不要提交到仓库。
 
-评论显示在正式文章正文下方及首页，目录页、标签页、404、草稿、未列出/加密笔记不显示；单篇笔记可在 YAML 中设置 `comments: false` 关闭。中英文界面分别显示中文/英文，但对应文章共享同一评论标识。
+评论在首页和正式文章显示，目录、标签页、404、草稿、未列出及加密笔记不显示；单篇可用 `comments: false` 关闭。本地默认只读取线上评论并隐藏输入框，正式域名恢复留言。邮件通知由 Twikoo 后台配置决定。
 
-旧评论映射保存在 `quartz/plugins/twikoo-comments/dist/components/paths.js`：
-
-| Quartz 中文页面                         | 旧 Twikoo 评论标识                 |
-| --------------------------------------- | ---------------------------------- |
-| `/`                                     | `/posts/about-me`                  |
-| `/02engineering/structure/plasticity-2` | `/posts/elastoplastic-mechanics-2` |
-| `/05tools/obsidian-mizuki`              | `/posts/obsidianmizuki`            |
-| `/01code/github-profile`                | `/posts/github-profile`            |
-| `/05tools/mcm-template`                 | `/posts/latex-mcm-template`        |
-
-不要修改表中的旧标识，否则现有评论会关联不到页面。新文章默认使用 `/notes/文章slug`，移动分类目录不改变评论标识；重命名文章时，可在中英文 YAML 中同时设置同一个 `commentPath` 固定原标识。`npm run check:comments` 检查页面映射、语言、资源及标识冲突。
-
-运行 `npm run dev` 后，本地也能读取线上评论。默认 `previewReadOnly: true` 会在非正式域名的预览中隐藏留言输入框、回复及点赞控件，避免测试留言写入正式数据库；这只是前端预览保护，不是后台权限控制。部署到 `configuration.baseUrl` 的正式主机名后恢复留言功能。若确需在预览中测试真实留言，可把该选项设为 `false`，注意提交会直接写入线上数据库。
-
-本项目不会上传或导入评论备份，也不会改变 Netlify/MongoDB 配置。更换后台或升级版本前，应先导出备份。页面切换会重新挂载对应评论，切换前清理旧组件；本地读取失败时检查网络及后台跨域来源配置。
-
-评论列表使用文字加载提示，不显示大尺寸旋转遮罩；成功返回零评论后显示“暂无评论 / No comments yet”。加载失败或评论请求超过 20 秒时显示错误和重试按钮，不会把失败当作零评论。页面切换会清理请求状态监听及计时器，刷新会清除旧错误。
-
-### 网站访问统计
-
-左侧搜索工具栏下方、探索目录上方显示不蒜子统计（桌面及平板侧栏）。包含全站访问/访客、本页阅读/访客，不显示今日访问及今日访客，中英文界面自动切换标签。
-
-接入的是 [busuanzi.cc](https://www.busuanzi.cc/doc.php)，不是其他同名计数服务。组件按官方 `3.6.9` 脚本的 POST 协议请求 `https://cdn.busuanzi.cc/api.php`，并使用官方全站及本页的四个计数标签 ID；不额外加载官方脚本，以免重复计数。Quartz 的每次页面导航会更新统计，过期请求会被取消；页内锚点和界面重绘不会额外计数。中文 `/` 和英文 `/en/` 使用同一域名的全站统计，各自页面的阅读量分开统计。
-
-仅在 `configuration.baseUrl` 所配置的主机名上发送请求，本地 `localhost` 预览不计数，也不会显示真实数字。广告拦截器或服务不可用时显示“统计暂不可用”，不会显示虚假的零。此第三方服务会接收当前页面地址及来源地址，访问记录由不蒜子处理；现有 Plausible 配置保持不变，两者的统计口径可能不同。上线需重新构建并部署 `public/`。
-
-构建时如果看到类似下面的警告：
-
-```text
-Warning: content/01Code/index.md isn't yet tracked by git, dates will be inaccurate
-```
-
-这表示该文件还没有被 Git 跟踪，Quartz 无法从 Git 历史中读取准确日期。将文件加入 Git 并提交后，这个警告会消失。
-
-## 贡献者
-
-感谢以下开源项目为这个数字花园提供支持：
-
-- [Jacky Zhao](https://github.com/jackyzha0) - Quartz 框架的创建者
-- Quartz 社区的所有贡献者
+侧栏统计使用 [GoatCounter](https://tianhao.goatcounter.com/)，显示全站和本页访问量；公开计数受后台设置、浏览器拦截和网络影响。本地显示线上计数，不记录访问。已发布笔记数和字数在构建时生成，不依赖统计服务。笔记篇数不计入首页、目录页及 `00Aboutme`；字数排除链接地址、代码等非正文内容。
 
 ## 许可证
 
-博客原创内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可。也就是说，非商业使用、转载和改编需要署名，并以相同协议共享。
-
-站点框架基于 [Quartz](https://github.com/jackyzha0/quartz) 构建，Quartz 相关源代码保留其上游 MIT 许可证。页脚中的 `RSS` 链接指向 `/index.xml`，可用于订阅博客更新；`sitemap.xml` 主要供搜索引擎发现页面使用。
+博客原创内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可。Quartz 框架及相关源代码保留各自的开源许可证。

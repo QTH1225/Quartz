@@ -1,7 +1,6 @@
 import fs from "node:fs"
 import path from "node:path"
 import { readPluginsJson } from "../cli/plugin-data.js"
-import publication from "../publication.json" with { type: "json" }
 
 const outputRoot = path.resolve(process.argv[2] ?? "public")
 const baseUrl = process.env.QUARTZ_BASE_URL ?? readPluginsJson()?.configuration?.baseUrl
@@ -35,10 +34,7 @@ function walk(directory) {
   })
 }
 
-for (const [prefix, expectedBase] of [
-  ["", base],
-  ["en", enBase],
-].filter(([prefix]) => publication.englishEnabled || prefix !== "en")) {
+for (const [prefix, expectedBase] of [["", base]]) {
   const cname = path.join(outputRoot, prefix, "CNAME")
   if (fs.readFileSync(cname, "utf8").trim() !== base.hostname) {
     errors.push(`${cname}：CNAME 应为 ${base.hostname}`)
@@ -57,7 +53,7 @@ for (const [prefix, expectedBase] of [
 const pages = walk(outputRoot).filter((file) => file.endsWith(".html"))
 for (const file of pages) {
   const relative = path.relative(outputRoot, file)
-  const expectedBase = relative.startsWith(`en${path.sep}`) ? enBase : base
+  const expectedBase = base
   const html = fs.readFileSync(file, "utf8")
   const meta = [
     ...html.matchAll(

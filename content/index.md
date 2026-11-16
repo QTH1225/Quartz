@@ -3,9 +3,6 @@ title: 👋Welcome！
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-translations:
-  en: /en/
-lang: zh-CN
 ---
 # 关于我
 我是秦天浩（Yana），目前是中国矿业大学力学与土木工程学院结构工程专业的2025级硕士研究生。

@@ -7,9 +7,6 @@ description: Yana's Lab 的内容定位、阅读与反馈方式，以及从 Jeky
 published: 2025-01-01
 tags:
   - 关于我
-translations:
-  en: /en/00aboutme/aboutsite
-lang: zh-CN
 ---
 
 ## 关于这个博客

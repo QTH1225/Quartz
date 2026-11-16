@@ -7,9 +7,6 @@ description: 如何问出一个好问题？如何得到你想要的答案？
 published: 2025-10-06
 tags:
   - 阅读
-translations:
-  en: /en/03notes/ask-questions
-lang: zh-CN
 ---
 
 ## 提问的资料

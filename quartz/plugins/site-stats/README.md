@@ -8,7 +8,7 @@
 
 1. 登录 GoatCounter，在 Settings 中勾选 **Allow adding visitor counts on your website** 并保存。
 2. 如果后台启用了域名限制，允许 `tianhao.blog` 与 `www.tianhao.blog`。
-3. 运行 `npm run build:i18n` 并按原流程部署。代码修改本身不会更新线上网站。
+3. 运行 `npm run build` 并按原流程部署。代码修改本身不会更新线上网站。
 4. 正常访问线上文章，在后台查看是否收到访问；公开计数并非实时更新。
 
 `TOTAL` 显示同一账号的全站计数；本页计数使用规范化 pathname，不含查询参数、

@@ -2,7 +2,7 @@
 // Only public article paths belong here, never exported comment/user data.
 export const legacyPaths = Object.freeze({
   "/": "/posts/about-me",
-  "/02engineering/structure/plasticity-2": "/posts/elastoplastic-mechanics-2",
+  "/02research/plasticity-2": "/posts/elastoplastic-mechanics-2",
   "/05tools/obsidian-mizuki": "/posts/obsidianmizuki",
   "/01code/github-profile": "/posts/github-profile",
   "/05tools/mcm-template": "/posts/latex-mcm-template",

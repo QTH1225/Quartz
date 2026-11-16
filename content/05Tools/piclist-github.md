@@ -8,9 +8,6 @@ tags:
   - 图床
   - PicList
   - GitHub
-translations:
-  en: /en/05tools/piclist-github
-lang: zh-CN
 ---
 
 ## 什么是图床

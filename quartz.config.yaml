@@ -14,9 +14,12 @@ configuration:
     - private
     - templates
     - Template
+    - Templates
     - .obsidian
     - "**/*.base"
     - 03Notes/文献精读
+    - 03Notes/Literature
+    - 02Research/Literature
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
@@ -209,19 +212,6 @@ plugins:
       group: toolbar
       groupOptions:
         grow: true
-  - source: "./quartz/plugins/language-switch"
-    enabled: true
-    options:
-      roots:
-        zh: /
-        en: /en/
-      labels:
-        zh: 中
-        en: EN
-    layout:
-      position: left
-      priority: 37
-      group: toolbar
   - source: "@quartz-community/backlinks"
     enabled: true
     layout:

@@ -7,9 +7,6 @@ description: 详细介绍Zotero插件的功能、安装方法
 published: 2026-03-09
 tags:
   - Zotero
-translations:
-  en: /en/05tools/zotero-plugins
-lang: zh-CN
 ---
 
 

@@ -7,9 +7,6 @@ description: 基于EasyMCM全面且专业的美赛模板，支持多种排版样
 published: 2025-12-12
 tags:
   - LaTeX
-translations:
-  en: /en/05tools/mcm-template
-lang: zh-CN
 ---
 
 

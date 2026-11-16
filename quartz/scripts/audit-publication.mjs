@@ -2,7 +2,6 @@ import fs from "node:fs"
 import path from "node:path"
 import { pathToFileURL } from "node:url"
 import { fromHtml } from "hast-util-from-html"
-import publication from "../publication.json" with { type: "json" }
 import { readPluginsJson } from "../cli/plugin-data.js"
 
 function walk(directory) {
@@ -16,10 +15,7 @@ function elements(node) {
   return [node, ...(node.children ?? []).flatMap(elements)].filter((n) => n.type === "element")
 }
 
-export function auditPublication(
-  outputRoot,
-  { englishEnabled = publication.englishEnabled, baseUrl = "tianhao.blog" } = {},
-) {
+export function auditPublication(outputRoot, { baseUrl = "tianhao.blog" } = {}) {
   const errors = []
   const root = path.resolve(outputRoot)
   const base = new URL(`https://${baseUrl.replace(/\/+$/, "")}/`)
@@ -49,9 +45,6 @@ export function auditPublication(
   if (!fs.existsSync(root))
     return { errors: ["没有找到构建目录，请先构建网站"], pages: 0, entries: 0 }
 
-  // This audit is intentionally strict while English is paused. English source
-  // files and translations metadata are not publication artifacts and stay intact.
-  if (englishEnabled) return { errors, pages: 0, entries: 0 }
   if (fs.existsSync(path.join(root, "en")) || fs.existsSync(path.join(root, "en.html"))) {
     errors.push("仍残留英文构建产物：en/ 或 en.html")
   }
@@ -112,7 +105,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     baseUrl: process.env.QUARTZ_BASE_URL ?? readPluginsJson()?.configuration?.baseUrl,
   })
   console.log(
-    `发布范围检查（英文${publication.englishEnabled ? "启用" : "暂停"}）：${result.pages} 个页面、${result.entries} 条搜索索引；错误 ${result.errors.length}`,
+    `发布范围检查（纯中文）：${result.pages} 个页面、${result.entries} 条搜索索引；错误 ${result.errors.length}`,
   )
   for (const error of result.errors) console.error(`- ${error}`)
   if (result.errors.length) process.exitCode = 1

@@ -5,7 +5,6 @@ import { parse } from "yaml"
 import { fromHtml } from "hast-util-from-html"
 import { slugifyFilePath } from "@quartz-community/utils"
 import { readPluginsJson } from "../cli/plugin-data.js"
-import publication from "../publication.json" with { type: "json" }
 import {
   canonicalPath,
   commentPath,
@@ -24,10 +23,7 @@ const identifiers = new Map()
 const errors = []
 let widgetsChecked = 0
 
-for (const [directory, prefix] of [
-  ["content", ""],
-  ["content-en", "en/"],
-].filter(([directory]) => publication.englishEnabled || directory !== "content-en")) {
+for (const [directory, prefix] of [["content", ""]]) {
   for (const relativePath of await globby("**/*.md", {
     cwd: directory,
     ignore: config.configuration.ignorePatterns,

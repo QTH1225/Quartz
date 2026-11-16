@@ -1,0 +1,47 @@
+{
+  "redirects": [
+    { "source": "/02engineering", "destination": "/02research/", "statusCode": 301 },
+    { "source": "/02engineering/", "destination": "/02research/", "statusCode": 301 },
+    { "source": "/02engineering/index", "destination": "/02research/", "statusCode": 301 },
+    { "source": "/02engineering/index.html", "destination": "/02research/", "statusCode": 301 },
+    { "source": "/02engineering/materials", "destination": "/02research/", "statusCode": 301 },
+    { "source": "/02engineering/materials/", "destination": "/02research/", "statusCode": 301 },
+    {
+      "source": "/02engineering/materials/index",
+      "destination": "/02research/",
+      "statusCode": 301
+    },
+    {
+      "source": "/02engineering/materials/index.html",
+      "destination": "/02research/",
+      "statusCode": 301
+    },
+    { "source": "/02engineering/structure", "destination": "/02research/", "statusCode": 301 },
+    { "source": "/02engineering/structure/", "destination": "/02research/", "statusCode": 301 },
+    {
+      "source": "/02engineering/structure/index",
+      "destination": "/02research/",
+      "statusCode": 301
+    },
+    {
+      "source": "/02engineering/structure/index.html",
+      "destination": "/02research/",
+      "statusCode": 301
+    },
+    {
+      "source": "/02engineering/materials/:slug",
+      "destination": "/02research/:slug",
+      "statusCode": 301
+    },
+    {
+      "source": "/02engineering/structure/:slug",
+      "destination": "/02research/:slug",
+      "statusCode": 301
+    },
+    {
+      "source": "/attachments/02engineering/*",
+      "destination": "/attachments/02research/:splat",
+      "statusCode": 301
+    }
+  ]
+}

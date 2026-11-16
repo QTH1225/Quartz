@@ -5,7 +5,7 @@ import { parse as parseYaml } from "yaml"
 
 const projectRoot = process.cwd()
 const contentRoot = path.join(projectRoot, "content")
-const ignoredSegments = new Set([".obsidian", "Template"])
+const ignoredSegments = new Set([".obsidian", "Template", "Templates", "templates"])
 const frontmatterOrder = [
   "title",
   "draft",
@@ -17,15 +17,20 @@ const frontmatterOrder = [
   "aliases",
   "pinned",
   "image",
-  "translations",
-  "lang",
 ]
-const requiredKeys = ["title", "draft", "author", "authorLink", "lang"]
+const requiredKeys = ["title", "draft", "author", "authorLink"]
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     if (ignoredSegments.has(entry.name)) return []
     const fullPath = path.join(directory, entry.name)
+    const relativePath = path.relative(contentRoot, fullPath).replaceAll("\\", "/")
+    if (
+      ["02Research/Literature", "03Notes/Literature", "03Notes/文献精读", "private"].includes(
+        relativePath,
+      )
+    )
+      return []
     if (entry.isDirectory()) return walk(fullPath)
     return [fullPath]
   })
@@ -178,6 +183,9 @@ for (const filePath of markdownFiles) {
     }
     if (frontmatter.data.draft !== undefined && typeof frontmatter.data.draft !== "boolean") {
       errors.push(`${file}: draft 必须是布尔值`)
+    }
+    if (frontmatter.data.translations !== undefined) {
+      errors.push(`${file}: 纯中文站不应保留 translations 字段`)
     }
     if (frontmatter.data.lang !== undefined && frontmatter.data.lang !== "zh-CN") {
       errors.push(`${file}: lang 应为 zh-CN`)

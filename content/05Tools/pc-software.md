@@ -8,9 +8,6 @@ published: 2025-09-27
 tags:
   - 软件
 pinned: false
-translations:
-  en: /en/05tools/pc-software
-lang: zh-CN
 ---
 
 ## 软件的推荐

@@ -8,9 +8,6 @@ published: 2025-11-30
 tags:
   - 软件
   - 文档排版
-translations:
-  en: /en/05tools/word-layout
-lang: zh-CN
 ---
 
 ## 字体与字号

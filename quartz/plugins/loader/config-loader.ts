@@ -31,7 +31,6 @@ import Flex from "../../components/Flex"
 import MobileOnly from "../../components/MobileOnly"
 import DesktopOnly from "../../components/DesktopOnly"
 import ConditionalRender from "../../components/ConditionalRender"
-import publication from "../../publication.json"
 
 const CONFIG_ENV_PATH = process.env.QUARTZ_CONFIG
 const CONFIG_YAML_PATH = CONFIG_ENV_PATH
@@ -277,10 +276,7 @@ export async function loadQuartzConfig(
     configuration.baseUrl = process.env.QUARTZ_BASE_URL
   }
 
-  const enabledEntries = json.plugins.filter(
-    (e) =>
-      e.enabled && (publication.englishEnabled || e.source !== "./quartz/plugins/language-switch"),
-  )
+  const enabledEntries = json.plugins.filter((e) => e.enabled)
   const manifests = new Map<string, PluginManifest>()
 
   // Ensure all plugins are installed and collect native deps
@@ -666,10 +662,7 @@ export async function loadQuartzLayout(layoutOverrides?: {
     return oldLayout.layout
   }
 
-  const enabledWithLayout = json.plugins.filter(
-    (e) =>
-      e.enabled && (publication.englishEnabled || e.source !== "./quartz/plugins/language-switch"),
-  )
+  const enabledWithLayout = json.plugins.filter((e) => e.enabled)
   const layoutConfig = json.layout ?? {}
 
   // Build default layout for all page types

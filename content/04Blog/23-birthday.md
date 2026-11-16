@@ -9,9 +9,6 @@ tags:
   - 生日
   - 年度总结
 image: https://cdn.jsdelivr.net/gh/QTH1225/Blog_Figures/img/20251225163945225.webp
-translations:
-  en: /en/04blog/23-birthday
-lang: zh-CN
 ---
 
 ## 这一年

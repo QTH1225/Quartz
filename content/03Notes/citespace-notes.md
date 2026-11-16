@@ -6,9 +6,6 @@ authorLink: https://github.com/QTH1225
 tags:
   - 文献计量
   - CiteSpace
-translations:
-  en: /en/03notes/citespace-notes
-lang: zh-CN
 ---
 
 

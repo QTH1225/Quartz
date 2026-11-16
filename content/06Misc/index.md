@@ -1,11 +1,8 @@
 ---
-title: 杂项(Misc)
+title: 杂项（Misc）
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-translations:
-  en: /en/06misc/
-lang: zh-CN
 ---
 
 # 杂项
