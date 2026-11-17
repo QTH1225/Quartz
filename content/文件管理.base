@@ -36,3 +36,17 @@ views:
       note.title: 213
       file.folder: 239
       note.tags: 309
+  - type: table
+    name: 文献视图
+    filters:
+      and:
+        - file.inFolder("02Research/Literature")
+    order:
+      - file.name
+      - title
+      - title_zh
+      - journal
+    columnSize:
+      file.name: 338
+      note.title: 660
+      note.title_zh: 374

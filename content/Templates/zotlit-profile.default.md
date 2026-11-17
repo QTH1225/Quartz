@@ -12,11 +12,23 @@ frontmatter:
   - key: title
     expr: zt.title
     merge: replace
-  - key: related
-    expr: zt.relatedItems | note_links
+  - key: title_zh
+    expr: 'zt.extra.fields.titleTranslation | default: ""'
+    merge: keep
+  - key: tags
+    expr: 'zt.collections | collection_paths | push: "文献笔记" | obsidian_tag | uniq'
+    merge: append
+  - key: status
+    value: "unread"
+    merge: keep
+  - key: authors
+    expr: 'zt.authors | map: "fullName"'
     merge: replace
-  - key: collections
-    expr: zt.collections | collection_paths
+  - key: year
+    expr: zt.date.year
+    merge: replace
+  - key: journal
+    expr: zt.containerTitle
     merge: replace
   - key: citekey
     expr: zt.citationKey
