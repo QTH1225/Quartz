@@ -3,7 +3,7 @@ title: 剪力墙布置要求
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-published: 2026-11-08T17:53:09+08:00
+published: 2026-11-08
 tags:
   - 结构设计
 ---

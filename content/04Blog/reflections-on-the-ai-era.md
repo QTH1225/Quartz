@@ -1,6 +1,6 @@
 ---
 title: AI时代的思考
-draft: false
+draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 tags:
