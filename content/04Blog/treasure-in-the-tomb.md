@@ -3,6 +3,7 @@ title: 寓言故事|墓中珍宝
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
+published: 2026-10-09T21:58:24+08:00
 tags:
   - 随笔故事
 ---

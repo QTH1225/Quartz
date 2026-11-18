@@ -7,4 +7,4 @@ authorLink: https://github.com/QTH1225
 
 # 杂项
 
-这里存放一些不太好分类的内容喵～
+这里存放一些不太好分类的内容。

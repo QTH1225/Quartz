@@ -3,6 +3,7 @@ title: 建立一份文档工程
 draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
+published:
 tags:
   - 文档工程
   - 人工智能

@@ -3,7 +3,7 @@ title: 个人简历
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-description: 本人参与的竞赛以及获得的奖励
+description: 本人的教育经历及技能
 published: 2025-01-01
 tags:
   - 关于我
@@ -20,7 +20,7 @@ tags:
 
 我目前已经掌握了以下技能：
 
-- LaTeX（开源项目：[LaTeX-in-ICM&MCM](https://github.com/QTH1225/LaTeX-in-ICM-MCM), 278 stars🌟)
+- LaTeX（开源项目：[LaTeX-in-ICM&MCM](https://github.com/QTH1225/LaTeX-in-ICM-MCM), [Research-Diary-Template](https://github.com/QTH1225/Research-Diary-Template))
 - Markdown
 - AutoCAD（基本命令以及天正绘图）
 - ANSYS

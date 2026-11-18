@@ -3,6 +3,7 @@ title: AI写作的迹象
 draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
+published:
 tags:
   - 人工智能
   - 阅读

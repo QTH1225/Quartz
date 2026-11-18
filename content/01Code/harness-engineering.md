@@ -1,8 +1,9 @@
 ---
 title: Harness Engineering 全景解读
-draft: false
+draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
+published: 2026-11-08T17:53:09+08:00
 tags:
   - 人工智能
 ---

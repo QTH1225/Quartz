@@ -4,6 +4,7 @@ draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: PhD指导手册
+published:
 tags:
   - 阅读
 ---

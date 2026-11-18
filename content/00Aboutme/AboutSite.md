@@ -3,18 +3,34 @@ title: 关于本站
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-description: Yana's Lab 的内容定位、阅读与反馈方式，以及从 Jekyll、Mizuki 到 Quartz 的建站记录。
+description: Yana's Lab 的内容定位、阅读与反馈方式，以及建站记录。
 published: 2025-01-01
 tags:
   - 关于我
 ---
 
-## 关于这个博客
 
-这里是 Yana's Lab，我用它记录学习、研究和解决问题的过程。目前的内容主要围绕土木工程、混凝土材料、代码实践和研究工具，也会写一些个人随笔。
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Shantell+Sans&pause=1000&center=true&vCenter=true&width=435&lines=You+Are+Not+Alone#center)](https://git.io/typing-svg)
 
-整理笔记时，我希望留下的不只是结论，也包括问题的背景、尝试过的方法，以及暂时没有弄清楚的地方。把这些过程写下来，方便以后回看，也希望能给遇到类似问题的人提供一点参考。
+## 关于博客
 
+Yana 这个名字来自英剧《Doctor Who》中的 [Professor Yana](https://tardis.fandom.com/wiki/Yana)。在《Utopia》这一集中，他尝试帮助宇宙尽头的人类幸存者乘火箭前往传说中的“乌托邦”。
+
+YANA 也对应着 [You Are Not Alone](https://www.doctorwho.tv/news-and-features/doctor-whos-14-most-omg-moments) 的首字母，意为“<span class="yana-accent">**你并不孤单**</span>”。
+
+这里是 Yana's Lab，也是我记录学习、研究和解决问题的过程的地方。我把博客叫作 Yana's Lab，也借用了“你并不孤单”这层意思。整理笔记时，我希望留下问题的背景、尝试过的方法以及一些经验心得，希望可以帮助到同样迷茫而感到无助的人。
+
+如果你也在研究类似的问题，或者对文章中的某些内容存在自己的理解、勘误或者补充，也欢迎你留下自己的理解和经验。这样我们才能共同建立一个”乌托邦“！
+
+目前博客主要分为以下几个部分：
+
+- [[00Aboutme/index|关于我（About Me）]]：简历、项目、荣誉奖励及相关个人资料；
+- [[01Code/index|代码开发（Code）]]：编程、算法、计算机基础与开发实践；
+- [[02Research/index|研究与文献（Research）]]：结构、材料、试验方法等整理；
+- [[03Notes/index|学习笔记（Notes）]]：学习与科研方法、阅读摘记及可复用的知识笔记；
+- [[04Blog/index|个人随笔（Blog）]]：个人经历、阶段复盘、感受与思考；
+- [[05Tools/index|工具实践（Tools）]]：软件配置、插件使用及个人工作流；
+- [[06Misc/index|杂项（Misc）]]：暂时不便归入上述分类的内容。
 
 ## 如何阅读
 
@@ -32,9 +48,16 @@ tags:
 
 ## 内容使用
 
-除另有说明外，本站原创内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) 许可。引用或转载时请注明作者及原文链接，具体使用条件以许可原文为准。
+除另有说明外，本站原创内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)（署名—非商业性使用—相同方式共享 4.0 国际）许可。在遵守许可条件的前提下，你可以复制、转载、翻译或改编这些内容，无需为每次使用单独征得同意，但需要注意以下要求：
 
-开源代码请遵循对应项目的许可证；引用的第三方资料不自动适用本站的原创内容许可。
+- **署名（BY）**：转载或分享时，请注明作者及原文链接，提供本许可的链接，并保留原文已有的版权、许可及免责声明。若做过删改、翻译或其他修改，请说明修改情况，并保留已有的修改说明；不得暗示作者为你的作品或使用方式背书。
+- **非商业性使用（NC）**：本许可不允许以获取商业优势或金钱报酬为主要目的使用这些内容，例如将文章打包售卖或用于商业宣传。涉及商业使用时，请先联系作者另行取得授权。是否属于商业使用，应结合实际用途判断。
+- **相同方式共享（SA）**：如果你翻译、改编本站内容或基于其创作了演绎作品，并对外发布，需要为演绎作品采用 CC BY-NC-SA 4.0、具有相同许可要素的后续版本，或 Creative Commons 官方认可的兼容许可，同时提供相应的许可说明与链接。
+- **不得增加额外限制**：不得通过附加条款或技术保护措施，限制后续使用者行使本许可已经允许的复制、修改和分享等权利。
+
+开源代码请遵循对应项目或文件标注的许可证。文中引用的论文、图片、截图等第三方资料不自动适用本站的原创内容许可，使用时应核对原出处的授权条件。
+
+法律允许的合理使用等例外不受本说明限制。以上是便于阅读的说明，具体权利与义务以 [CC BY-NC-SA 4.0 许可法律文本](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.zh-hans)为准。
 
 ## 本站的历史
 

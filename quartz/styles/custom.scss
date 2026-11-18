@@ -24,6 +24,12 @@ html[lang^="en"] .center > article li {
   hyphens: none;
 }
 
+// Keep the Mizuki accent local to the Yana name explanation.
+article .yana-accent strong {
+  color: #ee88b1;
+  font-weight: $boldWeight;
+}
+
 @media all and (min-width: 801px) {
   .sidebar.left {
     overflow-y: hidden;
@@ -61,6 +67,12 @@ html[lang^="en"] .center > article li {
 }
 
 @media all and ($mobile) {
+  .center > article p,
+  .center > article li {
+    text-align: left;
+    text-align-last: left;
+  }
+
   .sidebar.left > .recent-notes {
     display: none;
   }
@@ -188,6 +200,24 @@ html[lang^="en"] .center > article li {
   max-width: 100%;
   height: auto;
   margin: 0 auto 0.35rem;
+}
+
+// Center Markdown images marked with a #center URL fragment, including linked images.
+article img[src$="#center"] {
+  display: block;
+  height: auto;
+  margin-inline: auto;
+}
+
+article a:has(> img[src$="#center"]) {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+
+  > .external-icon {
+    display: none;
+  }
 }
 
 article figure.image-caption {
