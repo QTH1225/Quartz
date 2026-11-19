@@ -3,7 +3,7 @@ title: 建筑图绘制笔记
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-published: 2026-11-08T17:53:09+08:00
+published: 2026-11-08
 tags:
   - 工程制图
 ---
