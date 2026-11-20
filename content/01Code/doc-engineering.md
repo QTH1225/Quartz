@@ -3,7 +3,7 @@ title: 文档工程介绍与写法
 draft: true
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
-published: 2026-11-08T17:53:09+08:00
+published: 2026-11-08
 tags:
   - 文档工程
   - 人工智能
