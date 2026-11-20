@@ -14,7 +14,7 @@ tags:
 
 ## 关于博客
 
-Yana 这个名字来自英剧《Doctor Who》中的 [Professor Yana](https://tardis.fandom.com/wiki/Yana)。在《Utopia》这一集中，他尝试帮助宇宙尽头的人类幸存者乘火箭前往传说中的“乌托邦”。
+Yana 这个名字来自英剧Doctor Who中的 [Professor Yana](https://tardis.fandom.com/wiki/Yana)。在Utopia一集中，他尝试帮助宇宙尽头的人类幸存者乘火箭前往传说中的“乌托邦”。
 
 YANA 也对应着 [You Are Not Alone](https://www.doctorwho.tv/news-and-features/doctor-whos-14-most-omg-moments) 的首字母，意为“<span class="yana-accent">**你并不孤单**</span>”。
 

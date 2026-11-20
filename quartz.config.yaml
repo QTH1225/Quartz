@@ -161,18 +161,10 @@ plugins:
       useSavedState: true
       sortFn: |
         (a, b) => {
-          const isRandom = (node) => {
-            const label = `${node.displayName ?? ""} ${node.slugSegment ?? ""}`.toLowerCase()
-            return label.includes("个人随笔") || label.includes("random")
-          }
-
           const numericPrefix = (node) => {
             const match = `${node.slugSegment ?? ""}`.match(/^(\d+)/)
             return match ? Number(match[1]) : undefined
           }
-
-          if (isRandom(a) && !isRandom(b)) return 1
-          if (!isRandom(a) && isRandom(b)) return -1
 
           const sameKind = (!a.isFolder && !b.isFolder) || (a.isFolder && b.isFolder)
           if (sameKind) {

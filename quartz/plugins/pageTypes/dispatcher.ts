@@ -10,6 +10,7 @@ import { StaticResources } from "../../util/resources"
 import { render } from "preact-render-to-string"
 import { fromHtml } from "hast-util-from-html"
 import { Root as HtmlRoot } from "hast"
+import { publishedSummary } from "../published-word-count/dist/count.js"
 
 function getPageTypes(ctx: BuildCtx): QuartzPageTypePluginInstance[] {
   return (ctx.cfg.plugins.pageTypes ?? []) as unknown as QuartzPageTypePluginInstance[]
@@ -152,6 +153,7 @@ function populateVirtualPageHtmlAst(
 export const PageTypeDispatcher: QuartzEmitterPlugin<Partial<DispatcherOptions>> = (userOpts) => {
   const defaults = userOpts?.defaults ?? {}
   const byPageType = userOpts?.byPageType ?? {}
+  const renderedSummaries = new WeakMap<BuildCtx, ReturnType<typeof publishedSummary>>()
 
   return {
     name: "PageTypeDispatcher",
@@ -245,6 +247,7 @@ export const PageTypeDispatcher: QuartzEmitterPlugin<Partial<DispatcherOptions>>
           treeTransforms,
         )
       }
+      renderedSummaries.set(ctx, publishedSummary(allFiles, cfg.locale))
     },
     async *partialEmit(ctx, content, resources, changeEvents) {
       const pageTypes = [...getPageTypes(ctx)].sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
@@ -258,6 +261,12 @@ export const PageTypeDispatcher: QuartzEmitterPlugin<Partial<DispatcherOptions>>
 
       // Rebuild trie on partial emit to reflect file changes
       ctx.trie = trieFromAllFiles(allFiles)
+
+      // Every page with SiteStats embeds the build-wide totals in its HTML.
+      const summary = publishedSummary(allFiles, cfg.locale)
+      const previousSummary = renderedSummaries.get(ctx)
+      const summaryChanged =
+        summary.words !== previousSummary?.words || summary.notes !== previousSummary?.notes
 
       const changedSlugs = new Set<string>()
       for (const changeEvent of changeEvents) {
@@ -299,10 +308,10 @@ export const PageTypeDispatcher: QuartzEmitterPlugin<Partial<DispatcherOptions>>
       // Render Body components to populate htmlAst for transclusion
       populateVirtualPageHtmlAst(virtualEntries, ctx, allFilesWithVirtual, resources)
 
-      // Phase 2: Emit changed regular pages
+      // Phase 2: Emit changed regular pages, or all pages when site totals change
       for (const [tree, file] of content) {
         const slug = file.data.slug!
-        if (!changedSlugs.has(slug)) continue
+        if (!summaryChanged && !changedSlugs.has(slug)) continue
 
         const fileData = file.data
         for (const pt of pageTypes) {
@@ -336,6 +345,7 @@ export const PageTypeDispatcher: QuartzEmitterPlugin<Partial<DispatcherOptions>>
           treeTransforms,
         )
       }
+      renderedSummaries.set(ctx, summary)
     },
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: 个人爱好
-draft: true
+draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: 本人爱好
@@ -27,9 +27,15 @@ tags:
 
 所以，向一个小说家进行努力！
 
-## 阅读
+## 阅读、观影以及音乐
 
+我目前感兴趣的是英美科幻以及神识主义作品，同时我也积极了解古文化与志怪故事。目前我所了解过并感兴趣的作品有这些，如果你也对这些感兴趣或者有不同的想法，欢迎和我一起交流学习！
 
-## 软件与工具
+| 影视作品         | 书籍     | 古文       | 音乐                           |
+| ------------ | ------ | -------- | ---------------------------- |
+| [Doctor Who](https://www.doctorwho.tv/home)   | [《庄子故事》](https://www.dedao.cn/ebook/detail?id=N4yqKRVn1jAJaMyOQ2YorRp6DvXm7we4Db3GBKLzkPq5gdxEV98eNbZl467ovjzg) | [东阳夜怪录](https://zh.wikisource.org/zh-hans/東陽夜怪錄)    | [I am the Doctor](https://www.youtube.com/watch?v=kqSlCCufDR4)（纯音乐）         |
+| [Good Omens](https://terrypratchett.com/film-tv/good-omens/)   | [《炸裂志》](https://www.chinawriter.com.cn/book/2013-10-08/3875.html)  | [大人先生传](https://zh.wikisource.org/zh-hans/大人先生傳)    | [Scourge of the Universe](https://dmdokuro.bandcamp.com/track/scourge-of-the-universe)（纯音乐） |
+| [The Simpsons](https://www.disneyplus.com/browse/entity-c88bb35c-880b-437e-9187-ab59b52df1a2) | [《罗生门》](https://zh.wikisource.org/zh-hans/羅生門)  | [鹤冲天·黄金榜上](https://hanyu.baidu.com/shici/detail?pid=ebc216f9399e4fd7acbfca6bc9f1caa7) | [Live Forever](https://oasisinet.com/music/live-forever/)                 |
+| [Futurama](https://www.disneyplus.com/browse/entity-85bf4cc1-cd8b-4469-ad87-7289217a0b74)     | [《白夜行》](https://book.douban.com/subject/37456185/)  |          | [No Future](https://www.xinpianchang.com/u15759777)（纯音乐）               |
 
-
+这些作品以及音乐涉及到多个领域以及风格，例如Doctor Who、Futurama以及Good Omens属于科幻作品、The Simpsons则属于动漫。其他的书籍、古文以及音乐也是如此，它们都不限制在某一单独的领域，如果你也能了解它们背后的故事，相信你也会有所收获！
