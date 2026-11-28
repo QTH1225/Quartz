@@ -1,12 +1,17 @@
 ---
-title: 基于easyMCM的美赛LaTeX模板
+title: 开源项目|基于 EasyMCM 的美赛 LaTeX 模板
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
 description: 基于EasyMCM全面且专业的美赛模板，支持多种排版样式
 published: 2025-12-12
 tags:
+  - 开源项目
   - LaTeX
+aliases:
+  - 05tools/mcm-template
+  - 01code/mcm-template
+commentPath: /posts/latex-mcm-template
 ---
 
 
