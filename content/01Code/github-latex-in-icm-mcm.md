@@ -1,5 +1,5 @@
 ---
-title: 开源项目|基于 EasyMCM 的美赛 LaTeX 模板
+title: 开源项目|美赛 LaTeX 模板
 draft: false
 author: Qin Tianhao
 authorLink: https://github.com/QTH1225
